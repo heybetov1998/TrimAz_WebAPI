@@ -1,0 +1,27 @@
+.contact_input,
+.message {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: $backgroundColor;
+    border-radius: 10px;
+    color: $inputBorderColor;
+}
+
+.message {
+    transition: none;
+    min-height: 240px;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        min-height: 150px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        min-height: 200px;
+    }
+}
+
+.curved_button {
+    border-radius: 10px !important;
+    padding: 10px !important;
+}

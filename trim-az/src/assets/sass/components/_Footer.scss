@@ -1,0 +1,21 @@
+footer {
+    padding: 2rem 0;
+    
+    .rightFooter {
+        li {
+            a {
+                margin-left: 1.4rem;
+                transition: none;
+                color: $colorWhite;
+
+                &:hover {
+                    color: $mainColor;
+                }
+
+                svg {
+                    transition: none;
+                }
+            }
+        }
+    }
+}

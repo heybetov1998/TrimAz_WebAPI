@@ -1,0 +1,19 @@
+.nav_item {
+    display: block;
+    color: $colorWhite;
+    padding: 1rem 2rem;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        padding: 1rem 0.9rem;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+        padding: 1rem 1.4rem;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: $mainColor;
+    }
+}

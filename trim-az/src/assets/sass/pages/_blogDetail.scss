@@ -1,0 +1,34 @@
+.blog_part {
+    .main_image {
+        border-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        padding-bottom: 60%;
+        margin-bottom: 1rem;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .blog_info {
+        margin-top: 2rem;
+        .blog_author {
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+            .author_name {
+                &:hover {
+                    color: $colorWhite !important;
+                }
+            }
+        }
+    }
+
+    .blog_content {
+        color: $colorWhite;
+        text-align: justify;
+        margin-bottom: 7rem;
+    }
+}

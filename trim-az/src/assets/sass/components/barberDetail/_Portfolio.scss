@@ -1,0 +1,18 @@
+.portfolio {
+    .portfolio_images {
+        .portfolio_item {
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            padding-bottom: 100%;
+            margin-bottom: 24px;
+            height: 0;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

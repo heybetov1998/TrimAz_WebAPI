@@ -1,0 +1,34 @@
+#product_detail {
+    padding-top: 8rem;
+    min-height: 100vh;
+
+    .product_image {
+        cursor: pointer;
+    }
+
+    .name_holder {
+        .product_name {
+            margin-right: 2rem;
+            font-size: 2rem;
+        }
+
+        .product_price {
+            color: $inputBorderColor;
+            font-size: 2rem;
+        }
+    }
+
+    .product_description {
+        color: $colorWhite;
+    }
+
+    .product_seller {
+        .author_name {
+            color: $colorWhite;
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+    }
+}

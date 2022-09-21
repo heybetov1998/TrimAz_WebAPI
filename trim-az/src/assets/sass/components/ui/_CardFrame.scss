@@ -1,0 +1,12 @@
+.card_frame {
+    padding: 30px 20px;
+    margin-bottom: 1.2rem;
+    border-radius: 20px;
+    background-color: $cardBackground;
+
+    .card_frame_title {
+        font-size: 18px;
+        font-family: $dmSans-medium;
+        margin-bottom: 1.2rem;
+    }
+}

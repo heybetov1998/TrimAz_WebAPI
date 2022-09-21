@@ -1,0 +1,24 @@
+#user_settings {
+    padding-top: 8rem;
+    min-height: 100vh;
+
+    .name {
+        text-align: center;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+    .management_options {
+        background-color: $backgroundColor;
+        padding: 20px;
+
+        .option_item {
+            display: inline-block;
+            color: $colorWhite;
+            padding: 5px 0;
+            &:hover,
+            &.active {
+                color: $mainColor;
+            }
+        }
+    }
+}

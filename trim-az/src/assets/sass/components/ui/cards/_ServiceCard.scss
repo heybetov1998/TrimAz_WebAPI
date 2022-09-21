@@ -1,0 +1,15 @@
+.service_card {
+    padding: 15px 20px !important;
+
+    .name {
+        margin-bottom: 0;
+    }
+    .time {
+        color: $borderColor;
+        font-size: 0.9rem;
+    }
+    .price {
+        text-align: right;
+        color: $colorWhite;
+    }
+}

@@ -1,0 +1,75 @@
+.reviews {
+    .write_review {
+        .rate_name {
+            color: $colorWhite;
+        }
+
+        .userComment {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: $backgroundColor;
+            border-radius: 10px;
+            color: $inputBorderColor;
+            transition: none;
+            min-height: 240px;
+            margin-top: 24px;
+
+            @media (min-width: 768px) and (max-width: 991px) {
+                min-height: 150px;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                min-height: 200px;
+            }
+        }
+    }
+
+    .comments {
+        .comment {
+            &:last-child {
+                .comment_text {
+                    border: none;
+                }
+            }
+
+            .comment_author {
+                padding: 20px;
+
+                .profile_image {
+                    display: block;
+                    width: 90px;
+                    min-height: 70px;
+                    margin-right: 12px;
+                    border-radius: 10px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .info {
+                    width: calc(100% - 102px);
+
+                    .name {
+                        font-size: 1.15rem;
+                        color: $colorWhite;
+                        text-transform: capitalize;
+                    }
+
+                    .date {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .comment_text {
+                color: $colorWhite;
+                padding: 0 20px 20px 20px;
+                border-bottom: 1px solid $inputBorderColor;
+            }
+        }
+    }
+}

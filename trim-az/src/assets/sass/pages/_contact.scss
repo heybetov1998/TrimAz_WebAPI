@@ -1,0 +1,16 @@
+#contact {
+    padding-top: 8rem;
+    min-height: 100vh;
+
+    .contact_information {
+        h3 {
+            font-size: 2rem;
+            color: $mainColor;
+        }
+
+        p {
+            margin: 30px 0;
+            color: $colorWhite;
+        }
+    }
+}

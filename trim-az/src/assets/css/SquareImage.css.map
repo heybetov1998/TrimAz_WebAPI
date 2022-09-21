@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACV,QAAQ,EAAE,MAAM;EAChB,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,IAAI;EACX,cAAc,EAAE,IAAI;EACpB,aAAa,EAAE,IAAI;EACnB,MAAM,EAAE,CAAC;CAMZ;;AAZD,AAQI,aARS,CAQT,GAAG,CAAC;EACA,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "../sass/components/ui/images/SquareImage.scss"
+    ],
+    "names": [],
+    "file": "SquareImage.css"
+}

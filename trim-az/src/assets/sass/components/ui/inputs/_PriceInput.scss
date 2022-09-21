@@ -1,0 +1,29 @@
+.price_holder {
+    margin-bottom: 1rem;
+
+    label {
+        width: 55%;
+        color: $colorWhite;
+    }
+    .price_input {
+        width: 45%;
+        background-color: $backgroundColor;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        color: $inputBorderColor;
+        text-align: center;
+
+        /* Chrome, Safari, Edge, Opera */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        &[type="number"] {
+            -moz-appearance: textfield;
+        }
+    }
+}

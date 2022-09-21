@@ -1,0 +1,28 @@
+.videos {
+    iframe {
+        width: 189px;
+        height: 189px;
+        margin-bottom: 19px;
+        border-radius: 20px;
+
+        @media screen and (max-width: 575px) {
+            width: 163px;
+            height: 163px;
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            width: 156px;
+            height: 156px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            width: 135px;
+            height: 135px;
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            width: 156px;
+            height: 156px;
+        }
+    }
+}

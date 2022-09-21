@@ -1,0 +1,35 @@
+label {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: $colorWhite;
+
+    input[type="checkbox"] {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .standart_checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        height: 20px;
+        width: 20px;
+        background: $backgroundColor;
+        border: none;
+        border-radius: 5px;
+        margin-right: 8px;
+
+        &.checkbox-active {
+            transition: none;
+            background: $mainColor;
+            color: $backgroundColor;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.barber_info {
+    .name {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+    .star_holder {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid $borderColor;
+    }
+    .info_heading {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: $colorWhite;
+    }
+}

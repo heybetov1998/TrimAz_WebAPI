@@ -1,0 +1,59 @@
+.slider_holder {
+    width: 90%;
+    margin: 0 auto;
+
+    .absolute-nav {
+        position: absolute;
+        top: 25%;
+    }
+
+    .swiper-custom-prev.absolute-nav {
+        left: -20px;
+    }
+
+    .swiper-custom-next.absolute-nav {
+        right: -20px;
+    }
+
+    .swiper-custom-prev,
+    .swiper-custom-next {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border: 2px solid $borderColor;
+        border-radius: 50%;
+        background-color: $backgroundColor;
+        color: $colorWhite;
+        z-index: 100;
+
+        &:hover {
+            background-color: $borderColor;
+        }
+    }
+
+    .custom-pagination {
+        text-align: center;
+        margin-top: 20px;
+
+        .swiper-pagination-bullet-active {
+            background-color: $mainColor;
+        }
+    }
+
+    .custom-navigation-div {
+        position: absolute;
+        top: -85px;
+        right: 0;
+
+        @media screen and (max-width: 575px) {
+            position: static;
+            justify-content: center !important;
+            margin-bottom: 15px;
+            margin-top: -15px;
+        }
+
+        .swiper-custom-prev {
+            margin-right: 5px;
+        }
+    }
+}

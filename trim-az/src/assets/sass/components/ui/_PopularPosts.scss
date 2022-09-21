@@ -1,0 +1,57 @@
+.popular_posts {
+    .post_item {
+        .post_image {
+            display: block;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+
+                &:hover {
+                    transform: scale(1.2, 1.2);
+                }
+            }
+        }
+        .post_title {
+            display: block;
+            color: $colorWhite;
+            margin-bottom: 1rem;
+
+            @media screen and (max-width: 575px) {
+                font-size: 1.2rem;
+                margin-bottom: 0.7rem;
+            }
+
+            @media (min-width: 576px) and (max-width: 767px) {
+                font-size: 1.5rem;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                margin-bottom: 0.7rem;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $mainColor;
+            }
+        }
+        p {
+            color: $borderColor;
+            font-size: 0.9rem;
+
+            @media screen and (max-width: 575px) {
+                font-size: 1.1rem;
+            }
+
+            @media (min-width: 576px) and (max-width: 767px) {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

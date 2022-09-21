@@ -1,0 +1,20 @@
+#market {
+    padding-top: 8rem;
+    min-height: 100vh;
+
+    .card_holder {
+        &:hover {
+            .card_frame {
+                background-color: $cardHoverBackground;
+            }
+
+            .name {
+                color: $mainColor;
+            }
+
+            img {
+                transform: scale(1.2, 1.2);
+            }
+        }
+    }
+}
