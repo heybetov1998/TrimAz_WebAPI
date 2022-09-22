@@ -9,6 +9,7 @@
       "Core/1.0.0": {
         "dependencies": {
           "Entity": "1.0.0",
+          "Exceptions": "1.0.0",
           "Extensions": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.9"
         },
@@ -549,6 +550,11 @@
           "Entity.dll": {}
         }
       },
+      "Exceptions/1.0.0": {
+        "runtime": {
+          "Exceptions.dll": {}
+        }
+      },
       "Extensions/1.0.0": {
         "runtime": {
           "Extensions.dll": {}
@@ -892,6 +898,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Exceptions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

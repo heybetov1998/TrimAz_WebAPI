@@ -15,9 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "Exceptions\Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{DC886780-36C9-4F43-A655-CA7061332E7B}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "trim-az", "trim-az\trim-az.esproj", "{51788AD4-CF12-4109-BE14-9B4B45EFE525}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{F86FFB30-F9EB-4CFA-89FA-E3F983AE1A77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "Extensions\Extensions.csproj", "{F86FFB30-F9EB-4CFA-89FA-E3F983AE1A77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,12 +47,6 @@ Global
 		{DC886780-36C9-4F43-A655-CA7061332E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC886780-36C9-4F43-A655-CA7061332E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC886780-36C9-4F43-A655-CA7061332E7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51788AD4-CF12-4109-BE14-9B4B45EFE525}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{F86FFB30-F9EB-4CFA-89FA-E3F983AE1A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F86FFB30-F9EB-4CFA-89FA-E3F983AE1A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F86FFB30-F9EB-4CFA-89FA-E3F983AE1A77}.Release|Any CPU.ActiveCfg = Release|Any CPU

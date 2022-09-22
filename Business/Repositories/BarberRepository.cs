@@ -27,7 +27,7 @@ public class BarberRepository : IBarberService
 
     public async Task<List<Barber>> GetAll()
     {
-        var data = await _barberDAL.GetAllAsync(take: 10, includes: "UserBarbers");
+        var data = await _barberDAL.GetAllAsync(take: 10, includes: new string[] { "UserBarbers", "BarberImages.Image" });
 
         if (data is null)
         {

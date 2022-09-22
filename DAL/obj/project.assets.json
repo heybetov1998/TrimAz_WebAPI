@@ -727,6 +727,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Entity": "1.0.0",
+          "Exceptions": "1.0.0",
           "Extensions": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.9"
         },
@@ -751,6 +752,16 @@
         },
         "runtime": {
           "bin/placeholder/Entity.dll": {}
+        }
+      },
+      "Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Exceptions.dll": {}
         }
       },
       "Extensions/1.0.0": {
@@ -2114,6 +2125,11 @@
       "type": "project",
       "path": "../Entity/Entity.csproj",
       "msbuildProject": "../Entity/Entity.csproj"
+    },
+    "Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../Exceptions/Exceptions.csproj",
+      "msbuildProject": "../Exceptions/Exceptions.csproj"
     },
     "Extensions/1.0.0": {
       "type": "project",

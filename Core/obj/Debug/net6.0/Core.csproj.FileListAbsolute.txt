@@ -15,3 +15,5 @@ C:\Users\heybe\source\repos\TrimAz\Core\obj\Debug\net6.0\Core.pdb
 C:\Users\heybe\source\repos\TrimAz\Core\obj\Debug\net6.0\ref\Core.dll
 C:\Users\heybe\source\repos\TrimAz\Core\bin\Debug\net6.0\Extensions.dll
 C:\Users\heybe\source\repos\TrimAz\Core\bin\Debug\net6.0\Extensions.pdb
+C:\Users\heybe\source\repos\TrimAz\Core\bin\Debug\net6.0\Exceptions.dll
+C:\Users\heybe\source\repos\TrimAz\Core\bin\Debug\net6.0\Exceptions.pdb

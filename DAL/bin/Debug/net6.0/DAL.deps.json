@@ -569,6 +569,7 @@
       "Core/1.0.0": {
         "dependencies": {
           "Entity": "1.0.0",
+          "Exceptions": "1.0.0",
           "Extensions": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.9"
         },
@@ -585,6 +586,11 @@
         },
         "runtime": {
           "Entity.dll": {}
+        }
+      },
+      "Exceptions/1.0.0": {
+        "runtime": {
+          "Exceptions.dll": {}
         }
       },
       "Extensions/1.0.0": {
@@ -956,6 +962,11 @@
       "sha512": ""
     },
     "Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Exceptions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

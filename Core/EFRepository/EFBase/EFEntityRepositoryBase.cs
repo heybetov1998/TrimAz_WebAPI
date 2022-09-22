@@ -1,4 +1,5 @@
 ﻿using Entity.Base;
+using Exceptions.EntityExceptions;
 using Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -16,23 +17,28 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
         _context = context;
     }
 
-    public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, int? skip = 0, params string[] includes)
+    public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, int skip = 0, params string[] includes)
     {
         var query = expression is null ?
             _context.Set<TEntity>().AsNoTracking() :
             _context.Set<TEntity>().Where(expression).AsNoTracking();
 
         query = query.Skip((int)skip);
-        
-        //if (includes != null)
-        //{
-        //    foreach (var include in includes)
-        //    {
-        //        query = query.Include(include);
-        //    }
-        //}
+
+        if (includes != null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
 
         var data = await query.FirstOrDefaultAsync();
+
+        if (data is null)
+        {
+            throw new EntityCouldNotFoundException();
+        }
 
         return data;
     }
@@ -40,7 +46,7 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
     public async Task<List<TEntity>> GetAllAsync(
         Expression<Func<TEntity, bool>>? expression = null,
         Expression<Func<TEntity, double>>? orderExpression = null,
-        int? skip = 0,
+        int skip = 0,
         int? take = int.MaxValue,
         params string[] includes)
     {
@@ -50,7 +56,7 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
                 _context.Set<TEntity>().Where(expression).AsNoTracking() :
                 _context.Set<TEntity>().Where(expression).OrderBy(orderExpression).AsNoTracking();
 
-        if (skip != null) query.Skip((int)skip);
+        query.Skip(skip);
         if (take != null) query.Take((int)take);
 
         if (includes != null)

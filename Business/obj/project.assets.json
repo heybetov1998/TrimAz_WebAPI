@@ -690,6 +690,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Entity": "1.0.0",
+          "Exceptions": "1.0.0",
           "Extensions": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.9"
         },

@@ -18,7 +18,7 @@ public class BarbersController : ControllerBase
         _barberService = barberService;
     }
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> GetAllAsync()
     {
         List<BarberGetDTO> barbers = new List<BarberGetDTO>();
 
@@ -39,6 +39,18 @@ public class BarbersController : ControllerBase
                 foreach (var userBarber in data.UserBarbers)
                 {
                     ratings.Add(userBarber.StarRating);
+                }
+
+                foreach (var barberImage in data.BarberImages)
+                {
+                    if (barberImage.Image is not null)
+                    {
+                        if (barberImage.Image.IsAvatar)
+                        {
+                            barberGetDTO.ImageName = barberImage.Image.Name;
+                            break;
+                        }
+                    }
                 }
 
                 if (ratings.Count > 0)
