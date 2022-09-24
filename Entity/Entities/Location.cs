@@ -4,8 +4,12 @@ namespace Entity.Entities;
 
 public class Location : BaseEntity, IEntity
 {
-    public string? CoordinateX { get; set; }
-    public string? CoordinateY { get; set; }
-    public int BarbershopId { get; set; }
-    public Barbershop? Barbershop { get; set; }
+    public Location()
+    {
+        Products = new HashSet<Product>();
+    }
+
+    public string CoordinateX { get; set; } = null!;
+    public string CoordinateY { get; set; } = null!;
+    public ICollection<Product> Products { get; set; }
 }

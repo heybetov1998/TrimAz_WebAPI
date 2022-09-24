@@ -14,7 +14,7 @@ public class ImageRepository : IImageService
         _imageDAL = imageDAL;
     }
 
-    public async Task<Image> Get(int id)
+    public async Task<Image> GetAsync(int id)
     {
         var data = await _imageDAL.GetAsync(n => n.Id == id);
 
@@ -26,7 +26,7 @@ public class ImageRepository : IImageService
         return data;
     }
 
-    public async Task<List<Image>> GetAll()
+    public async Task<List<Image>> GetAllAsync()
     {
         var data = await _imageDAL.GetAllAsync();
 
@@ -38,17 +38,17 @@ public class ImageRepository : IImageService
         return data;
     }
 
-    public Task Create(Image entity)
+    public Task CreateAsync(Image entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Image entity)
+    public Task UpdateAsync(int id, Image entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }

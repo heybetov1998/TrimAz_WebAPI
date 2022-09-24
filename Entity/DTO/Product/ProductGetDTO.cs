@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entity.DTO.User;
 
-namespace Entity.DTO.Product
+namespace Entity.DTO.Product;
+
+public class ProductGetDTO
 {
-    public class ProductGetDTO
+    public ProductGetDTO()
     {
-        public int Id { get; set; }
-        public string? Title { get; set; }
-        public double Price { get; set; }
-        public string? ImageName { get; set; }
+        Seller = new();
     }
+
+    public int Id { get; set; }
+    public string Title { get; set; } = null!;
+    public double Price { get; set; }
+    public string ImageName { get; set; } = null!;
+    public string LocationName { get; set; } = null!;
+    public UserGetDTO Seller { get; set; }
 }

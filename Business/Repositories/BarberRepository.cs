@@ -13,7 +13,7 @@ public class BarberRepository : IBarberService
         _barberDAL = barberDAL;
     }
 
-    public async Task<Barber> Get(string id)
+    public async Task<Barber> GetAsync(string id)
     {
         var data = await _barberDAL.GetAsync(n => n.Id == id, includes: "UserBarbers");
 
@@ -25,7 +25,7 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public async Task<List<Barber>> GetAll()
+    public async Task<List<Barber>> GetAllAsync()
     {
         var data = await _barberDAL.GetAllAsync(take: 10, includes: new string[] { "UserBarbers", "BarberImages.Image" });
 
@@ -37,17 +37,17 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public Task Create(Barber entity)
+    public Task CreateAsync(Barber entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Update(int id, Barber entity)
+    public Task UpdateAsync(int id, Barber entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id)
+    public Task DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }

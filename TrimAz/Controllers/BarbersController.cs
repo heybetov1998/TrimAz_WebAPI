@@ -24,7 +24,7 @@ public class BarbersController : ControllerBase
 
         try
         {
-            var datas = await _barberService.GetAll();
+            var datas = await _barberService.GetAllAsync();
 
             foreach (Barber data in datas)
             {
@@ -50,6 +50,14 @@ public class BarbersController : ControllerBase
                             barberGetDTO.ImageName = barberImage.Image.Name;
                             break;
                         }
+                        else
+                        {
+                            barberGetDTO.ImageName = "profile-picture.png";
+                        }
+                    }
+                    else
+                    {
+                        barberGetDTO.ImageName = "profile-picture.png";
                     }
                 }
 
@@ -78,7 +86,7 @@ public class BarbersController : ControllerBase
     {
         try
         {
-            var data = await _barberService.Get(id);
+            var data = await _barberService.GetAsync(id);
             return Ok(data);
         }
         catch (EntityCouldNotFoundException ex)

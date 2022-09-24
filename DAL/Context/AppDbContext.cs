@@ -1,5 +1,4 @@
-﻿using Entity.Configurations;
-using Entity.Entities;
+﻿using Entity.Entities;
 using Entity.Entities.Pivots;
 using Entity.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -32,9 +31,10 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<UserImage>? UserImages { get; set; }
     public DbSet<UserProduct>? UserProducts { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfiguration(new ProductConfigurations());
-        base.OnModelCreating(modelBuilder);
-    }
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.ApplyConfiguration(new ProductConfigurations());
+    //    modelBuilder.ApplyConfiguration(new UserConfigurations());
+    //    base.OnModelCreating(modelBuilder);
+    //}
 }

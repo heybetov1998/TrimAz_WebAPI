@@ -6,11 +6,18 @@ namespace Entity.Entities;
 
 public class Barbershop : BaseEntity, IEntity
 {
-    public string? Name { get; set; }
+    public Barbershop()
+    {
+        Barbers = new HashSet<Barber>();
+        BarbershopImages = new HashSet<BarbershopImage>();
+        BarbershopLocations = new HashSet<BarbershopLocation>();
+    }
 
-    public List<Location>? Locations { get; set; }
-    public List<Barber>? Barbers { get; set; }
+    public string Name { get; set; } = null!;
+
+    public ICollection<Barber> Barbers { get; set; }
 
     //Pivot
-    public List<BarbershopImage>? BarbershopImages { get; set; }
+    public ICollection<BarbershopImage> BarbershopImages { get; set; }
+    public ICollection<BarbershopLocation> BarbershopLocations { get; set; }
 }

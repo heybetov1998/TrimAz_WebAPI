@@ -4,7 +4,6 @@ using DAL.Abstracts;
 using DAL.Context;
 using DAL.Implementations;
 using Entity.Identity;
-using Entity.Profiles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -33,9 +32,13 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+    options.SignIn.RequireConfirmedAccount = false
+).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentityCore<Barber>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentityCore<Seller>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-builder.Services.AddAutoMapper(n => n.AddProfile(new Mapper()));
+//builder.Services.AddAutoMapper(n => n.AddProfile(new Mapper()));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

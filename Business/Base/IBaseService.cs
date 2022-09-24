@@ -5,9 +5,9 @@ namespace Business.Base;
 public interface IBaseService<TEntity, TProp>
     where TEntity : class, IEntity, new()
 {
-    Task<TEntity> Get(TProp id);
-    Task<List<TEntity>> GetAll();
-    Task Create(TEntity entity);
-    Task Update(int id, TEntity entity);
-    Task Delete(int id);
+    Task<TEntity> GetAsync(TProp id);
+    Task<List<TEntity>> GetAllAsync();
+    Task CreateAsync(TEntity entity);
+    Task UpdateAsync(int id, TEntity entity);
+    Task DeleteAsync(int id);
 }

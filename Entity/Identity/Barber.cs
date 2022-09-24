@@ -2,7 +2,6 @@
 using Entity.Entities;
 using Entity.Entities.Pivots;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
 
 namespace Entity.Identity;
 
@@ -15,6 +14,7 @@ public class Barber : IdentityUser, IEntity
         BarberServices = new HashSet<BarberService>();
         Barbershop = new();
     }
+
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public int BarbershopId { get; set; }

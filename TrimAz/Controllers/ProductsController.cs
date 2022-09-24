@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using Business.Services;
+﻿using Business.Services;
 using Entity.DTO.Product;
-using Entity.Entities;
 using Exceptions.EntityExceptions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TrimAz.Commons;
 
@@ -14,24 +11,62 @@ namespace TrimAz.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly IMapper _mapper;
 
-        public ProductsController(IProductService productService, IMapper mapper)
+        public ProductsController(IProductService productService)
         {
             _productService = productService;
-            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
-                var data = await _productService.GetAll();
+                var datas = await _productService.GetAllAsync();
 
-                List<ProductGetDTO> dtos = _mapper.Map<List<ProductGetDTO>>(data);
+                List<ProductGetDTO> products = new List<ProductGetDTO>();
 
-                return Ok(dtos);
+                foreach (var data in datas)
+                {
+                    ProductGetDTO productGetDTO = new ProductGetDTO();
+
+                    productGetDTO.Id = data.Id;
+                    productGetDTO.Title = data.Title;
+                    productGetDTO.Price = data.Price;
+
+                    foreach (var productImage in data.ProductImages)
+                    {
+                        productGetDTO.ImageName = "no-image.png";
+
+                        if (productImage.IsMain)
+                        {
+                            if (productImage.Image is not null)
+                            {
+                                productGetDTO.ImageName = productImage.Image.Name;
+                                break;
+                            }
+                        }
+                    }
+
+                    productGetDTO.Seller.Id = data.Seller.Id;
+                    productGetDTO.Seller.FirstName = data.Seller.FirstName;
+                    productGetDTO.Seller.LastName = data.Seller.LastName;
+
+                    foreach (var sellerImage in data.Seller.SellerImages)
+                    {
+                        productGetDTO.Seller.ImageName = "profile-picture.png";
+
+                        if (sellerImage.IsAvatar)
+                        {
+                            productGetDTO.Seller.ImageName = sellerImage.Image.Name;
+                            break;
+                        }
+                    }
+
+                    products.Add(productGetDTO);
+                }
+
+                return Ok(products);
             }
             catch (EntityCouldNotFoundException ex)
             {
