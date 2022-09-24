@@ -45,7 +45,7 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
 
     public async Task<List<TEntity>> GetAllAsync(
         Expression<Func<TEntity, bool>>? expression = null,
-        Expression<Func<TEntity, double>>? orderExpression = null,
+        Expression<Func<TEntity, IOrderedEnumerable<TEntity>>>? orderExpression = null,
         int skip = 0,
         int? take = int.MaxValue,
         params string[] includes)

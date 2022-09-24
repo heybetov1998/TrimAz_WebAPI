@@ -3,15 +3,15 @@ i:{00000000-0000-0000-0000-000000000000}:TrimAz.sln
 ++TrimAz
 i:{00000000-0000-0000-0000-000000000000}:TrimAz
 ++Connected Services 
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>919
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2423
 ++Dependencies
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>918
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>657
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>718
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>582
-i:{772becc4-b767-46f0-9af4-2364821f0491}:>583
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>762
-i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:>584
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2422
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>749
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>748
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>747
+i:{772becc4-b767-46f0-9af4-2364821f0491}:>751
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>750
+i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:>752
 ++Properties
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\properties\
 ++launchSettings.json
@@ -41,7 +41,6 @@ i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trim
 ++Program.cs
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\program.cs
 ++No service dependencies discovered
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>920
 ++Analyzers
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:analyzers
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:analyzers
@@ -86,43 +85,43 @@ i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdk
 ++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
 ++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 ++Microsoft.CodeAnalysis.NetAnalyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 ++Microsoft.EntityFrameworkCore.Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 ++Microsoft.Extensions.Logging.Generators
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 ++Microsoft.NET.Sdk.Razor.SourceGenerators
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
 ++System.Text.Json.SourceGeneration
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 ++Microsoft.AspNetCore.App
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\microsoft.aspnetcore.app
 ++Microsoft.NETCore.App
@@ -134,41 +133,38 @@ i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exce
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\microsoft.netcore.app
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\users\heybe\source\repos\trimaz\extensions\microsoft.netcore.app
 ++Microsoft.EntityFrameworkCore (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>949
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>975
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>985
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>927
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2435
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>944
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>917
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>983
 ++Microsoft.EntityFrameworkCore.Design (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>951
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>987
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2437
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>919
 ++Microsoft.EntityFrameworkCore.SqlServer (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>950
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>976
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>986
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2436
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>945
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>918
 ++Microsoft.EntityFrameworkCore.Tools (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>953
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>988
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2439
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>920
 ++Swashbuckle.AspNetCore (6.4.0)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>952
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2438
 ++Business
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\business\bin\debug\net6.0\business.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\business\business.csproj
 i:{00000000-0000-0000-0000-000000000000}:Business
 ++DAL
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\dal\bin\debug\net6.0\dal.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\dal\dal.csproj
 i:{00000000-0000-0000-0000-000000000000}:DAL
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\dal\dal.csproj
 ++Entity
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\entity\bin\debug\net6.0\entity.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
 i:{00000000-0000-0000-0000-000000000000}:Entity
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\entity\bin\debug\net6.0\entity.dll
 ++Base
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\base\
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\base\
-++Configurations
-++ProductConfigurations.cs
-++UserConfigurations.cs
 ++DTO
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\
 ++Barber
@@ -182,12 +178,6 @@ i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\enti
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\identity\registeruserdto.cs
 ++Product
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\
-++ProductCreateDTO.cs
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productcreatedto.cs
-++ProductGetDTO.cs
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productgetdto.cs
-++ProductUpdateDTO.cs
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productupdatedto.cs
 ++Entities
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\entities\
 ++Pivots
@@ -234,17 +224,23 @@ i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\enti
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\identity\barber.cs
 ++Profiles
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\profiles\
+++Mapper.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\profiles\mapper.cs
 ++BaseEntity.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\base\baseentity.cs
 ++IEntity.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\base\ientity.cs
-++Mapper.cs
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\profiles\mapper.cs
+++ProductCreateDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productcreatedto.cs
+++ProductGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productgetdto.cs
+++ProductUpdateDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\product\productupdatedto.cs
 ++AutoMapper.Extensions.Microsoft.DependencyInjection (11.0.0)
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>977
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>964
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>946
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>930
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (6.0.9)
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>978
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>947
 ++Abstracts
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\abstracts\
 ++IBarberDAL.cs
@@ -267,15 +263,15 @@ i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\productrepositorydal.cs
 ++Migrations
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\
-++20220920122444_FirstMainMigration.cs
-++20220921235905_AddedIsAvatarFieldToImagesTable.cs
+++20220923112412_product renewed.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220923112412_product renewed.cs
 ++AppDbContextModelSnapshot.cs
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\appdbcontextmodelsnapshot.cs
 ++Core
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\core\core.csproj
 i:{00000000-0000-0000-0000-000000000000}:Core
-++20220920122444_FirstMainMigration.Designer.cs
-++20220921235905_AddedIsAvatarFieldToImagesTable.Designer.cs
+++20220923112412_product renewed.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220923112412_product renewed.designer.cs
 ++IBaseService.cs
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\base\ibaseservice.cs
 ++Repositories
@@ -297,7 +293,7 @@ i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\busi
 ++Exceptions
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\exceptions\exceptions.csproj
 i:{00000000-0000-0000-0000-000000000000}:Exceptions
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\exceptions\exceptions.csproj
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\exceptions\bin\debug\net6.0\exceptions.dll
 ++EntityExceptions
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exceptions\entityexceptions\
 ++EntityCouldNotFoundException.cs
@@ -311,21 +307,90 @@ i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core
 ++IEntityRepositoryBase.cs
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\ientityrepositorybase.cs
 ++Extensions
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\extensions\extensions.csproj
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\extensions\bin\debug\net6.0\extensions.dll
 i:{00000000-0000-0000-0000-000000000000}:Extensions
 ++LinqExtensions.cs
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\users\heybe\source\repos\trimaz\extensions\linqextensions.cs
-++20220923105928_removed automapper.cs
-++20220923105928_removed automapper.Designer.cs
-++20220923110737_product entity updated.cs
-++20220923110737_product entity updated.Designer.cs
-++20220923111109_product renewed.cs
-++20220923111109_product renewed.Designer.cs
-++20220923111210_product renewed.cs
-++20220923111210_product renewed.Designer.cs
-++20220923111405_product renewed.cs
-++20220923111405_product renewed.Designer.cs
-++20220923112412_product renewed.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220923112412_product renewed.cs
-++20220923112412_product renewed.Designer.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220923112412_product renewed.designer.cs
+++NewFolder
+++User
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\user\
+++UserGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\user\usergetdto.cs
+++Seller.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\identity\seller.cs
+++20220924103852_AddedSellersTable.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924103852_addedsellerstable.cs
+++20220924103852_AddedSellersTable.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924103852_addedsellerstable.designer.cs
+++no-image.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\no-image.png
+++20220924114203_added_is_main_field_to_product_images_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924114203_added_is_main_field_to_product_images_table.cs
+++20220924114203_added_is_main_field_to_product_images_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924114203_added_is_main_field_to_product_images_table.designer.cs
+++20220924115419_added_location_relation_to_products_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924115419_added_location_relation_to_products_table.cs
+++20220924115419_added_location_relation_to_products_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924115419_added_location_relation_to_products_table.designer.cs
+++BarbershopLocations.cs
+++BarbershopLocation.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\entities\pivots\barbershoplocation.cs
+++20220924120619_locations_and_barbershop_relations_updated.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924120619_locations_and_barbershop_relations_updated.cs
+++20220924120619_locations_and_barbershop_relations_updated.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924120619_locations_and_barbershop_relations_updated.designer.cs
+++TrimAz (unloaded)
+++Solution 'TrimAz' ‎(6 of 7 projects)
+++20220924125031_barber_and_seller_users_added.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924125031_barber_and_seller_users_added.cs
+++20220924125031_barber_and_seller_users_added.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924125031_barber_and_seller_users_added.designer.cs
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Components.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Mvc.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.NetAnalyzers.dll
+++SellerImage.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\entities\pivots\sellerimage.cs
+++20220924132841_seller_image_relation_added.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924132841_seller_image_relation_added.cs
+++20220924132841_seller_image_relation_added.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924132841_seller_image_relation_added.designer.cs
+++20220924133057_is_avatar_field_added_to_sellerimages_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924133057_is_avatar_field_added_to_sellerimages_table.cs
+++20220924133057_is_avatar_field_added_to_sellerimages_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924133057_is_avatar_field_added_to_sellerimages_table.designer.cs
+++20220924144714_alt_added_to_images_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924144714_alt_added_to_images_table.cs
+++20220924144714_alt_added_to_images_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924144714_alt_added_to_images_table.designer.cs
+++Image
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\image\
+++ImageGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\image\imagegetdto.cs
+++BarbershopsController.cs
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\controllers\barbershopscontroller.cs
+++IBarbershopDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\abstracts\ibarbershopdal.cs
+++BarbershopRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\barbershoprepositorydal.cs
+++BarbershopRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\barbershoprepository.cs
+++IBarbershopService.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\services\ibarbershopservice.cs
+++Barbershop
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\barbershop\
+++BarbershopGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\barbershop\barbershopgetdto.cs
+++20220924172845_isMain_field_added_to_BarbershopImages_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924172845_ismain_field_added_to_barbershopimages_table.cs
+++20220924172845_isMain_field_added_to_BarbershopImages_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924172845_ismain_field_added_to_barbershopimages_table.designer.cs
+++20220924191014_IsAvatar_field_added_to_BarberImages_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924191014_isavatar_field_added_to_barberimages_table.cs
+++20220924191014_IsAvatar_field_added_to_BarberImages_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20220924191014_isavatar_field_added_to_barberimages_table.designer.cs
+++SQL Server Database (ConnectionStrings:Default)
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2464
+++SQL Server Database dependency with connectionId 'ConnectionStrings:Default' is detected
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2465

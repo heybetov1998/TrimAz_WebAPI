@@ -2,6 +2,7 @@
 using DAL.Abstracts;
 using Entity.Identity;
 using Exceptions.EntityExceptions;
+using Extensions;
 
 namespace Business.Repositories;
 
@@ -27,7 +28,10 @@ public class BarberRepository : IBarberService
 
     public async Task<List<Barber>> GetAllAsync()
     {
-        var data = await _barberDAL.GetAllAsync(take: 10, includes: new string[] { "UserBarbers", "BarberImages.Image" });
+        var data = await _barberDAL.GetAllAsync(
+            //orderExpression: n => n.UserBarbers.ToList().ForEach(t => t.StarRating),
+            take: 10,
+            includes: new string[] { "UserBarbers", "BarberImages.Image" });
 
         if (data is null)
         {
