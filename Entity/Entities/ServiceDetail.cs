@@ -5,8 +5,13 @@ namespace Entity.Entities;
 
 public class ServiceDetail : BaseEntity, IEntity
 {
-    public double Price { get; set; }
-    public string? Time { get; set; }
+    public ServiceDetail()
+    {
+        BarberServices = new HashSet<BarberService>();
+    }
 
-    public List<BarberService>? BarberServices { get; set; }
+    public double Price { get; set; }
+    public string Time { get; set; } = null!;
+
+    public ICollection<BarberService> BarberServices { get; set; }
 }

@@ -41,23 +41,14 @@ public class BarbersController : ControllerBase
                     ratings.Add(userBarber.StarRating);
                 }
 
+                barberGetDTO.ImageName = "profile-picture.png";
+
                 foreach (var barberImage in data.BarberImages)
                 {
-                    if (barberImage.Image is not null)
+                    if (barberImage.IsAvatar)
                     {
-                        if (barberImage.Image.IsAvatar)
-                        {
-                            barberGetDTO.ImageName = barberImage.Image.Name;
-                            break;
-                        }
-                        else
-                        {
-                            barberGetDTO.ImageName = "profile-picture.png";
-                        }
-                    }
-                    else
-                    {
-                        barberGetDTO.ImageName = "profile-picture.png";
+                        barberGetDTO.ImageName = barberImage.Image.Name;
+                        break;
                     }
                 }
 

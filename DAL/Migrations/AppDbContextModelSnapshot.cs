@@ -146,9 +146,6 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("IsAvatar")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -197,10 +194,14 @@ namespace DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("BarberId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsAvatar")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -220,6 +221,7 @@ namespace DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("BarberId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ServiceDetailId")
@@ -252,6 +254,9 @@ namespace DAL.Migrations
 
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -532,6 +537,7 @@ namespace DAL.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Time")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -940,7 +946,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Identity.Barber", "Barber")
                         .WithMany("BarberImages")
-                        .HasForeignKey("BarberId");
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entity.Entities.Image", "Image")
                         .WithMany()
@@ -957,7 +965,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Identity.Barber", "Barber")
                         .WithMany("BarberServices")
-                        .HasForeignKey("BarberId");
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entity.Entities.ServiceDetail", "ServiceDetail")
                         .WithMany("BarberServices")

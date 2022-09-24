@@ -36,17 +36,19 @@ namespace TrimAz.Controllers
 
                     foreach (var productImage in data.ProductImages)
                     {
-                        productGetDTO.ImageName = "no-image.png";
+                        productGetDTO.Image.Name = "no-image.png";
 
                         if (productImage.IsMain)
                         {
                             if (productImage.Image is not null)
                             {
-                                productGetDTO.ImageName = productImage.Image.Name;
+                                productGetDTO.Image.Name = productImage.Image.Name;
                                 break;
                             }
                         }
                     }
+
+                    productGetDTO.Image.Alt = productGetDTO.Image.Name;
 
                     productGetDTO.Seller.Id = data.Seller.Id;
                     productGetDTO.Seller.FirstName = data.Seller.FirstName;
@@ -54,14 +56,16 @@ namespace TrimAz.Controllers
 
                     foreach (var sellerImage in data.Seller.SellerImages)
                     {
-                        productGetDTO.Seller.ImageName = "profile-picture.png";
+                        productGetDTO.Seller.Image.Name = "profile-picture.png";
 
                         if (sellerImage.IsAvatar)
                         {
-                            productGetDTO.Seller.ImageName = sellerImage.Image.Name;
+                            productGetDTO.Seller.Image.Name = sellerImage.Image.Name;
                             break;
                         }
                     }
+
+                    productGetDTO.Seller.Image.Alt = productGetDTO.Seller.Image.Name;
 
                     products.Add(productGetDTO);
                 }

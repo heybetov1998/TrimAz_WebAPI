@@ -11,6 +11,7 @@ public class BarbershopImage : IEntity
     }
 
     public int Id { get; set; }
+    public bool IsMain { get; set; }
     public int BarbershopId { get; set; }
     public int ImageId { get; set; }
     public Barbershop Barbershop { get; set; }
