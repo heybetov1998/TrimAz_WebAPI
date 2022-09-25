@@ -5,7 +5,12 @@ namespace Entity.Entities;
 
 public class Service : BaseEntity, IEntity
 {
-    public string? Name { get; set; }
+    public Service()
+    {
+        BarberServices = new HashSet<BarberService>();
+    }
 
-    public List<BarberService>? BarberServices { get; set; }
+    public string Name { get; set; } = null!;
+
+    public ICollection<BarberService> BarberServices { get; set; }
 }
