@@ -23,7 +23,7 @@ public class ProductRepository : IProductService
         return data;
     }
 
-    public async Task<List<Product>> GetAllAsync()
+    public async Task<List<Product>> GetAllAsync(int take)
     {
         var data = await _productDAL.GetAllAsync(n => !n.IsDeleted, includes: new string[] { "ProductImages.Image", "Seller.SellerImages.Image" });
 

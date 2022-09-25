@@ -17,6 +17,7 @@ public class BarbersController : ControllerBase
     {
         _barberService = barberService;
     }
+
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
@@ -24,7 +25,7 @@ public class BarbersController : ControllerBase
 
         try
         {
-            var datas = await _barberService.GetAllAsync();
+            var datas = await _barberService.GetAllAsync(take:2);
 
             foreach (Barber data in datas)
             {

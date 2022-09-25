@@ -26,7 +26,7 @@ public class ImageRepository : IImageService
         return data;
     }
 
-    public async Task<List<Image>> GetAllAsync()
+    public async Task<List<Image>> GetAllAsync(int take)
     {
         var data = await _imageDAL.GetAllAsync();
 

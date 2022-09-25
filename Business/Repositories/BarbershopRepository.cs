@@ -31,7 +31,7 @@ namespace Business.Repositories
             return data;
         }
 
-        public async Task<List<Barbershop>> GetAllAsync()
+        public async Task<List<Barbershop>> GetAllAsync(int take)
         {
             var data = await _barbershopDAL.GetAllAsync(take: 10,
                 includes: new string[] {
