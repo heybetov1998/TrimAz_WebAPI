@@ -1,6 +1,5 @@
 ﻿using Entity.Base;
 using Exceptions.EntityExceptions;
-using Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -23,7 +22,7 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
             _context.Set<TEntity>().AsNoTracking() :
             _context.Set<TEntity>().Where(expression).AsNoTracking();
 
-        query = query.Skip((int)skip);
+        query = query.Skip(skip);
 
         if (includes != null)
         {
@@ -45,19 +44,23 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
 
     public async Task<List<TEntity>> GetAllAsync(
         Expression<Func<TEntity, bool>>? expression = null,
-        Expression<Func<TEntity, double>>? orderExpression = null,
+        Expression<Func<TEntity, IOrderedEnumerable<TEntity>>>? orderExpression = null,
         int skip = 0,
         int? take = int.MaxValue,
         params string[] includes)
     {
-        var query = expression is null ?
-            _context.Set<TEntity>().AsNoTracking() :
-            orderExpression is null ?
-                _context.Set<TEntity>().Where(expression).AsNoTracking() :
-                _context.Set<TEntity>().Where(expression).OrderBy(orderExpression).AsNoTracking();
+        var query =
+            expression is not null && orderExpression is not null ?
+                _context.Set<TEntity>().Where(expression).OrderBy(orderExpression).AsNoTracking() :
+                expression is not null && orderExpression is null ?
+                    _context.Set<TEntity>().Where(expression).AsNoTracking() :
+                    expression is null && orderExpression is not null ?
+                        _context.Set<TEntity>().OrderBy(orderExpression).AsNoTracking() :
+                        _context.Set<TEntity>().AsNoTracking();
 
-        query.Skip(skip);
-        if (take != null) query.Take((int)take);
+        query = query.Skip(skip);
+
+        query = query.Take((int)take);
 
         if (includes != null)
         {

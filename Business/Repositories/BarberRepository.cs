@@ -25,9 +25,11 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public async Task<List<Barber>> GetAllAsync()
+    public async Task<List<Barber>> GetAllAsync(int take = int.MaxValue)
     {
-        var data = await _barberDAL.GetAllAsync(take: 10, includes: new string[] { "UserBarbers", "BarberImages.Image" });
+        var data = await _barberDAL.GetAllAsync(
+            take: take,
+            includes: new string[] { "UserBarbers", "BarberImages.Image" });
 
         if (data is null)
         {

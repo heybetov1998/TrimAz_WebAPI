@@ -1,22 +1,17 @@
-﻿using AutoMapper;
-using Business.Services;
+﻿using Business.Services;
 using DAL.Abstracts;
 using Entity.Entities;
-using Entity.Identity;
 using Exceptions.EntityExceptions;
-using Microsoft.AspNetCore.Identity;
 
 namespace Business.Repositories;
 
 public class ProductRepository : IProductService
 {
     private readonly IProductDAL _productDAL;
-    private readonly UserManager<Seller> _userManager;
 
-    public ProductRepository(IProductDAL productDAL, UserManager<Seller> userManager)
+    public ProductRepository(IProductDAL productDAL)
     {
         _productDAL = productDAL;
-        _userManager = userManager;
     }
 
     public async Task<Product> GetAsync(int id)
@@ -28,9 +23,12 @@ public class ProductRepository : IProductService
         return data;
     }
 
-    public async Task<List<Product>> GetAllAsync()
+    public async Task<List<Product>> GetAllAsync(int take)
     {
-        var data = await _productDAL.GetAllAsync(n => !n.IsDeleted, includes: new string[] { "ProductImages.Image", "Seller.SellerImages.Image" });
+        var data = await _productDAL.GetAllAsync(
+            n => !n.IsDeleted,
+            take: take,
+            includes: new string[] { "ProductImages.Image", "Seller.SellerImages.Image" });
 
         if (data is null) throw new EntityCouldNotFoundException();
 

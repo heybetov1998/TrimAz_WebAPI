@@ -18,11 +18,12 @@ namespace TrimAz.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync(int? take)
         {
+            take ??= int.MaxValue;
             try
             {
-                var datas = await _productService.GetAllAsync();
+                var datas = await _productService.GetAllAsync(take: (int)take);
 
                 List<ProductGetDTO> products = new List<ProductGetDTO>();
 
