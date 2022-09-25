@@ -19,13 +19,15 @@ public class BarbersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync()
+    public async Task<IActionResult> GetAllAsync(int? take)
     {
         List<BarberGetDTO> barbers = new List<BarberGetDTO>();
 
+        take ??= int.MaxValue;
+
         try
         {
-            var datas = await _barberService.GetAllAsync(take:2);
+            var datas = await _barberService.GetAllAsync(take: (int)take);
 
             foreach (Barber data in datas)
             {

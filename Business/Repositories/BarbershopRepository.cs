@@ -33,7 +33,9 @@ namespace Business.Repositories
 
         public async Task<List<Barbershop>> GetAllAsync(int take)
         {
-            var data = await _barbershopDAL.GetAllAsync(take: 10,
+            var data = await _barbershopDAL.GetAllAsync(
+                n => !n.IsDeleted,
+                take: take,
                 includes: new string[] {
                     "BarbershopImages.Image",
                     "BarbershopLocations.Location",

@@ -25,7 +25,7 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public async Task<List<Barber>> GetAllAsync(int take)
+    public async Task<List<Barber>> GetAllAsync(int take = int.MaxValue)
     {
         var data = await _barberDAL.GetAllAsync(
             take: take,
