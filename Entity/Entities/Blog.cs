@@ -6,9 +6,16 @@ namespace Entity.Entities;
 
 public class Blog : BaseEntity, IEntity
 {
-    public string? Title { get; set; }
-    public string? Content { get; set; }
-    public string? UserId { get; set; }
-    public AppUser? User { get; set; }
-    public List<BlogImage>? BlogImages { get; set; }
+    public Blog()
+    {
+        BlogImages = new HashSet<BlogImage>();
+        Barber = new();
+    }
+
+    public string Title { get; set; } = null!;
+    public string Content { get; set; } = null!;
+    public string BarberId { get; set; } = null!;
+    public Barber Barber { get; set; }
+
+    public ICollection<BlogImage> BlogImages { get; set; }
 }
