@@ -57,6 +57,9 @@ builder.Services.AddScoped<IBarbershopDAL, BarbershopRepositoryDAL>();
 builder.Services.AddScoped<IServiceService, ServiceRepository>();
 builder.Services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
 
+builder.Services.AddScoped<IBlogService, BlogRepository>();
+builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
+
 var app = builder.Build();
 
 

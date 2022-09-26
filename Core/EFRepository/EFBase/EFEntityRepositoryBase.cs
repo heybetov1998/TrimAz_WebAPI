@@ -60,7 +60,10 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
 
         query = query.Skip(skip);
 
-        query = query.Take((int)take);
+        if (take is not null)
+        {
+            query = query.Take((int)take);
+        }
 
         if (includes != null)
         {
