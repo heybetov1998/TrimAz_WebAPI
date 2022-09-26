@@ -9,7 +9,7 @@ public class Location : BaseEntity, IEntity
         Products = new HashSet<Product>();
     }
 
-    public string CoordinateX { get; set; } = null!;
-    public string CoordinateY { get; set; } = null!;
+    public string CoordinateX { get; set; } = default!;
+    public string CoordinateY { get; set; } = default!;
     public ICollection<Product> Products { get; set; }
 }

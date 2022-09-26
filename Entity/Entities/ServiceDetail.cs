@@ -11,7 +11,7 @@ public class ServiceDetail : BaseEntity, IEntity
     }
 
     public double Price { get; set; }
-    public string Time { get; set; } = null!;
+    public string Time { get; set; } = default!;
 
     public ICollection<BarberService> BarberServices { get; set; }
 }

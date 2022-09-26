@@ -13,7 +13,7 @@ public class BarberService : IEntity
     }
 
     public int Id { get; set; }
-    public string BarberId { get; set; } = null!;
+    public string BarberId { get; set; } = default!;
     public int ServiceId { get; set; }
     public int ServiceDetailId { get; set; }
     public Barber Barber { get; set; }

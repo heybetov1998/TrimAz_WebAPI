@@ -14,13 +14,15 @@ public class Barber : IdentityUser, IEntity
         BarberServices = new HashSet<BarberService>();
         Barbershop = new();
         Blogs = new HashSet<Blog>();
+        Videos = new HashSet<Video>();
     }
 
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
+    public string FirstName { get; set; } = default!;
+    public string LastName { get; set; } = default!;
     public int BarbershopId { get; set; }
     public Barbershop Barbershop { get; set; }
     public ICollection<Blog> Blogs { get; set; }
+    public ICollection<Video> Videos { get; set; }
 
     //Pivot
     public ICollection<BarberImage> BarberImages { get; set; }

@@ -5,7 +5,12 @@ namespace Entity.Entities;
 
 public class Feedback : BaseEntity, IEntity
 {
-    public string? Message { get; set; }
-    public string? UserId { get; set; }
-    public AppUser? User { get; set; }
+    public Feedback()
+    {
+        User = new AppUser();
+    }
+
+    public string Message { get; set; } = default!;
+    public string UserId { get; set; } = default!;
+    public AppUser User { get; set; }
 }

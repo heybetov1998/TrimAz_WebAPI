@@ -15,13 +15,13 @@ public class Product : BaseEntity, IEntity
         Location = new();
     }
 
-    public string Title { get; set; } = null!;
-    public string Content { get; set; } = null!;
+    public string Title { get; set; } = default!;
+    public string Content { get; set; } = default!;
     public double Price { get; set; }
     public int LocationId { get; set; }
     public Location Location { get; set; }
 
-    public string SellerId { get; set; } = null!;
+    public string SellerId { get; set; } = default!;
     public Seller Seller { get; set; }
 
     public ICollection<ProductImage> ProductImages { get; set; }
