@@ -14,9 +14,21 @@ public class BlogRepository : IBlogService
         _blogDAL = blogDAL;
     }
 
-    public Task<Blog> GetAsync(int id)
+    public async Task<Blog> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        var datas = await _blogDAL.GetAsync(
+            expression: n => !n.IsDeleted && n.Id == id,
+            includes: new string[] { 
+                "BlogImages.Image", 
+                "Barber.BarberImages.Image" }
+            );
+
+        if (datas is null)
+        {
+            throw new EntityCouldNotFoundException();
+        }
+
+        return datas;
     }
 
     public async Task<List<Blog>> GetAllAsync(int take = int.MaxValue)
