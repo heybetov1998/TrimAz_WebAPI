@@ -8,7 +8,6 @@ public class AppUser : IdentityUser
 {
     public AppUser()
     {
-        Blogs = new HashSet<Blog>();
         Feedbacks = new HashSet<Feedback>();
         UserProducts = new HashSet<UserProduct>();
         UserImages = new HashSet<UserImage>();
@@ -18,7 +17,6 @@ public class AppUser : IdentityUser
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
 
-    public ICollection<Blog> Blogs { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }
 
     //Pivots

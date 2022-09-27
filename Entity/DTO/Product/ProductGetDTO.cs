@@ -14,7 +14,6 @@ public class ProductGetDTO
     public int Id { get; set; }
     public string Title { get; set; } = null!;
     public double Price { get; set; }
-    public string LocationName { get; set; } = null!;
     public ImageGetDTO Image { get; set; }
     public UserGetDTO Seller { get; set; }
 }

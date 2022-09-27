@@ -1,5 +1,7 @@
 ﻿using Business.Services;
 using Entity.DTO.Product;
+using Entity.DTO.Productı;
+using Entity.DTO.Review;
 using Exceptions.EntityExceptions;
 using Microsoft.AspNetCore.Mvc;
 using TrimAz.Commons;
@@ -15,6 +17,87 @@ namespace TrimAz.Controllers
         public ProductsController(IProductService productService)
         {
             _productService = productService;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            try
+            {
+                var data = await _productService.GetAsync(id);
+
+                ProductDetailGetDTO product = new();
+
+                // Title // Price // Content
+                product.Title = data.Title;
+                product.Price = data.Price;
+                product.Content = data.Content;
+
+                // Seller
+                product.Seller.Id = data.Seller.Id;
+                product.Seller.FirstName = data.Seller.FirstName;
+                product.Seller.LastName = data.Seller.LastName;
+
+                // Seller Avatar
+                product.Seller.Image.Name = "profile-picture.png";
+                foreach (var sellerImage in data.Seller.SellerImages)
+                {
+                    if (sellerImage.IsAvatar)
+                    {
+                        product.Seller.Image.Name = sellerImage.Image.Name;
+                        break;
+                    }
+                }
+                product.Seller.Image.Alt = product.Seller.Image.Name;
+
+                // Product Images
+                foreach (var productImage in data.ProductImages)
+                {
+                    if (productImage.IsMain)
+                    {
+                        product.MainImage = productImage.Image.Name;
+                        continue;
+                    }
+                    product.Images.Add(productImage.Image.Name);
+                }
+
+                // Product Reviews
+                foreach (var userProduct in data.UserProducts)
+                {
+                    ReviewGetDTO review = new();
+
+                    review.Id = userProduct.Id;
+                    review.UserId = userProduct.User.Id;
+                    review.UserFirstName = userProduct.User.FirstName;
+                    review.UserLastName = userProduct.User.LastName;
+                    review.CreatedDate = userProduct.CreatedDate;
+                    review.GivenRating = userProduct.StarRating;
+                    review.Comment = userProduct.Message;
+
+                    //Review User Avatar
+                    review.UserAvatar = "profile-picture.png";
+                    foreach (var userImage in userProduct.User.UserImages)
+                    {
+                        if (userImage.IsAvatar)
+                        {
+                            review.UserAvatar = userImage.Image.Name;
+                            break;
+                        }
+                    }
+
+                    product.Reviews.Add(review);
+                }
+
+                return Ok(product);
+            }
+            catch (EntityCouldNotFoundException ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
         }
 
         [HttpGet]
