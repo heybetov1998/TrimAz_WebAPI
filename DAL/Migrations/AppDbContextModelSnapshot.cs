@@ -107,6 +107,7 @@ namespace DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -131,12 +132,14 @@ namespace DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Message")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -171,19 +174,17 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CoordinateX")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoordinateY")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longtitude")
+                        .HasColumnType("float");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -397,7 +398,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("SellerImage");
+                    b.ToTable("SellerImages");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.UserBarber", b =>
@@ -409,6 +410,7 @@ namespace DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("BarberId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -418,6 +420,7 @@ namespace DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Message")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("StarRating")
@@ -427,6 +430,7 @@ namespace DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -449,7 +453,11 @@ namespace DAL.Migrations
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsAvatar")
+                        .HasColumnType("bit");
+
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -575,6 +583,7 @@ namespace DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Message")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
@@ -587,6 +596,7 @@ namespace DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -596,6 +606,29 @@ namespace DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserProducts");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Video", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BarberId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("YoutubeLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarberId");
+
+                    b.ToTable("Videos");
                 });
 
             modelBuilder.Entity("Entity.Identity.AppUser", b =>
@@ -618,9 +651,11 @@ namespace DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -731,7 +766,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("BarbershopId");
 
-                    b.ToTable("Barber");
+                    b.ToTable("Barbers");
                 });
 
             modelBuilder.Entity("Entity.Identity.Seller", b =>
@@ -791,7 +826,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Seller");
+                    b.ToTable("Sellers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -946,7 +981,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -955,7 +992,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Feedbacks")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -1124,11 +1163,15 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Identity.Barber", "Barber")
                         .WithMany("UserBarbers")
-                        .HasForeignKey("BarberId");
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("UserBarbers")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Barber");
 
@@ -1145,7 +1188,9 @@ namespace DAL.Migrations
 
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("UserImages")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Image");
 
@@ -1181,11 +1226,24 @@ namespace DAL.Migrations
 
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("UserProducts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Video", b =>
+                {
+                    b.HasOne("Entity.Identity.Barber", "Barber")
+                        .WithMany("Videos")
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Barber");
                 });
 
             modelBuilder.Entity("Entity.Identity.Barber", b =>
@@ -1315,6 +1373,8 @@ namespace DAL.Migrations
                     b.Navigation("Blogs");
 
                     b.Navigation("UserBarbers");
+
+                    b.Navigation("Videos");
                 });
 
             modelBuilder.Entity("Entity.Identity.Seller", b =>

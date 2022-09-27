@@ -13,7 +13,7 @@ public class BarberImage : IEntity
 
     public int Id { get; set; }
     public bool IsAvatar { get; set; }
-    public string BarberId { get; set; } = null!;
+    public string BarberId { get; set; } = default!;
     public int ImageId { get; set; }
     public Barber Barber { get; set; }
     public Image Image { get; set; }

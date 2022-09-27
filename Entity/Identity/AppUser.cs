@@ -6,14 +6,21 @@ namespace Entity.Identity;
 
 public class AppUser : IdentityUser
 {
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
+    public AppUser()
+    {
+        Feedbacks = new HashSet<Feedback>();
+        UserProducts = new HashSet<UserProduct>();
+        UserImages = new HashSet<UserImage>();
+        UserBarbers = new HashSet<UserBarber>();
+    }
 
-    public List<Blog>? Blogs { get; set; }
-    public List<Feedback>? Feedbacks { get; set; }
+    public string FirstName { get; set; } = default!;
+    public string LastName { get; set; } = default!;
+
+    public ICollection<Feedback> Feedbacks { get; set; }
 
     //Pivots
-    public List<UserProduct>? UserProducts { get; set; }
-    public List<UserImage>? UserImages { get; set; }
-    public List<UserBarber>? UserBarbers { get; set; }
+    public ICollection<UserProduct> UserProducts { get; set; }
+    public ICollection<UserImage> UserImages { get; set; }
+    public ICollection<UserBarber> UserBarbers { get; set; }
 }

@@ -16,11 +16,14 @@ namespace Business.Repositories
 
         public async Task<Barbershop> GetAsync(int id)
         {
-            var data = await _barbershopDAL.GetAsync(n => n.Id == id && !n.IsDeleted,
+            var data = await _barbershopDAL.GetAsync(
+                expression: n => n.Id == id && !n.IsDeleted,
                 includes: new string[] {
                     "BarbershopImages.Image",
                     "BarbershopLocations.Location",
-                    "Barbers.BarberServices.ServiceDetail"
+                    "Barbers.BarberImages.Image",
+                    "Barbers.BarberServices.Service",
+                    "Barbers.UserBarbers.User",
                 });
 
             if (data is null)

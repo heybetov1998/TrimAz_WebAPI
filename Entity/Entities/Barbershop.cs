@@ -13,7 +13,7 @@ public class Barbershop : BaseEntity, IEntity
         BarbershopLocations = new HashSet<BarbershopLocation>();
     }
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = default!;
 
     public ICollection<Barber> Barbers { get; set; }
 

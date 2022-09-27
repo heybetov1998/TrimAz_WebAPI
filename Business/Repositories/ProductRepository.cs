@@ -16,7 +16,13 @@ public class ProductRepository : IProductService
 
     public async Task<Product> GetAsync(int id)
     {
-        var data = await _productDAL.GetAsync(n => n.Id == id && !n.IsDeleted, includes: new string[] { "ProductImages.Image" });
+        var data = await _productDAL.GetAsync(
+            expression: n => n.Id == id && !n.IsDeleted,
+            includes: new string[] {
+                "ProductImages.Image",
+                "Seller.SellerImages.Image",
+                "UserProducts.User"
+            });
 
         if (data is null) throw new EntityCouldNotFoundException();
 

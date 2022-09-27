@@ -15,7 +15,15 @@ public class BarberRepository : IBarberService
 
     public async Task<Barber> GetAsync(string id)
     {
-        var data = await _barberDAL.GetAsync(n => n.Id == id, includes: "UserBarbers");
+        var data = await _barberDAL.GetAsync(
+            expression: n => n.Id == id,
+            includes: new string[] {
+                "UserBarbers.User",
+                "BarberImages.Image",
+                "BarberServices.Service",
+                "BarberServices.ServiceDetail",
+                "Videos"
+            });
 
         if (data is null)
         {

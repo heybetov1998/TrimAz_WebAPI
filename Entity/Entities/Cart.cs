@@ -6,8 +6,14 @@ namespace Entity.Entities;
 
 public class Cart : BaseEntity, IEntity
 {
-    public string? UserId { get; set; }
-    public AppUser? User { get; set; }
+    public Cart()
+    {
+        User = new AppUser();
+        CartProducts = new HashSet<CartProduct>();
+    }
 
-    public List<CartProduct>? CartProducts { get; set; }
+    public string UserId { get; set; } = default!;
+    public AppUser User { get; set; }
+
+    public ICollection<CartProduct> CartProducts { get; set; }
 }

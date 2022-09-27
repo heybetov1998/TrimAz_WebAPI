@@ -13,8 +13,8 @@ public class Seller : IdentityUser, IEntity
         SellerImages = new HashSet<SellerImage>();
     }
 
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
+    public string FirstName { get; set; } = default!;
+    public string LastName { get; set; } = default!;
 
     public ICollection<Product> Products { get; set; }
 

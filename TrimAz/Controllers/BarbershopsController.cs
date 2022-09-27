@@ -1,8 +1,12 @@
 ﻿using Business.Services;
+using Entity.DTO.Barber;
 using Entity.DTO.Barbershop;
+using Entity.DTO.Location;
+using Entity.DTO.Review;
+using Entity.DTO.Service;
 using Exceptions.EntityExceptions;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using TrimAz.Commons;
 
 namespace TrimAz.Controllers
 {
@@ -15,6 +19,124 @@ namespace TrimAz.Controllers
         public BarbershopsController(IBarbershopService barbershopService)
         {
             _barbershopService = barbershopService;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            try
+            {
+                var data = await _barbershopService.GetAsync(id);
+
+                BarbershopDetailGetDTO barbershop = new();
+
+                //Name
+                barbershop.Name = data.Name;
+
+                //Images
+                foreach (var barbershopImage in data.BarbershopImages)
+                {
+                    barbershop.Images.Add(barbershopImage.Image.Name);
+                }
+
+                //Barbers
+                foreach (var barber in data.Barbers)
+                {
+                    BarberGetDTO barberGetDTO = new();
+                    List<double> ratings = new();
+
+                    barberGetDTO.Id = barber.Id;
+                    barberGetDTO.FirstName = barber.FirstName;
+                    barberGetDTO.LastName = barber.LastName;
+
+                    //StarRating
+                    foreach (var userBarber in barber.UserBarbers)
+                    {
+                        ratings.Add(userBarber.StarRating);
+                    }
+                    barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+
+                    //Avatar Image
+                    barberGetDTO.ImageName = "user-profile.png";
+                    foreach (var barberImage in barber.BarberImages)
+                    {
+                        if (barberImage.IsAvatar)
+                        {
+                            barberGetDTO.ImageName = barberImage.Image.Name;
+                            break;
+                        }
+                    }
+
+                    barbershop.Barbers.Add(barberGetDTO);
+                }
+
+                //Services
+                foreach (var barber in data.Barbers)
+                {
+                    foreach (var barberService in barber.BarberServices)
+                    {
+                        ServiceGetDTO service = new();
+
+                        service.Id = barberService.Service.Id;
+                        service.Name = barberService.Service.Name;
+
+                        barbershop.Services.Add(service);
+                    }
+                }
+                barbershop.Services = barbershop.Services.DistinctBy(n => n.Id).ToList();
+
+                //Locations
+                foreach (var barbershopLocation in data.BarbershopLocations)
+                {
+                    LocationGetDTO location = new();
+
+                    location.Latitude = barbershopLocation.Location.Latitude;
+                    location.Longtitude = barbershopLocation.Location.Longtitude;
+
+                    barbershop.Locations.Add(location);
+                }
+
+                //Reviews
+                //Reviews
+                foreach (var barber in data.Barbers)
+                {
+                    foreach (var userBarber in barber.UserBarbers)
+                    {
+                        ReviewGetDTO review = new();
+
+                        review.Id = userBarber.Id;
+                        review.UserId = userBarber.User.Id;
+                        review.UserFirstName = userBarber.User.FirstName;
+                        review.UserLastName = userBarber.User.LastName;
+                        review.CreatedDate = userBarber.CreatedDate;
+                        review.GivenRating = userBarber.StarRating;
+                        review.Comment = userBarber.Message;
+
+                        //Review User Avatar
+                        review.UserAvatar = "profile-picture.png";
+                        foreach (var userImage in userBarber.User.UserImages)
+                        {
+                            if (userImage.IsAvatar)
+                            {
+                                review.UserAvatar = userImage.Image.Name;
+                                break;
+                            }
+                        }
+
+                        barbershop.Reviews.Add(review);
+                    }
+                }
+
+                return Ok(barbershop);
+            }
+            catch (EntityCouldNotFoundException ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
         }
 
         [HttpGet]

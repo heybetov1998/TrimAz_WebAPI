@@ -12,9 +12,9 @@ public class Blog : BaseEntity, IEntity
         Barber = new();
     }
 
-    public string Title { get; set; } = null!;
-    public string Content { get; set; } = null!;
-    public string BarberId { get; set; } = null!;
+    public string Title { get; set; } = default!;
+    public string Content { get; set; } = default!;
+    public string BarberId { get; set; } = default!;
     public Barber Barber { get; set; }
 
     public ICollection<BlogImage> BlogImages { get; set; }
