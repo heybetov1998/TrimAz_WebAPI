@@ -1,3 +1,4 @@
+using Business.Auth;
 using Business.Repositories;
 using Business.Services;
 using DAL.Abstracts;
@@ -33,8 +34,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
-    options.SignIn.RequireConfirmedAccount = false
-).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+{
+    options.SignIn.RequireConfirmedEmail = true;
+    options.User.RequireUniqueEmail = true;
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 builder.Services.AddIdentityCore<Barber>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 builder.Services.AddIdentityCore<Seller>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
@@ -59,6 +62,10 @@ builder.Services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
 
 builder.Services.AddScoped<IBlogService, BlogRepository>();
 builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
+
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
+
 
 var app = builder.Build();
 

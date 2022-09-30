@@ -12,6 +12,7 @@ public class Barber : IdentityUser, IEntity
         BarberImages = new HashSet<BarberImage>();
         UserBarbers = new HashSet<UserBarber>();
         BarberServices = new HashSet<BarberService>();
+        BarberTimes = new HashSet<BarberTime>();
         Barbershop = new();
         Blogs = new HashSet<Blog>();
         Videos = new HashSet<Video>();
@@ -28,4 +29,5 @@ public class Barber : IdentityUser, IEntity
     public ICollection<BarberImage> BarberImages { get; set; }
     public ICollection<UserBarber> UserBarbers { get; set; }
     public ICollection<BarberService> BarberServices { get; set; }
+    public ICollection<BarberTime> BarberTimes { get; set; }
 }

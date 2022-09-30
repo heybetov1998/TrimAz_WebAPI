@@ -56,9 +56,6 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("BarberId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -81,8 +78,6 @@ namespace DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("BarberId");
 
@@ -299,6 +294,36 @@ namespace DAL.Migrations
                     b.ToTable("BarbershopLocation");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Pivots.BarberTime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BarberId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsReserved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorkHour")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TimeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarberId");
+
+                    b.HasIndex("TimeId");
+
+                    b.ToTable("BarberTimes");
+                });
+
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
                 {
                     b.Property<int>("Id")
@@ -487,7 +512,7 @@ namespace DAL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LocationId")
+                    b.Property<int?>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
@@ -556,16 +581,29 @@ namespace DAL.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("ServiceDetails");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Time", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Range")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Times");
                 });
 
             modelBuilder.Entity("Entity.Entities.UserProduct", b =>
@@ -964,10 +1002,6 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Blog", b =>
                 {
-                    b.HasOne("Entity.Identity.AppUser", null)
-                        .WithMany("Blogs")
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("Entity.Identity.Barber", "Barber")
                         .WithMany("Blogs")
                         .HasForeignKey("BarberId")
@@ -1081,6 +1115,25 @@ namespace DAL.Migrations
                     b.Navigation("Barbershop");
 
                     b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Pivots.BarberTime", b =>
+                {
+                    b.HasOne("Entity.Identity.Barber", "Barber")
+                        .WithMany("BarberTimes")
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Entities.Time", "Time")
+                        .WithMany("BarberTimes")
+                        .HasForeignKey("TimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Barber");
+
+                    b.Navigation("Time");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
@@ -1199,19 +1252,15 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Product", b =>
                 {
-                    b.HasOne("Entity.Entities.Location", "Location")
+                    b.HasOne("Entity.Entities.Location", null)
                         .WithMany("Products")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LocationId");
 
                     b.HasOne("Entity.Identity.Seller", "Seller")
                         .WithMany("Products")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Location");
 
                     b.Navigation("Seller");
                 });
@@ -1351,10 +1400,13 @@ namespace DAL.Migrations
                     b.Navigation("BarberServices");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Time", b =>
+                {
+                    b.Navigation("BarberTimes");
+                });
+
             modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
-                    b.Navigation("Blogs");
-
                     b.Navigation("Feedbacks");
 
                     b.Navigation("UserBarbers");
@@ -1369,6 +1421,8 @@ namespace DAL.Migrations
                     b.Navigation("BarberImages");
 
                     b.Navigation("BarberServices");
+
+                    b.Navigation("BarberTimes");
 
                     b.Navigation("Blogs");
 

@@ -75,7 +75,7 @@ public class BarbersController : ControllerBase
 
                 serviceTimeGetDTO.Id = barberService.Service.Id;
                 serviceTimeGetDTO.Name = barberService.Service.Name;
-                serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
+                //serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
                 serviceTimeGetDTO.Price = barberService.ServiceDetail.Price;
 
                 barber.Services.Add(serviceTimeGetDTO);

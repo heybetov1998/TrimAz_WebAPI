@@ -78,3 +78,6 @@ C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\Microsoft.Extensions.
 C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\Extensions.dll
 C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\Extensions.pdb
+C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\MailKit.dll
+C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\MimeKit.dll
+C:\Users\heybe\source\repos\TrimAz\TrimAz\bin\Debug\net6.0\BouncyCastle.Crypto.dll
