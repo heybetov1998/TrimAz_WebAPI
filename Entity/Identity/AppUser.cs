@@ -17,6 +17,7 @@ public class AppUser : IdentityUser, IEntity
         UserImages = new HashSet<UserImage>();
         UserServices = new HashSet<UserService>();
         UserTimes = new HashSet<UserTime>();
+        Products = new HashSet<Product>();
     }
 
     public string FirstName { get; set; } = default!;
@@ -26,6 +27,7 @@ public class AppUser : IdentityUser, IEntity
     public ICollection<Blog> Blogs { get; set; }
     public ICollection<Video> Videos { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }
+    public ICollection<Product> Products { get; set; }
 
     //Pivots
     public ICollection<UserProduct> UserProducts { get; set; }

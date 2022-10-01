@@ -56,10 +56,6 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,9 +73,13 @@ namespace DAL.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("BarberId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Blogs");
                 });
@@ -189,62 +189,6 @@ namespace DAL.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsAvatar")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarberId");
-
-                    b.HasIndex("ImageId");
-
-                    b.ToTable("BarberImages");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ServiceDetailId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarberId");
-
-                    b.HasIndex("ServiceDetailId");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("BarberServices");
-                });
-
             modelBuilder.Entity("Entity.Entities.Pivots.BarbershopImage", b =>
                 {
                     b.Property<int>("Id")
@@ -292,36 +236,6 @@ namespace DAL.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("BarbershopLocation");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberTime", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsReserved")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsWorkHour")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TimeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarberId");
-
-                    b.HasIndex("TimeId");
-
-                    b.ToTable("BarberTimes");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
@@ -426,47 +340,6 @@ namespace DAL.Migrations
                     b.ToTable("SellerImages");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Pivots.UserBarber", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("StarRating")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarberId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserBarbers");
-                });
-
             modelBuilder.Entity("Entity.Entities.Pivots.UserImage", b =>
                 {
                     b.Property<int>("Id")
@@ -492,6 +365,65 @@ namespace DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserImages");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Pivots.UserService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ServiceDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceDetailId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserServices");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Pivots.UserTime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("IsReserved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorkHour")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TimeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TimeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTimes");
                 });
 
             modelBuilder.Entity("Entity.Entities.Product", b =>
@@ -656,6 +588,10 @@ namespace DAL.Migrations
 
                     b.Property<string>("BarberId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("YoutubeLink")
@@ -664,7 +600,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BarberId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Videos");
                 });
@@ -675,6 +611,9 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BarbershopId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -731,6 +670,8 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BarbershopId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -740,71 +681,6 @@ namespace DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Entity.Identity.Barber", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BarbershopId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarbershopId");
-
-                    b.ToTable("Barbers");
                 });
 
             modelBuilder.Entity("Entity.Identity.Seller", b =>
@@ -1002,13 +878,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Blog", b =>
                 {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
+                    b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Blogs")
-                        .HasForeignKey("BarberId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Barber");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Entity.Entities.Cart", b =>
@@ -1031,52 +907,6 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberImage", b =>
-                {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
-                        .WithMany("BarberImages")
-                        .HasForeignKey("BarberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Barber");
-
-                    b.Navigation("Image");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberService", b =>
-                {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
-                        .WithMany("BarberServices")
-                        .HasForeignKey("BarberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.ServiceDetail", "ServiceDetail")
-                        .WithMany("BarberServices")
-                        .HasForeignKey("ServiceDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.Service", "Service")
-                        .WithMany("BarberServices")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Barber");
-
-                    b.Navigation("Service");
-
-                    b.Navigation("ServiceDetail");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.BarbershopImage", b =>
@@ -1115,25 +945,6 @@ namespace DAL.Migrations
                     b.Navigation("Barbershop");
 
                     b.Navigation("Location");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarberTime", b =>
-                {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
-                        .WithMany("BarberTimes")
-                        .HasForeignKey("BarberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.Time", "Time")
-                        .WithMany("BarberTimes")
-                        .HasForeignKey("TimeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Barber");
-
-                    b.Navigation("Time");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
@@ -1212,25 +1023,6 @@ namespace DAL.Migrations
                     b.Navigation("Seller");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Pivots.UserBarber", b =>
-                {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
-                        .WithMany("UserBarbers")
-                        .HasForeignKey("BarberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Identity.AppUser", "User")
-                        .WithMany("UserBarbers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Barber");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Entity.Entities.Pivots.UserImage", b =>
                 {
                     b.HasOne("Entity.Entities.Image", "Image")
@@ -1246,6 +1038,52 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Image");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Pivots.UserService", b =>
+                {
+                    b.HasOne("Entity.Entities.ServiceDetail", "ServiceDetail")
+                        .WithMany("UserServices")
+                        .HasForeignKey("ServiceDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Entities.Service", "Service")
+                        .WithMany("UserServices")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Identity.AppUser", "User")
+                        .WithMany("UserServices")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Service");
+
+                    b.Navigation("ServiceDetail");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Pivots.UserTime", b =>
+                {
+                    b.HasOne("Entity.Entities.Time", "Time")
+                        .WithMany("UserTimes")
+                        .HasForeignKey("TimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Identity.AppUser", "User")
+                        .WithMany("UserTimes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Time");
 
                     b.Navigation("User");
                 });
@@ -1286,19 +1124,19 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Video", b =>
                 {
-                    b.HasOne("Entity.Identity.Barber", "Barber")
+                    b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Videos")
-                        .HasForeignKey("BarberId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Barber");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entity.Identity.Barber", b =>
+            modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
                     b.HasOne("Entity.Entities.Barbershop", "Barbershop")
-                        .WithMany("Barbers")
+                        .WithMany("Users")
                         .HasForeignKey("BarbershopId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1359,11 +1197,11 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Barbershop", b =>
                 {
-                    b.Navigation("Barbers");
-
                     b.Navigation("BarbershopImages");
 
                     b.Navigation("BarbershopLocations");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Entity.Entities.Blog", b =>
@@ -1392,41 +1230,32 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Service", b =>
                 {
-                    b.Navigation("BarberServices");
+                    b.Navigation("UserServices");
                 });
 
             modelBuilder.Entity("Entity.Entities.ServiceDetail", b =>
                 {
-                    b.Navigation("BarberServices");
+                    b.Navigation("UserServices");
                 });
 
             modelBuilder.Entity("Entity.Entities.Time", b =>
                 {
-                    b.Navigation("BarberTimes");
+                    b.Navigation("UserTimes");
                 });
 
             modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
-                    b.Navigation("Feedbacks");
+                    b.Navigation("Blogs");
 
-                    b.Navigation("UserBarbers");
+                    b.Navigation("Feedbacks");
 
                     b.Navigation("UserImages");
 
                     b.Navigation("UserProducts");
-                });
 
-            modelBuilder.Entity("Entity.Identity.Barber", b =>
-                {
-                    b.Navigation("BarberImages");
+                    b.Navigation("UserServices");
 
-                    b.Navigation("BarberServices");
-
-                    b.Navigation("BarberTimes");
-
-                    b.Navigation("Blogs");
-
-                    b.Navigation("UserBarbers");
+                    b.Navigation("UserTimes");
 
                     b.Navigation("Videos");
                 });

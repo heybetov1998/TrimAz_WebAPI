@@ -34,20 +34,20 @@ namespace TrimAz.Controllers
                 product.Content = data.Content;
 
                 // Seller
-                product.Seller.Id = data.Seller.Id;
-                product.Seller.FirstName = data.Seller.FirstName;
-                product.Seller.LastName = data.Seller.LastName;
+                //product.Seller.Id = data.Seller.Id;
+                //product.Seller.FirstName = data.Seller.FirstName;
+                //product.Seller.LastName = data.Seller.LastName;
 
                 // Seller Avatar
                 product.Seller.Image.Name = "profile-picture.png";
-                foreach (var sellerImage in data.Seller.SellerImages)
-                {
-                    if (sellerImage.IsAvatar)
-                    {
-                        product.Seller.Image.Name = sellerImage.Image.Name;
-                        break;
-                    }
-                }
+                //foreach (var sellerImage in data.Seller.SellerImages)
+                //{
+                //    if (sellerImage.IsAvatar)
+                //    {
+                //        product.Seller.Image.Name = sellerImage.Image.Name;
+                //        break;
+                //    }
+                //}
                 product.Seller.Image.Alt = product.Seller.Image.Name;
 
                 // Product Images
@@ -134,20 +134,20 @@ namespace TrimAz.Controllers
 
                     productGetDTO.Image.Alt = productGetDTO.Image.Name;
 
-                    productGetDTO.Seller.Id = data.Seller.Id;
-                    productGetDTO.Seller.FirstName = data.Seller.FirstName;
-                    productGetDTO.Seller.LastName = data.Seller.LastName;
+                    //productGetDTO.Seller.Id = data.Seller.Id;
+                    //productGetDTO.Seller.FirstName = data.Seller.FirstName;
+                    //productGetDTO.Seller.LastName = data.Seller.LastName;
 
-                    foreach (var sellerImage in data.Seller.SellerImages)
-                    {
-                        productGetDTO.Seller.Image.Name = "profile-picture.png";
+                    //foreach (var sellerImage in data.Seller.SellerImages)
+                    //{
+                    //    productGetDTO.Seller.Image.Name = "profile-picture.png";
 
-                        if (sellerImage.IsAvatar)
-                        {
-                            productGetDTO.Seller.Image.Name = sellerImage.Image.Name;
-                            break;
-                        }
-                    }
+                    //    if (sellerImage.IsAvatar)
+                    //    {
+                    //        productGetDTO.Seller.Image.Name = sellerImage.Image.Name;
+                    //        break;
+                    //    }
+                    //}
 
                     productGetDTO.Seller.Image.Alt = productGetDTO.Seller.Image.Name;
 

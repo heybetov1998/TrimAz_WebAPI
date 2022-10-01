@@ -17,7 +17,6 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Image>? Images { get; set; }
     public DbSet<Location>? Locations { get; set; }
     public DbSet<Product>? Products { get; set; }
-    public DbSet<Seller>? Sellers { get; set; }
     public DbSet<Service>? Services { get; set; }
     public DbSet<ServiceDetail>? ServiceDetails { get; set; }
     public DbSet<Time>? Times { get; set; }
@@ -29,7 +28,6 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<BlogImage>? BlogImages { get; set; }
     public DbSet<CartProduct>? CartProducts { get; set; }
     public DbSet<ProductImage>? ProductImages { get; set; }
-    public DbSet<SellerImage>? SellerImages { get; set; }
     public DbSet<UserImage>? UserImages { get; set; }
     public DbSet<UserProduct>? UserProducts { get; set; }
     public DbSet<UserTime>? UserTimes { get; set; }
