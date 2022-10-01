@@ -52,7 +52,7 @@ builder.Services.AddScoped<IProductService, ProductRepository>();
 builder.Services.AddScoped<IProductDAL, ProductRepositoryDAL>();
 
 builder.Services.AddScoped<IBarberService, BarberRepository>();
-builder.Services.AddScoped<IBarberDAL, BarberRepositoryDAL>();
+builder.Services.AddScoped<IUserDAL, UserRepositoryDAL>();
 
 builder.Services.AddScoped<IBarbershopService, BarbershopRepository>();
 builder.Services.AddScoped<IBarbershopDAL, BarbershopRepositoryDAL>();
