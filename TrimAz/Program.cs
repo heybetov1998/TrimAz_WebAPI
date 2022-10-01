@@ -64,7 +64,7 @@ builder.Services.AddScoped<IBlogService, BlogRepository>();
 builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
 
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
-builder.Services.AddSingleton<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 
 var app = builder.Build();

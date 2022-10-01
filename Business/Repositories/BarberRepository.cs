@@ -2,12 +2,14 @@
 using DAL.Abstracts;
 using Entity.Identity;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Identity;
 
 namespace Business.Repositories;
 
 public class BarberRepository : IBarberService
 {
     private readonly IBarberDAL _barberDAL;
+
     public BarberRepository(IBarberDAL barberDAL)
     {
         _barberDAL = barberDAL;

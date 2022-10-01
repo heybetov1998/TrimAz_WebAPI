@@ -4,9 +4,11 @@ using Entity.DTO.Image;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
 using Entity.DTO.Video;
-using Entity.Entities.Pivots;
+using Entity.Entities;
 using Entity.Identity;
+using Exceptions.DataExceptions;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TrimAz.Commons;
 
@@ -17,10 +19,14 @@ namespace TrimAz.Controllers;
 public class BarbersController : ControllerBase
 {
     private readonly IBarberService _barberService;
+    private readonly UserManager<Barber> _userManager;
+    private readonly IBarbershopService _barbershopService;
 
-    public BarbersController(IBarberService barberService)
+    public BarbersController(IBarberService barberService, UserManager<Barber> userManager, IBarbershopService barbershopService)
     {
         _barberService = barberService;
+        _userManager = userManager;
+        _barbershopService = barbershopService;
     }
 
     [HttpGet("{id}")]
@@ -186,9 +192,25 @@ public class BarbersController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create()
+    public async Task<IActionResult> CreateAsync(BarberPostDTO barberPostDTO)
     {
-        return Ok();
+        if (!ModelState.IsValid)
+        {
+            DataAnnotationNotListenedException ex = new();
+            return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4014, ex.Message));
+        }
+
+        Barber barber = new();
+
+        barber.FirstName = barberPostDTO.FirstName;
+        barber.LastName = barberPostDTO.LastName;
+        barber.Email = barberPostDTO.Email;
+        barber.UserName = barberPostDTO.UserName;
+        barber.BarbershopId = barberPostDTO.BarbershopId;
+
+        await _userManager.CreateAsync(barber, barberPostDTO.Password);
+
+        return Ok(barber);
     }
 
     [HttpPut]
