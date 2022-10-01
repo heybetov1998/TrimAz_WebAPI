@@ -9,8 +9,6 @@ public class Product : BaseEntity, IEntity
     public Product()
     {
         ProductImages = new HashSet<ProductImage>();
-        CartProducts = new HashSet<CartProduct>();
-        UserProducts = new HashSet<UserProduct>();
         User= new();
     }
 
@@ -22,6 +20,4 @@ public class Product : BaseEntity, IEntity
     public AppUser User{ get; set; }
 
     public ICollection<ProductImage> ProductImages { get; set; }
-    public ICollection<CartProduct> CartProducts { get; set; }
-    public ICollection<UserProduct> UserProducts { get; set; }
 }

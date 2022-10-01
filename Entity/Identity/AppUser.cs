@@ -13,7 +13,6 @@ public class AppUser : IdentityUser, IEntity
         Blogs = new HashSet<Blog>();
         Videos = new HashSet<Video>();
         Feedbacks = new HashSet<Feedback>();
-        UserProducts = new HashSet<UserProduct>();
         UserImages = new HashSet<UserImage>();
         UserServices = new HashSet<UserService>();
         UserTimes = new HashSet<UserTime>();
@@ -30,7 +29,6 @@ public class AppUser : IdentityUser, IEntity
     public ICollection<Product> Products { get; set; }
 
     //Pivots
-    public ICollection<UserProduct> UserProducts { get; set; }
     public ICollection<UserImage> UserImages { get; set; }
     public ICollection<UserService> UserServices { get; set; }
     public ICollection<UserTime> UserTimes { get; set; }

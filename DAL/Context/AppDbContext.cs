@@ -29,6 +29,5 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<CartProduct>? CartProducts { get; set; }
     public DbSet<ProductImage>? ProductImages { get; set; }
     public DbSet<UserImage>? UserImages { get; set; }
-    public DbSet<UserProduct>? UserProducts { get; set; }
     public DbSet<UserTime>? UserTimes { get; set; }
 }

@@ -62,31 +62,31 @@ namespace TrimAz.Controllers
                 }
 
                 // Product Reviews
-                foreach (var userProduct in data.UserProducts)
-                {
-                    ReviewGetDTO review = new();
+                //foreach (var userProduct in data.UserProducts)
+                //{
+                //    ReviewGetDTO review = new();
 
-                    review.Id = userProduct.Id;
-                    review.UserId = userProduct.User.Id;
-                    review.UserFirstName = userProduct.User.FirstName;
-                    review.UserLastName = userProduct.User.LastName;
-                    review.CreatedDate = userProduct.CreatedDate;
-                    review.GivenRating = userProduct.StarRating;
-                    review.Comment = userProduct.Message;
+                //    review.Id = userProduct.Id;
+                //    review.UserId = userProduct.User.Id;
+                //    review.UserFirstName = userProduct.User.FirstName;
+                //    review.UserLastName = userProduct.User.LastName;
+                //    review.CreatedDate = userProduct.CreatedDate;
+                //    review.GivenRating = userProduct.StarRating;
+                //    review.Comment = userProduct.Message;
 
-                    //Review User Avatar
-                    review.UserAvatar = "profile-picture.png";
-                    foreach (var userImage in userProduct.User.UserImages)
-                    {
-                        if (userImage.IsAvatar)
-                        {
-                            review.UserAvatar = userImage.Image.Name;
-                            break;
-                        }
-                    }
+                //    //Review User Avatar
+                //    review.UserAvatar = "profile-picture.png";
+                //    foreach (var userImage in userProduct.User.UserImages)
+                //    {
+                //        if (userImage.IsAvatar)
+                //        {
+                //            review.UserAvatar = userImage.Image.Name;
+                //            break;
+                //        }
+                //    }
 
-                    product.Reviews.Add(review);
-                }
+                //    product.Reviews.Add(review);
+                //}
 
                 return Ok(product);
             }
