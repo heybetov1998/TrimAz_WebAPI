@@ -38,8 +38,9 @@ public class AuthController : ControllerBase
         _signInManager = signInManager;
     }
 
+    #region Member Registration
     [HttpPost("Register")]
-    public async Task<IActionResult> Register(RegisterUserDTO registerUserDTO)
+    public async Task<IActionResult> RegisterAsync(RegisterUserDTO registerUserDTO, string roleName = "Member")
     {
         if (!ModelState.IsValid)
         {
@@ -49,8 +50,8 @@ public class AuthController : ControllerBase
 
         AppUser appUser = new();
 
-        appUser.FirstName = registerUserDTO.FirstName;
-        appUser.LastName = registerUserDTO.LastName;
+        appUser.FirstName = Capitalize(registerUserDTO.FirstName.Trim());
+        appUser.LastName = Capitalize(registerUserDTO.LastName.Trim());
         appUser.Email = registerUserDTO.Email;
         appUser.UserName = registerUserDTO.UserName;
 
@@ -68,7 +69,7 @@ public class AuthController : ControllerBase
         //    htmlMessage: "<a href='#'>Confirm email</a>"
         //    );
 
-        var roleResult = await _userManager.AddToRoleAsync(appUser, Roles.Member.ToString());
+        var roleResult = await _userManager.AddToRoleAsync(appUser, roleName);
 
         if (!roleResult.Succeeded)
         {
@@ -78,15 +79,11 @@ public class AuthController : ControllerBase
 
         return Ok(registerUserDTO);
     }
+    #endregion
 
+    #region Barber Registration
     [HttpPost("RegisterBarber")]
-    public async Task<IActionResult> RegisterBarber(RegisterBarberDTO registerBarberDTO)
-    {
-        return Ok();
-    }
-
-    [HttpPost("RegisterOwner")]
-    public async Task<IActionResult> RegisterOwner(RegisterUserDTO registerUserDTO)
+    public async Task<IActionResult> RegisterAsync(RegisterBarberDTO registerBarberDTO)
     {
         if (!ModelState.IsValid)
         {
@@ -96,12 +93,14 @@ public class AuthController : ControllerBase
 
         AppUser appUser = new();
 
-        appUser.FirstName = registerUserDTO.FirstName;
-        appUser.LastName = registerUserDTO.LastName;
-        appUser.Email = registerUserDTO.Email;
-        appUser.UserName = registerUserDTO.UserName;
+        appUser.FirstName = Capitalize(registerBarberDTO.FirstName.Trim());
+        appUser.LastName = Capitalize(registerBarberDTO.LastName.Trim());
+        appUser.Email = registerBarberDTO.Email;
+        appUser.UserName = registerBarberDTO.UserName;
+        appUser.WorkStartTime = registerBarberDTO.WorkStartTime;
+        appUser.WorkEndTime = registerBarberDTO.WorkEndTime;
 
-        var result = await _userManager.CreateAsync(appUser, registerUserDTO.Password);
+        var result = await _userManager.CreateAsync(appUser, registerBarberDTO.Password);
 
         if (!result.Succeeded)
         {
@@ -115,7 +114,7 @@ public class AuthController : ControllerBase
         //    htmlMessage: "<a href='#'>Confirm email</a>"
         //    );
 
-        var roleResult = await _userManager.AddToRoleAsync(appUser, Roles.Owner.ToString());
+        var roleResult = await _userManager.AddToRoleAsync(appUser, Roles.Barber.ToString());
 
         if (!roleResult.Succeeded)
         {
@@ -123,11 +122,36 @@ public class AuthController : ControllerBase
             return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4005, ex.Message));
         }
 
-        return Ok(registerUserDTO);
+        return Ok(registerBarberDTO);
     }
+    #endregion
+
+    #region Owner Registration
+    [HttpPost("RegisterOwner")]
+    public async Task<IActionResult> RegisterOwnerAsync(RegisterUserDTO registerUserDTO)
+    {
+        return await RegisterAsync(registerUserDTO, Roles.Owner.ToString());
+    }
+    #endregion
+
+    #region Seller Registration
+    [HttpPost("RegisterSeller")]
+    public async Task<IActionResult> RegisterSellerAsync(RegisterUserDTO registerUserDTO)
+    {
+        return await RegisterAsync(registerUserDTO, Roles.Seller.ToString());
+    }
+    #endregion
+
+    #region Admin Registration
+    //[HttpPost("RegisterAdmin")]
+    //public async Task<IActionResult> RegisterAdminAsync(RegisterUserDTO registerUserDTO)
+    //{
+    //    return await RegisterAsync(registerUserDTO, Roles.Admin.ToString());
+    //}
+    #endregion
 
     [HttpPost("Login")]
-    public async Task<IActionResult> Login(LoginUserDTO loginUserDTO)
+    public async Task<IActionResult> Login([FromBody] LoginUserDTO loginUserDTO)
     {
         var user = await AuthenticateAsync(loginUserDTO);
 
@@ -150,8 +174,6 @@ public class AuthController : ControllerBase
 
         if (!result.Succeeded)
         {
-            InvalidCredentialException ex = new();
-            //return StatusCode(StatusCodes.Status403Forbidden, new Response(4003, ex.Message));
             return null;
         }
 
@@ -183,6 +205,12 @@ public class AuthController : ControllerBase
              signingCredentials: credentials);
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    //capitalize string
+    private string Capitalize(string value)
+    {
+        return char.ToUpper(value[0]) + value.Substring(1);
     }
 
     #region CreateRoles

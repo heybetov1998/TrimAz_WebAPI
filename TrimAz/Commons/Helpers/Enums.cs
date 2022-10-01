@@ -6,6 +6,8 @@
         {
             Admin,
             Owner,
+            Barber,
+            Seller,
             Member
         }
     }

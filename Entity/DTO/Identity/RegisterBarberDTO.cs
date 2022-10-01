@@ -1,6 +1,7 @@
-﻿namespace Entity.DTO.Identity
+﻿namespace Entity.DTO.Identity;
+
+public class RegisterBarberDTO : RegisterUserDTO
 {
-    public class RegisterBarberDTO
-    {
-    }
+    public string WorkStartTime { get; set; } = default!;
+    public string WorkEndTime { get; set; } = default!;
 }

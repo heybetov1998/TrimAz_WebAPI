@@ -4,6 +4,7 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221001194013_Name_field_in_Barbershops_table_is_not_nullable_now_and_BarbershopId_in_AspNetUsers_table_is_nullable")]
+    partial class Name_field_in_Barbershops_table_is_not_nullable_now_and_BarbershopId_in_AspNetUsers_table_is_nullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -549,12 +551,6 @@ namespace DAL.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("WorkEndTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkStartTime")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

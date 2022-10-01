@@ -9,7 +9,6 @@ public class AppUser : IdentityUser, IEntity
 {
     public AppUser()
     {
-        Barbershop = new();
         Blogs = new HashSet<Blog>();
         Videos = new HashSet<Video>();
         Feedbacks = new HashSet<Feedback>();
@@ -21,8 +20,10 @@ public class AppUser : IdentityUser, IEntity
 
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
-    public int BarbershopId { get; set; }
-    public Barbershop Barbershop { get; set; }
+    public string? WorkStartTime { get; set; }
+    public string? WorkEndTime { get; set; }
+    public int? BarbershopId { get; set; }
+    public Barbershop? Barbershop { get; set; }
     public ICollection<Blog> Blogs { get; set; }
     public ICollection<Video> Videos { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }

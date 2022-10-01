@@ -4,6 +4,7 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221001193605_Name_field_in_Barbershops_table_is_nullable_now")]
+    partial class Name_field_in_Barbershops_table_is_nullable_now
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +39,6 @@ namespace DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -495,7 +496,7 @@ namespace DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BarbershopId")
+                    b.Property<int>("BarbershopId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -549,12 +550,6 @@ namespace DAL.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("WorkEndTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkStartTime")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -897,7 +892,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("Entity.Entities.Barbershop", "Barbershop")
                         .WithMany("Users")
-                        .HasForeignKey("BarbershopId");
+                        .HasForeignKey("BarbershopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Barbershop");
                 });
