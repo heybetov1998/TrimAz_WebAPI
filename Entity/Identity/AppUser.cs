@@ -1,10 +1,11 @@
-﻿using Entity.Entities;
+﻿using Entity.Base;
+using Entity.Entities;
 using Entity.Entities.Pivots;
 using Microsoft.AspNetCore.Identity;
 
 namespace Entity.Identity;
 
-public class AppUser : IdentityUser
+public class AppUser : IdentityUser, IEntity
 {
     public AppUser()
     {

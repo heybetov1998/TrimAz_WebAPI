@@ -17,7 +17,7 @@ public class BarbershopDetailGetDTO
         Reviews = new HashSet<ReviewGetDTO>();
     }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
     public ICollection<BarberGetDTO> Barbers { get; set; }
     public ICollection<LocationGetDTO> Locations { get; set; }
     public ICollection<ServiceGetDTO> Services { get; set; }
