@@ -38,7 +38,6 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.SignIn.RequireConfirmedEmail = true;
     options.User.RequireUniqueEmail = true;
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-builder.Services.AddIdentityCore<Barber>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 builder.Services.AddIdentityCore<Seller>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 //builder.Services.AddAutoMapper(n => n.AddProfile(new Mapper()));

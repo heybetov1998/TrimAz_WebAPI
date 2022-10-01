@@ -40,50 +40,50 @@ namespace TrimAz.Controllers
                 }
 
                 //Barbers
-                foreach (var barber in data.Barbers)
-                {
-                    BarberGetDTO barberGetDTO = new();
-                    List<double> ratings = new();
+                //foreach (var barber in data.Barbers)
+                //{
+                //    BarberGetDTO barberGetDTO = new();
+                //    List<double> ratings = new();
 
-                    barberGetDTO.Id = barber.Id;
-                    barberGetDTO.FirstName = barber.FirstName;
-                    barberGetDTO.LastName = barber.LastName;
+                //    barberGetDTO.Id = barber.Id;
+                //    barberGetDTO.FirstName = barber.FirstName;
+                //    barberGetDTO.LastName = barber.LastName;
 
-                    //StarRating
-                    foreach (var userBarber in barber.UserBarbers)
-                    {
-                        ratings.Add(userBarber.StarRating);
-                    }
-                    barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+                //    //StarRating
+                //    foreach (var userBarber in barber.UserBarbers)
+                //    {
+                //        ratings.Add(userBarber.StarRating);
+                //    }
+                //    barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
 
-                    //Avatar Image
-                    barberGetDTO.ImageName = "user-profile.png";
-                    foreach (var barberImage in barber.BarberImages)
-                    {
-                        if (barberImage.IsAvatar)
-                        {
-                            barberGetDTO.ImageName = barberImage.Image.Name;
-                            break;
-                        }
-                    }
+                //    //Avatar Image
+                //    barberGetDTO.ImageName = "user-profile.png";
+                //    foreach (var barberImage in barber.BarberImages)
+                //    {
+                //        if (barberImage.IsAvatar)
+                //        {
+                //            barberGetDTO.ImageName = barberImage.Image.Name;
+                //            break;
+                //        }
+                //    }
 
-                    barbershop.Barbers.Add(barberGetDTO);
-                }
+                //    barbershop.Barbers.Add(barberGetDTO);
+                //}
 
-                //Services
-                foreach (var barber in data.Barbers)
-                {
-                    foreach (var barberService in barber.BarberServices)
-                    {
-                        ServiceGetDTO service = new();
+                ////Services
+                //foreach (var barber in data.Barbers)
+                //{
+                //    foreach (var barberService in barber.BarberServices)
+                //    {
+                //        ServiceGetDTO service = new();
 
-                        service.Id = barberService.Service.Id;
-                        service.Name = barberService.Service.Name;
+                //        service.Id = barberService.Service.Id;
+                //        service.Name = barberService.Service.Name;
 
-                        barbershop.Services.Add(service);
-                    }
-                }
-                barbershop.Services = barbershop.Services.DistinctBy(n => n.Id).ToList();
+                //        barbershop.Services.Add(service);
+                //    }
+                //}
+                //barbershop.Services = barbershop.Services.DistinctBy(n => n.Id).ToList();
 
                 //Locations
                 foreach (var barbershopLocation in data.BarbershopLocations)
@@ -98,34 +98,34 @@ namespace TrimAz.Controllers
 
                 //Reviews
                 //Reviews
-                foreach (var barber in data.Barbers)
-                {
-                    foreach (var userBarber in barber.UserBarbers)
-                    {
-                        ReviewGetDTO review = new();
+                //foreach (var barber in data.Barbers)
+                //{
+                //    foreach (var userBarber in barber.UserBarbers)
+                //    {
+                //        ReviewGetDTO review = new();
 
-                        review.Id = userBarber.Id;
-                        review.UserId = userBarber.User.Id;
-                        review.UserFirstName = userBarber.User.FirstName;
-                        review.UserLastName = userBarber.User.LastName;
-                        review.CreatedDate = userBarber.CreatedDate;
-                        review.GivenRating = userBarber.StarRating;
-                        review.Comment = userBarber.Message;
+                //        review.Id = userBarber.Id;
+                //        review.UserId = userBarber.User.Id;
+                //        review.UserFirstName = userBarber.User.FirstName;
+                //        review.UserLastName = userBarber.User.LastName;
+                //        review.CreatedDate = userBarber.CreatedDate;
+                //        review.GivenRating = userBarber.StarRating;
+                //        review.Comment = userBarber.Message;
 
-                        //Review User Avatar
-                        review.UserAvatar = "profile-picture.png";
-                        foreach (var userImage in userBarber.User.UserImages)
-                        {
-                            if (userImage.IsAvatar)
-                            {
-                                review.UserAvatar = userImage.Image.Name;
-                                break;
-                            }
-                        }
+                //        //Review User Avatar
+                //        review.UserAvatar = "profile-picture.png";
+                //        foreach (var userImage in userBarber.User.UserImages)
+                //        {
+                //            if (userImage.IsAvatar)
+                //            {
+                //                review.UserAvatar = userImage.Image.Name;
+                //                break;
+                //            }
+                //        }
 
-                        barbershop.Reviews.Add(review);
-                    }
-                }
+                //        barbershop.Reviews.Add(review);
+                //    }
+                //}
 
                 return Ok(barbershop);
             }
@@ -158,16 +158,16 @@ namespace TrimAz.Controllers
                     barbershopGetDTO.AfterPrice = "-dən başlayaraq";
 
                     double price = double.MaxValue;
-                    foreach (var barber in data.Barbers)
-                    {
-                        foreach (var barberService in barber.BarberServices)
-                        {
-                            if (barberService.ServiceDetail.Price < price)
-                            {
-                                price = barberService.ServiceDetail.Price;
-                            }
-                        }
-                    }
+                    //foreach (var barber in data.Barbers)
+                    //{
+                    //    foreach (var barberService in barber.BarberServices)
+                    //    {
+                    //        if (barberService.ServiceDetail.Price < price)
+                    //        {
+                    //            price = barberService.ServiceDetail.Price;
+                    //        }
+                    //    }
+                    //}
 
                     barbershopGetDTO.Price = Math.Round(price);
 

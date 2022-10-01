@@ -3,6 +3,6 @@ using Entity.Identity;
 
 namespace Business.Services;
 
-public interface IBarberService : IBaseService<Barber, string>
+public interface IBarberService : IBaseService<AppUser, string>
 {
 }

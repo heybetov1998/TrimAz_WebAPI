@@ -35,7 +35,8 @@ public class EmailSender : IEmailSender
         }
         catch (Exception ex)
         {
-            throw ex;
+            return ex.Message;
+
         }
         finally
         {

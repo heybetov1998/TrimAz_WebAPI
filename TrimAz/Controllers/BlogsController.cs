@@ -34,20 +34,20 @@ namespace TrimAz.Controllers
                 blog.CreatedDate = data.CreatedDate;
 
                 // Author
-                blog.Author.Id = data.Barber.Id;
-                blog.Author.FirstName = data.Barber.FirstName;
-                blog.Author.LastName = data.Barber.LastName;
+                //blog.Author.Id = data.Barber.Id;
+                //blog.Author.FirstName = data.Barber.FirstName;
+                //blog.Author.LastName = data.Barber.LastName;
 
                 //Author Image
                 blog.Author.Image.Name = "profile-picture.png";
-                foreach (var barberImage in data.Barber.BarberImages)
-                {
-                    if (barberImage.IsAvatar)
-                    {
-                        blog.Author.Image.Name = barberImage.Image.Name;
-                        break;
-                    }
-                }
+                //foreach (var barberImage in data.Barber.BarberImages)
+                //{
+                //    if (barberImage.IsAvatar)
+                //    {
+                //        blog.Author.Image.Name = barberImage.Image.Name;
+                //        break;
+                //    }
+                //}
                 blog.Author.Image.Alt = blog.Author.Image.Name;
 
                 //Blog Images
@@ -94,20 +94,20 @@ namespace TrimAz.Controllers
                     blogGetDTO.Content = data.Content;
                     blogGetDTO.CreatedDate = data.CreatedDate;
 
-                    blogGetDTO.Author.Id = data.Barber.Id;
-                    blogGetDTO.Author.FirstName = data.Barber.FirstName;
-                    blogGetDTO.Author.LastName = data.Barber.LastName;
+                    //blogGetDTO.Author.Id = data.Barber.Id;
+                    //blogGetDTO.Author.FirstName = data.Barber.FirstName;
+                    //blogGetDTO.Author.LastName = data.Barber.LastName;
 
                     //blogGetDTO.Author.Image
                     blogGetDTO.Author.Image.Name = "profile-picture.png";
-                    foreach (var barberImage in data.Barber.BarberImages)
-                    {
-                        if (barberImage.IsAvatar)
-                        {
-                            blogGetDTO.Author.Image.Name = barberImage.Image.Name;
-                            break;
-                        }
-                    }
+                    //foreach (var barberImage in data.Barber.BarberImages)
+                    //{
+                    //    if (barberImage.IsAvatar)
+                    //    {
+                    //        blogGetDTO.Author.Image.Name = barberImage.Image.Name;
+                    //        break;
+                    //    }
+                    //}
                     blogGetDTO.Author.Image.Alt = blogGetDTO.Author.Image.Name;
 
                     //blogGetDTO.Image

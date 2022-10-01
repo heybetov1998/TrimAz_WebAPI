@@ -2,22 +2,21 @@
 using DAL.Abstracts;
 using Entity.Identity;
 using Exceptions.EntityExceptions;
-using Microsoft.AspNetCore.Identity;
 
 namespace Business.Repositories;
 
 public class BarberRepository : IBarberService
 {
-    private readonly IBarberDAL _barberDAL;
+    private readonly IUserDAL _userDAL;
 
-    public BarberRepository(IBarberDAL barberDAL)
+    public BarberRepository(IUserDAL userDAL)
     {
-        _barberDAL = barberDAL;
+        _userDAL = userDAL;
     }
 
-    public async Task<Barber> GetAsync(string id)
+    public async Task<AppUser> GetAsync(string id)
     {
-        var data = await _barberDAL.GetAsync(
+        var data = await _userDAL.GetAsync(
             expression: n => n.Id == id,
             includes: new string[] {
                 "UserBarbers.User",
@@ -35,9 +34,9 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public async Task<List<Barber>> GetAllAsync(int take = int.MaxValue)
+    public async Task<List<AppUser>> GetAllAsync(int take = int.MaxValue)
     {
-        var data = await _barberDAL.GetAllAsync(
+        var data = await _userDAL.GetAllAsync(
             take: take,
             includes: new string[] { "UserBarbers", "BarberImages.Image" });
 
@@ -49,12 +48,12 @@ public class BarberRepository : IBarberService
         return data;
     }
 
-    public Task CreateAsync(Barber entity)
+    public Task CreateAsync(AppUser entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(int id, Barber entity)
+    public Task UpdateAsync(int id, AppUser entity)
     {
         throw new NotImplementedException();
     }

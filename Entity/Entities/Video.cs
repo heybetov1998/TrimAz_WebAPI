@@ -6,11 +6,11 @@ public class Video
 {
     public Video()
     {
-        Barber = new();
+        User = new();
     }
 
     public int Id { get; set; }
     public string YoutubeLink { get; set; } = default!;
     public string BarberId { get; set; } = default!;
-    public Barber Barber { get; set; }
+    public AppUser User{ get; set; }
 }

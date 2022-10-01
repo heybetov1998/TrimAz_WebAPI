@@ -7,11 +7,11 @@ public class ServiceDetail : BaseEntity, IEntity
 {
     public ServiceDetail()
     {
-        BarberServices = new HashSet<BarberService>();
+        UserServices = new HashSet<UserService>();
     }
 
     public double Price { get; set; }
     //public string Time { get; set; } = default!;
 
-    public ICollection<BarberService> BarberServices { get; set; }
+    public ICollection<UserService> UserServices { get; set; }
 }

@@ -7,11 +7,11 @@ namespace Entity.Entities
     {
         public Time()
         {
-            BarberTimes = new HashSet<BarberTime>();
+            UserTimes = new HashSet<UserTime>();
         }
 
         public int Id { get; set; }
         public string Range { get; set; } = default!;
-        public ICollection<BarberTime> BarberTimes { get; set; }
+        public ICollection<UserTime> UserTimes { get; set; }
     }
 }

@@ -19,10 +19,10 @@ namespace TrimAz.Controllers;
 public class BarbersController : ControllerBase
 {
     private readonly IBarberService _barberService;
-    private readonly UserManager<Barber> _userManager;
+    private readonly UserManager<AppUser> _userManager;
     private readonly IBarbershopService _barbershopService;
 
-    public BarbersController(IBarberService barberService, UserManager<Barber> userManager, IBarbershopService barbershopService)
+    public BarbersController(IBarberService barberService, UserManager<AppUser> userManager, IBarbershopService barbershopService)
     {
         _barberService = barberService;
         _userManager = userManager;
@@ -44,48 +44,48 @@ public class BarbersController : ControllerBase
 
             //Avatar
             barber.Avatar = "no-image.png";
-            foreach (var barberImage in data.BarberImages)
-            {
-                if (barberImage.IsAvatar)
-                {
-                    barber.Avatar = barberImage.Image.Name;
-                    break;
-                }
-            }
+            //foreach (var barberImage in data.BarberImages)
+            //{
+            //    if (barberImage.IsAvatar)
+            //    {
+            //        barber.Avatar = barberImage.Image.Name;
+            //        break;
+            //    }
+            //}
 
             //Rating
-            foreach (var userBarber in data.UserBarbers)
-            {
-                ratings.Add(userBarber.StarRating);
-            }
+            //foreach (var userBarber in data.UserBarbers)
+            //{
+            //    ratings.Add(userBarber.StarRating);
+            //}
             barber.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
 
             //Images
-            foreach (var barberImage in data.BarberImages)
-            {
-                if (!barberImage.IsAvatar)
-                {
-                    ImageGetDTO imageGetDTO = new();
+            //foreach (var barberImage in data.BarberImages)
+            //{
+            //    if (!barberImage.IsAvatar)
+            //    {
+            //        ImageGetDTO imageGetDTO = new();
 
-                    imageGetDTO.Name = barberImage.Image.Name;
-                    imageGetDTO.Alt = imageGetDTO.Name;
+            //        imageGetDTO.Name = barberImage.Image.Name;
+            //        imageGetDTO.Alt = imageGetDTO.Name;
 
-                    barber.Images.Add(imageGetDTO);
-                }
-            }
+            //        barber.Images.Add(imageGetDTO);
+            //    }
+            //}
 
             //Services
-            foreach (var barberService in data.BarberServices)
-            {
-                ServiceTimeGetDTO serviceTimeGetDTO = new();
+            //foreach (var barberService in data.BarberServices)
+            //{
+            //    ServiceTimeGetDTO serviceTimeGetDTO = new();
 
-                serviceTimeGetDTO.Id = barberService.Service.Id;
-                serviceTimeGetDTO.Name = barberService.Service.Name;
-                //serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
-                serviceTimeGetDTO.Price = barberService.ServiceDetail.Price;
+            //    serviceTimeGetDTO.Id = barberService.Service.Id;
+            //    serviceTimeGetDTO.Name = barberService.Service.Name;
+            //    //serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
+            //    serviceTimeGetDTO.Price = barberService.ServiceDetail.Price;
 
-                barber.Services.Add(serviceTimeGetDTO);
-            }
+            //    barber.Services.Add(serviceTimeGetDTO);
+            //}
 
             //Videos
             foreach (var video in data.Videos)
@@ -99,31 +99,31 @@ public class BarbersController : ControllerBase
             }
 
             //Reviews
-            foreach (var userBarber in data.UserBarbers)
-            {
-                ReviewGetDTO review = new();
+            //foreach (var userBarber in data.UserBarbers)
+            //{
+            //    ReviewGetDTO review = new();
 
-                review.Id = userBarber.Id;
-                review.UserId = userBarber.User.Id;
-                review.UserFirstName = userBarber.User.FirstName;
-                review.UserLastName = userBarber.User.LastName;
-                review.CreatedDate = userBarber.CreatedDate;
-                review.GivenRating = userBarber.StarRating;
-                review.Comment = userBarber.Message;
+            //    review.Id = userBarber.Id;
+            //    review.UserId = userBarber.User.Id;
+            //    review.UserFirstName = userBarber.User.FirstName;
+            //    review.UserLastName = userBarber.User.LastName;
+            //    review.CreatedDate = userBarber.CreatedDate;
+            //    review.GivenRating = userBarber.StarRating;
+            //    review.Comment = userBarber.Message;
 
-                //Review User Avatar
-                review.UserAvatar = "profile-picture.png";
-                foreach (var userImage in userBarber.User.UserImages)
-                {
-                    if (userImage.IsAvatar)
-                    {
-                        review.UserAvatar = userImage.Image.Name;
-                        break;
-                    }
-                }
+            //    //Review User Avatar
+            //    review.UserAvatar = "profile-picture.png";
+            //    foreach (var userImage in userBarber.User.UserImages)
+            //    {
+            //        if (userImage.IsAvatar)
+            //        {
+            //            review.UserAvatar = userImage.Image.Name;
+            //            break;
+            //        }
+            //    }
 
-                barber.Reviews.Add(review);
-            }
+            //    barber.Reviews.Add(review);
+            //}
 
             return Ok(barber);
         }
@@ -148,36 +148,36 @@ public class BarbersController : ControllerBase
         {
             var datas = await _barberService.GetAllAsync(take: (int)take);
 
-            foreach (Barber data in datas)
-            {
-                List<double> ratings = new List<double>();
-                BarberGetDTO barberGetDTO = new BarberGetDTO()
-                {
-                    Id = data.Id,
-                    FirstName = data.FirstName,
-                    LastName = data.LastName
-                };
+            //foreach (Barber data in datas)
+            //{
+            //    List<double> ratings = new List<double>();
+            //    BarberGetDTO barberGetDTO = new BarberGetDTO()
+            //    {
+            //        Id = data.Id,
+            //        FirstName = data.FirstName,
+            //        LastName = data.LastName
+            //    };
 
-                foreach (var userBarber in data.UserBarbers)
-                {
-                    ratings.Add(userBarber.StarRating);
-                }
+            //    foreach (var userBarber in data.UserBarbers)
+            //    {
+            //        ratings.Add(userBarber.StarRating);
+            //    }
 
-                barberGetDTO.ImageName = "profile-picture.png";
+            //    barberGetDTO.ImageName = "profile-picture.png";
 
-                foreach (var barberImage in data.BarberImages)
-                {
-                    if (barberImage.IsAvatar)
-                    {
-                        barberGetDTO.ImageName = barberImage.Image.Name;
-                        break;
-                    }
-                }
+            //    foreach (var barberImage in data.BarberImages)
+            //    {
+            //        if (barberImage.IsAvatar)
+            //        {
+            //            barberGetDTO.ImageName = barberImage.Image.Name;
+            //            break;
+            //        }
+            //    }
 
-                barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+            //    barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
 
-                barbers.Add(barberGetDTO);
-            }
+            //    barbers.Add(barberGetDTO);
+            //}
 
             return Ok(barbers);
         }
@@ -192,7 +192,7 @@ public class BarbersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(BarberPostDTO barberPostDTO)
+    public IActionResult CreateAsync(BarberPostDTO barberPostDTO)
     {
         if (!ModelState.IsValid)
         {
@@ -200,17 +200,17 @@ public class BarbersController : ControllerBase
             return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4014, ex.Message));
         }
 
-        Barber barber = new();
+        //Barber barber = new();
 
-        barber.FirstName = barberPostDTO.FirstName;
-        barber.LastName = barberPostDTO.LastName;
-        barber.Email = barberPostDTO.Email;
-        barber.UserName = barberPostDTO.UserName;
-        barber.BarbershopId = barberPostDTO.BarbershopId;
+        //barber.FirstName = barberPostDTO.FirstName;
+        //barber.LastName = barberPostDTO.LastName;
+        //barber.Email = barberPostDTO.Email;
+        //barber.UserName = barberPostDTO.UserName;
+        //barber.BarbershopId = barberPostDTO.BarbershopId;
 
-        await _userManager.CreateAsync(barber, barberPostDTO.Password);
+        //await _userManager.CreateAsync(barber, barberPostDTO.Password);
 
-        return Ok(barber);
+        return Ok();
     }
 
     [HttpPut]
