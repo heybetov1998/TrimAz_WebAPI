@@ -1,10 +1,15 @@
 ﻿using Business.Auth;
+using DAL.Abstracts;
 using Entity.DTO.Identity;
 using Entity.Identity;
 using Exceptions.AuthExceptions;
 using Exceptions.DataExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using TrimAz.Commons;
 using static TrimAz.Commons.Helpers.Enums;
 
@@ -14,18 +19,26 @@ namespace TrimAz.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
+    private readonly IUserDAL _userDAL;
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly SignInManager<AppUser> _signInManager;
     private readonly IEmailSender _emailSender;
+    private readonly IConfiguration _config;
 
-    public AuthController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, IEmailSender emailSender)
+    public AuthController(
+        UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
+        IEmailSender emailSender, IConfiguration config, IUserDAL userDAL, SignInManager<AppUser> signInManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _emailSender = emailSender;
+        _config = config;
+        _userDAL = userDAL;
+        _signInManager = signInManager;
     }
 
-    [HttpPost("register")]
+    [HttpPost("Register")]
     public async Task<IActionResult> Register(RegisterUserDTO registerUserDTO)
     {
         if (!ModelState.IsValid)
@@ -66,7 +79,13 @@ public class AuthController : ControllerBase
         return Ok(registerUserDTO);
     }
 
-    [HttpPost("registerOwner")]
+    [HttpPost("RegisterBarber")]
+    public async Task<IActionResult> RegisterBarber(RegisterBarberDTO registerBarberDTO)
+    {
+        return Ok();
+    }
+
+    [HttpPost("RegisterOwner")]
     public async Task<IActionResult> RegisterOwner(RegisterUserDTO registerUserDTO)
     {
         if (!ModelState.IsValid)
@@ -105,6 +124,65 @@ public class AuthController : ControllerBase
         }
 
         return Ok(registerUserDTO);
+    }
+
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login(LoginUserDTO loginUserDTO)
+    {
+        var user = await AuthenticateAsync(loginUserDTO);
+
+        if (user is not null)
+        {
+            var token = await GenerateTokenAsync(user);
+
+            return Ok(token);
+        }
+
+        return NotFound("User not found");
+    }
+
+    //authenticate user
+    private async Task<AppUser?> AuthenticateAsync(LoginUserDTO loginUserDTO)
+    {
+        var currentUser = await _userManager.FindByEmailAsync(loginUserDTO.Email);
+
+        var result = await _signInManager.PasswordSignInAsync(currentUser, loginUserDTO.Password, false, false);
+
+        if (!result.Succeeded)
+        {
+            InvalidCredentialException ex = new();
+            //return StatusCode(StatusCodes.Status403Forbidden, new Response(4003, ex.Message));
+            return null;
+        }
+
+        return currentUser;
+    }
+
+    // token generation
+    private async Task<string> GenerateTokenAsync(AppUser user)
+    {
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        List<Claim> claims = new List<Claim>
+        {
+            new Claim("FirstName",user.FirstName),
+            new Claim("LastName",user.LastName)
+        };
+
+        foreach (var role in await _userManager.GetRolesAsync(user))
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
+        var token = new JwtSecurityToken(
+             issuer: _config["JWT:Issuer"],
+             audience: _config["JWT:Audience"],
+             claims: claims,
+             expires: DateTime.UtcNow.AddHours(4).AddMinutes(15),
+             signingCredentials: credentials);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
     #region CreateRoles
