@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221001172224_UserProducts_table_removed")]
-    partial class UserProducts_table_removed
+    [Migration("20221001172618_CartProducts_table_removed")]
+    partial class CartProducts_table_removed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,34 +84,6 @@ namespace DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Cart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("Entity.Entities.Feedback", b =>
@@ -264,29 +236,6 @@ namespace DAL.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("BlogImages");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.CartProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("CartProducts");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.ProductImage", b =>
@@ -762,17 +711,6 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Cart", b =>
-                {
-                    b.HasOne("Entity.Identity.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Entity.Entities.Feedback", b =>
                 {
                     b.HasOne("Entity.Identity.AppUser", "User")
@@ -839,25 +777,6 @@ namespace DAL.Migrations
                     b.Navigation("Blog");
 
                     b.Navigation("Image");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.CartProduct", b =>
-                {
-                    b.HasOne("Entity.Entities.Cart", "Cart")
-                        .WithMany("CartProducts")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.Product", "Product")
-                        .WithMany("CartProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.ProductImage", b =>
@@ -1046,11 +965,6 @@ namespace DAL.Migrations
                     b.Navigation("BlogImages");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Cart", b =>
-                {
-                    b.Navigation("CartProducts");
-                });
-
             modelBuilder.Entity("Entity.Entities.Location", b =>
                 {
                     b.Navigation("Products");
@@ -1058,8 +972,6 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Product", b =>
                 {
-                    b.Navigation("CartProducts");
-
                     b.Navigation("ProductImages");
                 });
 
