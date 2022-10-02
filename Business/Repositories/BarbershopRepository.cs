@@ -53,9 +53,9 @@ namespace Business.Repositories
             return data;
         }
 
-        public Task CreateAsync(Barbershop entity)
+        public async Task CreateAsync(Barbershop entity)
         {
-            throw new NotImplementedException();
+            await _barbershopDAL.CreateAsync(entity);
         }
 
         public Task UpdateAsync(int id, Barbershop entity)

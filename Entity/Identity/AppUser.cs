@@ -21,6 +21,7 @@ public class AppUser : IdentityUser, IEntity
 
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
+    public string Token { get; set; }
     public string? WorkStartTime { get; set; }
     public string? WorkEndTime { get; set; }
     public ICollection<Blog> Blogs { get; set; }

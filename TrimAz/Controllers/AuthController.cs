@@ -1,6 +1,7 @@
 ﻿using Business.Auth;
 using DAL.Abstracts;
 using Entity.DTO.Identity;
+using Entity.DTO.User;
 using Entity.Identity;
 using Exceptions.AuthExceptions;
 using Exceptions.DataExceptions;
@@ -159,10 +160,21 @@ public class AuthController : ControllerBase
         {
             var token = await GenerateTokenAsync(user);
 
-            return Ok(token);
+            List<string> roleNames = new();
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            UserRoleGetDTO userRoleGetDTO = new()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                RoleNames = roles
+            };
+
+            return Ok(new { statusCode = 200, token, user = userRoleGetDTO });
         }
 
-        return NotFound("User not found");
+        return NotFound(new { statusCode = 404 });
     }
 
     //authenticate user
@@ -186,16 +198,15 @@ public class AuthController : ControllerBase
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+        var roles = await _userManager.GetRolesAsync(user);
+
         List<Claim> claims = new List<Claim>
         {
             new Claim("FirstName",user.FirstName),
             new Claim("LastName",user.LastName)
         };
 
-        foreach (var role in await _userManager.GetRolesAsync(user))
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role));
-        }
+        claims.AddRange(roles.Select(n => new Claim(ClaimTypes.Role, n)));
 
         var token = new JwtSecurityToken(
              issuer: _config["JWT:Issuer"],

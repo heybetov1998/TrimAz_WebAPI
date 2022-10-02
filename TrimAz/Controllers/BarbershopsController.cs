@@ -4,6 +4,7 @@ using Entity.DTO.Barbershop;
 using Entity.DTO.Location;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
+using Entity.Entities;
 using Exceptions.EntityExceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ using TrimAz.Commons;
 namespace TrimAz.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController, Authorize(Roles = "Admin,Owner")]
+    [ApiController]
     public class BarbershopsController : ControllerBase
     {
         private readonly IBarbershopService _barbershopService;
@@ -202,10 +203,23 @@ namespace TrimAz.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin,Owner")]
         public async Task<IActionResult> CreateAsync(BarbershopPostDTO barbershopPostDTO)
         {
-            return Ok();
+            try
+            {
+                Barbershop barbershop = new()
+                {
+                    Name = barbershopPostDTO.Name
+                };
+
+                await _barbershopService.CreateAsync(barbershop);
+                return Ok(new { statusCode = 200, message = "Barbershop added successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, ex.Message);
+            }
         }
     }
 }
