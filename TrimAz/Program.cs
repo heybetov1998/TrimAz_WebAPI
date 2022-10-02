@@ -78,6 +78,9 @@ builder.Services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
 builder.Services.AddScoped<IBlogService, BlogRepository>();
 builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
 
+builder.Services.AddScoped<IImageService, ImageRepository>();
+builder.Services.AddScoped<IImageDAL, ImageRepositoryDAL>();
+
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 

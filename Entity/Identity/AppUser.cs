@@ -16,14 +16,13 @@ public class AppUser : IdentityUser, IEntity
         UserServices = new HashSet<UserService>();
         UserTimes = new HashSet<UserTime>();
         Products = new HashSet<Product>();
+        UserBarbershops = new HashSet<UserBarbershop>();
     }
 
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
     public string? WorkStartTime { get; set; }
     public string? WorkEndTime { get; set; }
-    public int? BarbershopId { get; set; }
-    public Barbershop? Barbershop { get; set; }
     public ICollection<Blog> Blogs { get; set; }
     public ICollection<Video> Videos { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }
@@ -33,4 +32,5 @@ public class AppUser : IdentityUser, IEntity
     public ICollection<UserImage> UserImages { get; set; }
     public ICollection<UserService> UserServices { get; set; }
     public ICollection<UserTime> UserTimes { get; set; }
+    public ICollection<UserBarbershop> UserBarbershops { get; set; }
 }

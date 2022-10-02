@@ -5,13 +5,15 @@ using Entity.DTO.Location;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using TrimAz.Commons;
 
 namespace TrimAz.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, Authorize(Roles = "Admin,Owner")]
     public class BarbershopsController : ControllerBase
     {
         private readonly IBarbershopService _barbershopService;
@@ -27,6 +29,8 @@ namespace TrimAz.Controllers
             try
             {
                 var data = await _barbershopService.GetAsync(id);
+
+                //return Ok(data);
 
                 BarbershopDetailGetDTO barbershop = new();
 
@@ -196,6 +200,12 @@ namespace TrimAz.Controllers
             {
                 return StatusCode(StatusCodes.Status404NotFound, ex.Message);
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(BarbershopPostDTO barbershopPostDTO)
+        {
+            return Ok();
         }
     }
 }

@@ -38,9 +38,9 @@ public class ImageRepository : IImageService
         return data;
     }
 
-    public Task CreateAsync(Image entity)
+    public async Task CreateAsync(Image entity)
     {
-        throw new NotImplementedException();
+        await _imageDAL.CreateAsync(entity);
     }
 
     public Task UpdateAsync(int id, Image entity)
