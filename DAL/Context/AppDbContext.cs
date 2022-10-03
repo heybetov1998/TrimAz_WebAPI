@@ -20,6 +20,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<ServiceDetail>? ServiceDetails { get; set; }
     public DbSet<Time>? Times { get; set; }
     public DbSet<Video>? Videos { get; set; }
+    public DbSet<RefreshToken>? RefreshTokens { get; set; }
 
     //Pivots
     public DbSet<UserService>? UserServices { get; set; }

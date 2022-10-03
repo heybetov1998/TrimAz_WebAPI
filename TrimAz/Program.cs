@@ -12,78 +12,92 @@ using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TrimAz.Commons.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//cors error
-
-builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    var services = builder.Services;
+    var env = builder.Environment;
+
+    services.AddDbContext<AppDbContext>(options =>
     {
-        builder.WithOrigins("http://localhost:3000")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
     });
-});
 
-builder.Services.AddControllers()
-    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// JWT Authentication
-builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+    //cors error
+    services.AddCors(options =>
     {
-        options.TokenValidationParameters = new TokenValidationParameters
+        options.AddDefaultPolicy(builder =>
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            ValidAudience = builder.Configuration["JWT:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        };
+            builder.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+        });
     });
 
-builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
-{
-    options.SignIn.RequireConfirmedEmail = false;
-    options.User.RequireUniqueEmail = true;
-}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+    services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
-});
+    // configure strongly typed settings object
+    services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+    services.Configure<JWTConfig>(builder.Configuration.GetSection("JWT"));
 
-builder.Services.AddScoped<IProductService, ProductRepository>();
-builder.Services.AddScoped<IProductDAL, ProductRepositoryDAL>();
+    // configure DI for application services
+    services.AddScoped<IProductService, ProductRepository>();
+    services.AddScoped<IProductDAL, ProductRepositoryDAL>();
 
-builder.Services.AddScoped<IBarberService, BarberRepository>();
-builder.Services.AddScoped<IUserDAL, UserRepositoryDAL>();
+    services.AddScoped<IBarberService, BarberRepository>();
 
-builder.Services.AddScoped<IBarbershopService, BarbershopRepository>();
-builder.Services.AddScoped<IBarbershopDAL, BarbershopRepositoryDAL>();
+    services.AddScoped<IBarbershopService, BarbershopRepository>();
+    services.AddScoped<IBarbershopDAL, BarbershopRepositoryDAL>();
 
-builder.Services.AddScoped<IServiceService, ServiceRepository>();
-builder.Services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
+    services.AddScoped<IServiceService, ServiceRepository>();
+    services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
 
-builder.Services.AddScoped<IBlogService, BlogRepository>();
-builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
+    services.AddScoped<IBlogService, BlogRepository>();
+    services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
 
-builder.Services.AddScoped<IImageService, ImageRepository>();
-builder.Services.AddScoped<IImageDAL, ImageRepositoryDAL>();
+    services.AddScoped<IImageService, ImageRepository>();
+    services.AddScoped<IImageDAL, ImageRepositoryDAL>();
 
-builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
-builder.Services.AddScoped<IEmailSender, EmailSender>();
+    services.AddScoped<IUserService, UserRepository>();
+    services.AddScoped<IUserDAL, UserRepositoryDAL>();
+
+    services.AddScoped<IJwtUtils, JwtUtils>();
+
+    services.AddScoped<IEmailSender, EmailSender>();
+
+    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+
+    services.AddIdentity<AppUser, IdentityRole>(options =>
+    {
+        options.SignIn.RequireConfirmedEmail = false;
+        options.User.RequireUniqueEmail = true;
+    }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+    // JWT Authentication
+    //builder.Services
+    //    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    //    .AddJwtBearer(options =>
+    //    {
+    //        options.TokenValidationParameters = new TokenValidationParameters
+    //        {
+    //            ValidateIssuer = true,
+    //            ValidateAudience = true,
+    //            ValidateLifetime = true,
+    //            ValidateIssuerSigningKey = true,
+    //            ValidIssuer = builder.Configuration["JWT:Issuer"],
+    //            ValidAudience = builder.Configuration["JWT:Audience"],
+    //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    //        };
+    //    });
+}
+
 
 
 var app = builder.Build();
@@ -107,6 +121,12 @@ app.UseStaticFiles(new StaticFileOptions()
     FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Images")),
     RequestPath = "/img"
 });
+
+// global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
+// custom jwt auth middleware
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 

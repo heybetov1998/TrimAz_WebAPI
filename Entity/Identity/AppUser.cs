@@ -17,17 +17,18 @@ public class AppUser : IdentityUser, IEntity
         UserTimes = new HashSet<UserTime>();
         Products = new HashSet<Product>();
         UserBarbershops = new HashSet<UserBarbershop>();
+        RefreshTokens = new List<RefreshToken>();
     }
 
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
-    public string Token { get; set; }
     public string? WorkStartTime { get; set; }
     public string? WorkEndTime { get; set; }
     public ICollection<Blog> Blogs { get; set; }
     public ICollection<Video> Videos { get; set; }
     public ICollection<Feedback> Feedbacks { get; set; }
     public ICollection<Product> Products { get; set; }
+    public List<RefreshToken> RefreshTokens { get; set; }
 
     //Pivots
     public ICollection<UserImage> UserImages { get; set; }

@@ -1,5 +1,4 @@
 ﻿using Business.Auth;
-using DAL.Abstracts;
 using Entity.DTO.Identity;
 using Entity.DTO.User;
 using Entity.Identity;
@@ -7,10 +6,6 @@ using Exceptions.AuthExceptions;
 using Exceptions.DataExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using TrimAz.Commons;
 using static TrimAz.Commons.Helpers.Enums;
 
@@ -20,23 +15,21 @@ namespace TrimAz.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly IUserDAL _userDAL;
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly SignInManager<AppUser> _signInManager;
     private readonly IEmailSender _emailSender;
-    private readonly IConfiguration _config;
+    private readonly IJwtUtils _jwtUtils;
 
     public AuthController(
         UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
-        IEmailSender emailSender, IConfiguration config, IUserDAL userDAL, SignInManager<AppUser> signInManager)
+        IEmailSender emailSender, IConfiguration config, SignInManager<AppUser> signInManager, IJwtUtils jwtUtils)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _emailSender = emailSender;
-        _config = config;
-        _userDAL = userDAL;
         _signInManager = signInManager;
+        _jwtUtils = jwtUtils;
     }
 
     #region Member Registration
@@ -158,7 +151,7 @@ public class AuthController : ControllerBase
 
         if (user is not null)
         {
-            var token = await GenerateTokenAsync(user);
+            var token = await _jwtUtils.GenerateJwtTokenAsync(user);
 
             List<string> roleNames = new();
 
@@ -192,38 +185,11 @@ public class AuthController : ControllerBase
         return currentUser;
     }
 
-    // token generation
-    private async Task<string> GenerateTokenAsync(AppUser user)
-    {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        var roles = await _userManager.GetRolesAsync(user);
-
-        List<Claim> claims = new List<Claim>
-        {
-            new Claim("FirstName",user.FirstName),
-            new Claim("LastName",user.LastName)
-        };
-
-        claims.AddRange(roles.Select(n => new Claim(ClaimTypes.Role, n)));
-
-        var token = new JwtSecurityToken(
-             issuer: _config["JWT:Issuer"],
-             audience: _config["JWT:Audience"],
-             claims: claims,
-             expires: DateTime.UtcNow.AddHours(4).AddMinutes(15),
-             signingCredentials: credentials);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
-
     //capitalize string
     private string Capitalize(string value)
     {
         return char.ToUpper(value[0]) + value.Substring(1);
     }
-
     #region CreateRoles
     //[HttpPost("createRole")]
     //public async Task<IActionResult> CreateRoles(string roleName)
