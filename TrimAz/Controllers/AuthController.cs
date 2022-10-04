@@ -1,4 +1,5 @@
 ﻿using Business.Auth;
+using Business.Jwt;
 using DAL.Abstracts;
 using Entity.DTO.Identity;
 using Entity.DTO.User;
@@ -26,10 +27,12 @@ public class AuthController : ControllerBase
     private readonly SignInManager<AppUser> _signInManager;
     private readonly IEmailSender _emailSender;
     private readonly IConfiguration _config;
+    private readonly IJwtUtils _jwtUtils;
 
     public AuthController(
         UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
-        IEmailSender emailSender, IConfiguration config, IUserDAL userDAL, SignInManager<AppUser> signInManager)
+        IEmailSender emailSender, IConfiguration config, IUserDAL userDAL,
+        SignInManager<AppUser> signInManager, IJwtUtils jwtUtils)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -37,6 +40,7 @@ public class AuthController : ControllerBase
         _config = config;
         _userDAL = userDAL;
         _signInManager = signInManager;
+        _jwtUtils = jwtUtils;
     }
 
     #region Member Registration
@@ -158,23 +162,31 @@ public class AuthController : ControllerBase
 
         if (user is not null)
         {
-            var token = await GenerateTokenAsync(user);
-
-            List<string> roleNames = new();
-
-            var roles = await _userManager.GetRolesAsync(user);
-
-            UserRoleGetDTO userRoleGetDTO = new()
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                RoleNames = roles
-            };
-
-            return Ok(new { statusCode = 200, token, user = userRoleGetDTO });
+            await _jwtUtils.GenerateTokenAsync(user);
         }
 
-        return NotFound(new { statusCode = 404 });
+        //var user = await AuthenticateAsync(loginUserDTO);
+
+        //if (user is not null)
+        //{
+        //    var token = await GenerateTokenAsync(user);
+
+        //    List<string> roleNames = new();
+
+        //    var roles = await _userManager.GetRolesAsync(user);
+
+        //    UserRoleGetDTO userRoleGetDTO = new()
+        //    {
+        //        FirstName = user.FirstName,
+        //        LastName = user.LastName,
+        //        RoleNames = roles,
+        //        Token = token
+        //    };
+
+        //    return Ok(new { statusCode = 200, user = userRoleGetDTO });
+        //}
+
+        return NotFound(new { statusCode = StatusCode(StatusCodes.Status403Forbidden), message = "Access is not allowed" });
     }
 
     //authenticate user
@@ -190,32 +202,6 @@ public class AuthController : ControllerBase
         }
 
         return currentUser;
-    }
-
-    // token generation
-    private async Task<string> GenerateTokenAsync(AppUser user)
-    {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        var roles = await _userManager.GetRolesAsync(user);
-
-        List<Claim> claims = new List<Claim>
-        {
-            new Claim("FirstName",user.FirstName),
-            new Claim("LastName",user.LastName)
-        };
-
-        claims.AddRange(roles.Select(n => new Claim(ClaimTypes.Role, n)));
-
-        var token = new JwtSecurityToken(
-             issuer: _config["JWT:Issuer"],
-             audience: _config["JWT:Audience"],
-             claims: claims,
-             expires: DateTime.UtcNow.AddHours(4).AddMinutes(15),
-             signingCredentials: credentials);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
     //capitalize string

@@ -12,6 +12,8 @@ using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TrimAz.Commons;
+using Business.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,9 +84,12 @@ builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
 builder.Services.AddScoped<IImageService, ImageRepository>();
 builder.Services.AddScoped<IImageDAL, ImageRepositoryDAL>();
 
-builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Jwt"));
 
 var app = builder.Build();
 
