@@ -34,15 +34,27 @@ public class JwtUtils : IJwtUtils
             new Claim("lastName",user.LastName),
             new Claim("email",user.Email),
             new Claim("userName",user.UserName),
-            new Claim("token",user.Token)
         };
 
+        //role claim
         claims.AddRange(roles.Select(n => new Claim(ClaimTypes.Role, n)));
+
+        //avatar claim
+        string avatar = "profile-picture.png";
+        foreach (var userImage in user.UserImages)
+        {
+            if (userImage.IsAvatar)
+            {
+                avatar = userImage.Image.Name;
+                break;
+            }
+        }
+        claims.Add(new Claim("avatar", avatar));
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(2),
+            Expires = DateTime.UtcNow.AddMonths(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);

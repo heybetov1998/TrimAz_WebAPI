@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221004102846_Token_column_added_to_Users_Table")]
-    partial class Token_column_added_to_Users_Table
+    [Migration("20221004122746_Token_column_added_to_Users_Table_and_default_empty")]
+    partial class Token_column_added_to_Users_Table_and_default_empty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -17,6 +17,7 @@ public class AppUser : IdentityUser, IEntity
         UserTimes = new HashSet<UserTime>();
         Products = new HashSet<Product>();
         UserBarbershops = new HashSet<UserBarbershop>();
+        Token = default!;
     }
 
     public string FirstName { get; set; } = default!;

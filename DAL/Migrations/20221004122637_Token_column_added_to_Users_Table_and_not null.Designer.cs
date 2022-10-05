@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221001194013_Name_field_in_Barbershops_table_is_not_nullable_now_and_BarbershopId_in_AspNetUsers_table_is_nullable")]
-    partial class Name_field_in_Barbershops_table_is_not_nullable_now_and_BarbershopId_in_AspNetUsers_table_is_nullable
+    [Migration("20221004122637_Token_column_added_to_Users_Table_and_not null")]
+    partial class Token_column_added_to_Users_Table_and_notnull
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,6 +264,30 @@ namespace DAL.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Pivots.UserBarbershop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BarbershopId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarbershopId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserBarbershop");
+                });
+
             modelBuilder.Entity("Entity.Entities.Pivots.UserImage", b =>
                 {
                     b.Property<int>("Id")
@@ -497,9 +521,6 @@ namespace DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BarbershopId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -545,6 +566,10 @@ namespace DAL.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -552,9 +577,13 @@ namespace DAL.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("WorkEndTime")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("BarbershopId");
+                    b.Property<string>("WorkStartTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -798,6 +827,25 @@ namespace DAL.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Pivots.UserBarbershop", b =>
+                {
+                    b.HasOne("Entity.Entities.Barbershop", "Barbershop")
+                        .WithMany("UserBarbershops")
+                        .HasForeignKey("BarbershopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Identity.AppUser", "User")
+                        .WithMany("UserBarbershops")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Barbershop");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Entity.Entities.Pivots.UserImage", b =>
                 {
                     b.HasOne("Entity.Entities.Image", "Image")
@@ -889,15 +937,6 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entity.Identity.AppUser", b =>
-                {
-                    b.HasOne("Entity.Entities.Barbershop", "Barbershop")
-                        .WithMany("Users")
-                        .HasForeignKey("BarbershopId");
-
-                    b.Navigation("Barbershop");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -955,7 +994,7 @@ namespace DAL.Migrations
 
                     b.Navigation("BarbershopLocations");
 
-                    b.Navigation("Users");
+                    b.Navigation("UserBarbershops");
                 });
 
             modelBuilder.Entity("Entity.Entities.Blog", b =>
@@ -995,6 +1034,8 @@ namespace DAL.Migrations
                     b.Navigation("Feedbacks");
 
                     b.Navigation("Products");
+
+                    b.Navigation("UserBarbershops");
 
                     b.Navigation("UserImages");
 

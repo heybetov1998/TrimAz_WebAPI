@@ -1,14 +1,12 @@
-﻿using Business.Services;
-using Entity.DTO.Barber;
+﻿using Business.Jwt;
+using Business.Services;
 using Entity.DTO.Barbershop;
 using Entity.DTO.Location;
-using Entity.DTO.Review;
-using Entity.DTO.Service;
 using Entity.Entities;
 using Exceptions.EntityExceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Microsoft.Net.Http.Headers;
 using TrimAz.Commons;
 
 namespace TrimAz.Controllers
@@ -18,10 +16,12 @@ namespace TrimAz.Controllers
     public class BarbershopsController : ControllerBase
     {
         private readonly IBarbershopService _barbershopService;
+        private readonly IJwtUtils _jwtUtils;
 
-        public BarbershopsController(IBarbershopService barbershopService)
+        public BarbershopsController(IBarbershopService barbershopService, IJwtUtils jwtUtils)
         {
             _barbershopService = barbershopService;
+            _jwtUtils = jwtUtils;
         }
 
         [HttpGet("{id}")]
@@ -206,20 +206,20 @@ namespace TrimAz.Controllers
         [HttpPost, Authorize(Roles = "Admin,Owner")]
         public async Task<IActionResult> CreateAsync(BarbershopPostDTO barbershopPostDTO)
         {
-            try
-            {
-                Barbershop barbershop = new()
-                {
-                    Name = barbershopPostDTO.Name
-                };
+            string token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
 
-                await _barbershopService.CreateAsync(barbershop);
-                return Ok(new { statusCode = 200, message = "Barbershop added successfully" });
-            }
-            catch (Exception ex)
+            if (_jwtUtils.ValidateToken(token) == null)
             {
-                return StatusCode(StatusCodes.Status401Unauthorized, ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, new Response(StatusCodes.Status403Forbidden, "Not valid token"));
             }
+
+            Barbershop barbershop = new()
+            {
+                Name = barbershopPostDTO.Name
+            };
+
+            await _barbershopService.CreateAsync(barbershop);
+            return Ok(new { statusCode = 200, message = "Barbershop added successfully" });
         }
     }
 }

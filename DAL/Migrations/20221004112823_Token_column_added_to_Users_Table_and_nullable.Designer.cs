@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221002155359_added_token_to_Users_table")]
-    partial class added_token_to_Users_table
+    [Migration("20221004112823_Token_column_added_to_Users_Table_and_nullable")]
+    partial class Token_column_added_to_Users_Table_and_nullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -567,7 +567,6 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Token")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
