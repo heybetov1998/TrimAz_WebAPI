@@ -8,10 +8,6 @@ using Exceptions.AuthExceptions;
 using Exceptions.DataExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using TrimAz.Commons;
 using static TrimAz.Commons.Helpers.Enums;
 
@@ -21,24 +17,19 @@ namespace TrimAz.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly IUserDAL _userDAL;
     private readonly UserManager<AppUser> _userManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly SignInManager<AppUser> _signInManager;
     private readonly IEmailSender _emailSender;
     private readonly IConfiguration _config;
     private readonly IJwtUtils _jwtUtils;
 
     public AuthController(
-        UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
-        IEmailSender emailSender, IConfiguration config, IUserDAL userDAL,
+        UserManager<AppUser> userManager, IEmailSender emailSender, IConfiguration config,
         SignInManager<AppUser> signInManager, IJwtUtils jwtUtils)
     {
         _userManager = userManager;
-        _roleManager = roleManager;
         _emailSender = emailSender;
         _config = config;
-        _userDAL = userDAL;
         _signInManager = signInManager;
         _jwtUtils = jwtUtils;
     }
@@ -70,6 +61,7 @@ public class AuthController : ControllerBase
         appUser.WorkStartTime = registerBarberDTO.WorkStartTime;
         appUser.WorkEndTime = registerBarberDTO.WorkEndTime;
         appUser.Token = "";
+        appUser.RoleName = "Barber";
 
         var result = await _userManager.CreateAsync(appUser, registerBarberDTO.Password);
 
@@ -202,6 +194,7 @@ public class AuthController : ControllerBase
         appUser.LastName = Capitalize(registerUserDTO.LastName.Trim());
         appUser.Email = registerUserDTO.Email;
         appUser.UserName = registerUserDTO.UserName;
+        appUser.RoleName=roleName;
         appUser.Token = "";
 
         var result = await _userManager.CreateAsync(appUser, registerUserDTO.Password);

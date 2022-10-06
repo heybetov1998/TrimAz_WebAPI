@@ -103,4 +103,19 @@ public class SellersController : ControllerBase
 
         return Ok(new { statusCode = 200, message = "Seller updated successfully" });
     }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAsync([FromBody] string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+
+        if (user is null)
+        {
+            return NotFound("User not found");
+        }
+
+        await _userManager.DeleteAsync(user);
+
+        return Ok(new { statusCode = 200, message = "User deleted successfully" });
+    }
 }

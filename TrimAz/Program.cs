@@ -84,6 +84,9 @@ builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
 builder.Services.AddScoped<IImageService, ImageRepository>();
 builder.Services.AddScoped<IImageDAL, ImageRepositoryDAL>();
 
+builder.Services.AddScoped<IReviewService, ReviewRepository>();
+builder.Services.AddScoped<IReviewDAL, ReviewRepositoryDAL>();
+
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 
 builder.Services.AddScoped<ISellerService, SellerRepository>();

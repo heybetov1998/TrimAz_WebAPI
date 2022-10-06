@@ -16,6 +16,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
     public DbSet<Image>? Images { get; set; }
     public DbSet<Location>? Locations { get; set; }
     public DbSet<Product>? Products { get; set; }
+    public DbSet<Review>? Reviews { get; set; }
     public DbSet<Service>? Services { get; set; }
     public DbSet<ServiceDetail>? ServiceDetails { get; set; }
     public DbSet<Time>? Times { get; set; }

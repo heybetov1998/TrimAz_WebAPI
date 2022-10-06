@@ -1,30 +1,33 @@
 ﻿using Business.Services;
 using DAL.Abstracts;
+using DAL.Context;
 using Entity.Identity;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Repositories;
 
 public class BarberRepository : IBarberService
 {
-    private readonly IUserDAL _userDAL;
+    private readonly AppDbContext _context;
+    private readonly UserManager<AppUser> _userManager;
 
-    public BarberRepository(IUserDAL userDAL)
+
+    public BarberRepository(AppDbContext context, UserManager<AppUser> userManager)
     {
-        _userDAL = userDAL;
+        _context = context;
+        _userManager = userManager;
     }
 
     public async Task<AppUser> GetAsync(string id)
     {
-        var data = await _userDAL.GetAsync(
-            expression: n => n.Id == id,
-            includes: new string[] {
-                "UserBarbers.User",
-                "BarberImages.Image",
-                "BarberServices.Service",
-                "BarberServices.ServiceDetail",
-                "Videos"
-            });
+        var data = await _context.Users.Where(n => n.Id == id)
+            .Include(n => n.UserImages).ThenInclude(n => n.Image)
+            .Include(n => n.Videos)
+            .Include(n => n.UserServices).ThenInclude(n => n.Service)
+            .Include(n => n.UserServices).ThenInclude(n => n.ServiceDetail)
+            .FirstOrDefaultAsync();
 
         if (data is null)
         {
@@ -36,17 +39,19 @@ public class BarberRepository : IBarberService
 
     public async Task<List<AppUser>> GetAllAsync(int take = int.MaxValue)
     {
-        var data = await _userDAL.GetAllAsync(
-            take: take,
-            includes: new string[] { "UserBarbers", "BarberImages.Image" });
+        var datas = await _context.Users.Where(n => n.RoleName == "Barber")
+            .Include(n => n.UserImages).ThenInclude(n => n.Image)
+            .Take(take)
+            .ToListAsync();
 
-        if (data is null)
+        if (datas is null)
         {
             throw new EntityCouldNotFoundException();
         }
 
-        return data;
+        return datas;
     }
+
 
     public Task CreateAsync(AppUser entity)
     {
