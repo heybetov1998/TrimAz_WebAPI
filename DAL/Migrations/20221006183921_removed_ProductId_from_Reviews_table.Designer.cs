@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221006133342_added_RoleName_column_to_Users_table")]
-    partial class added_RoleName_column_to_Users_table
+    [Migration("20221006183921_removed_ProductId_from_Reviews_table")]
+    partial class removed_ProductId_from_Reviews_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -441,6 +441,9 @@ namespace DAL.Migrations
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");

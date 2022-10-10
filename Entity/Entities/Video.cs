@@ -11,6 +11,6 @@ public class Video
 
     public int Id { get; set; }
     public string YoutubeLink { get; set; } = default!;
-    public string BarberId { get; set; } = default!;
+    public string UserId { get; set; } = default!;
     public AppUser User{ get; set; }
 }

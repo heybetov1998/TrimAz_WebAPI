@@ -1,12 +1,13 @@
 ﻿using Business.Jwt;
 using Business.Services;
+using Entity.DTO.Barber;
 using Entity.DTO.Barbershop;
-using Entity.DTO.Location;
+using Entity.DTO.Review;
+using Entity.DTO.Service;
 using Entity.Entities;
+using Entity.Identity;
 using Exceptions.EntityExceptions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using TrimAz.Commons;
 
 namespace TrimAz.Controllers
@@ -16,12 +17,14 @@ namespace TrimAz.Controllers
     public class BarbershopsController : ControllerBase
     {
         private readonly IBarbershopService _barbershopService;
+        private readonly IReviewService _reviewService;
         private readonly IJwtUtils _jwtUtils;
 
-        public BarbershopsController(IBarbershopService barbershopService, IJwtUtils jwtUtils)
+        public BarbershopsController(IBarbershopService barbershopService, IJwtUtils jwtUtils, IReviewService reviewService)
         {
             _barbershopService = barbershopService;
             _jwtUtils = jwtUtils;
+            _reviewService = reviewService;
         }
 
         [HttpGet("{id}")]
@@ -45,92 +48,77 @@ namespace TrimAz.Controllers
                 }
 
                 //Barbers
-                //foreach (var barber in data.Barbers)
-                //{
-                //    BarberGetDTO barberGetDTO = new();
-                //    List<double> ratings = new();
-
-                //    barberGetDTO.Id = barber.Id;
-                //    barberGetDTO.FirstName = barber.FirstName;
-                //    barberGetDTO.LastName = barber.LastName;
-
-                //    //StarRating
-                //    foreach (var userBarber in barber.UserBarbers)
-                //    {
-                //        ratings.Add(userBarber.StarRating);
-                //    }
-                //    barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
-
-                //    //Avatar Image
-                //    barberGetDTO.ImageName = "user-profile.png";
-                //    foreach (var barberImage in barber.BarberImages)
-                //    {
-                //        if (barberImage.IsAvatar)
-                //        {
-                //            barberGetDTO.ImageName = barberImage.Image.Name;
-                //            break;
-                //        }
-                //    }
-
-                //    barbershop.Barbers.Add(barberGetDTO);
-                //}
-
-                ////Services
-                //foreach (var barber in data.Barbers)
-                //{
-                //    foreach (var barberService in barber.BarberServices)
-                //    {
-                //        ServiceGetDTO service = new();
-
-                //        service.Id = barberService.Service.Id;
-                //        service.Name = barberService.Service.Name;
-
-                //        barbershop.Services.Add(service);
-                //    }
-                //}
-                //barbershop.Services = barbershop.Services.DistinctBy(n => n.Id).ToList();
-
-                //Locations
-                foreach (var barbershopLocation in data.BarbershopLocations)
+                foreach (var userBarbershop in data.UserBarbershops)
                 {
-                    LocationGetDTO location = new();
+                    if (userBarbershop.User.RoleName == "Barber")
+                    {
+                        AppUser barber = userBarbershop.User;
+                        BarberGetDTO barberGetDTO = new();
+                        barberGetDTO.Id = barber.Id;
+                        barberGetDTO.FirstName = barber.FirstName;
+                        barberGetDTO.LastName = barber.LastName;
 
-                    location.Latitude = barbershopLocation.Location.Latitude;
-                    location.Longtitude = barbershopLocation.Location.Longtitude;
+                        List<Review> reviews = await _reviewService.GetAllAsync();
+                        List<double> ratings = new();
 
-                    barbershop.Locations.Add(location);
+                        //StarRating
+                        foreach (var review in reviews)
+                        {
+                            if (barber.Id == review.BarberId)
+                            {
+                                ReviewGetDTO reviewDTO = new();
+                                reviewDTO.Id = review.Id;
+                                reviewDTO.UserId = review.User.Id;
+                                reviewDTO.UserFirstName = review.User.FirstName;
+                                reviewDTO.UserLastName = review.User.LastName;
+                                reviewDTO.CreatedDate = review.CreatedDate;
+                                reviewDTO.GivenRating = review.GivenRating;
+                                reviewDTO.Comment = review.Message;
+
+                                //Review User Avatar
+                                reviewDTO.UserAvatar = "profile-picture.png";
+                                foreach (var userImage in review.User.UserImages)
+                                {
+                                    if (userImage.IsAvatar)
+                                    {
+                                        reviewDTO.UserAvatar = userImage.Image.Name;
+                                        break;
+                                    }
+                                }
+                                barbershop.Reviews.Add(reviewDTO);
+                                ratings.Add(review.GivenRating);
+                            }
+                        }
+                        barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+
+                        //Avatar Image
+                        barberGetDTO.ImageName = "profile-picture.png";
+                        foreach (var barberImage in barber.UserImages)
+                        {
+                            if (barberImage.IsAvatar)
+                            {
+                                barberGetDTO.ImageName = barberImage.Image.Name;
+                                break;
+                            }
+                        }
+
+                        barbershop.Barbers.Add(barberGetDTO);
+
+                        foreach (var barberService in barber.UserServices)
+                        {
+                            ServiceGetDTO service = new();
+
+                            service.Id = barberService.Service.Id;
+                            service.Name = barberService.Service.Name;
+
+                            barbershop.Services.Add(service);
+                        }
+                    }
+
                 }
-
-                //Reviews
-                //Reviews
-                //foreach (var barber in data.Barbers)
-                //{
-                //    foreach (var userBarber in barber.UserBarbers)
-                //    {
-                //        ReviewGetDTO review = new();
-
-                //        review.Id = userBarber.Id;
-                //        review.UserId = userBarber.User.Id;
-                //        review.UserFirstName = userBarber.User.FirstName;
-                //        review.UserLastName = userBarber.User.LastName;
-                //        review.CreatedDate = userBarber.CreatedDate;
-                //        review.GivenRating = userBarber.StarRating;
-                //        review.Comment = userBarber.Message;
-
-                //        //Review User Avatar
-                //        review.UserAvatar = "profile-picture.png";
-                //        foreach (var userImage in userBarber.User.UserImages)
-                //        {
-                //            if (userImage.IsAvatar)
-                //            {
-                //                review.UserAvatar = userImage.Image.Name;
-                //                break;
-                //            }
-                //        }
-
-                //        barbershop.Reviews.Add(review);
-                //    }
-                //}
+                barbershop.Services = barbershop.Services.DistinctBy(n => n.Id).ToList();
+                barbershop.Latitude = Convert.ToDecimal(data.Latitude);
+                barbershop.Longtitude = Convert.ToDecimal(data.Longtitude);
 
                 return Ok(barbershop);
             }
@@ -163,18 +151,18 @@ namespace TrimAz.Controllers
                     barbershopGetDTO.AfterPrice = "-dən başlayaraq";
 
                     double price = double.MaxValue;
-                    //foreach (var barber in data.Barbers)
-                    //{
-                    //    foreach (var barberService in barber.BarberServices)
-                    //    {
-                    //        if (barberService.ServiceDetail.Price < price)
-                    //        {
-                    //            price = barberService.ServiceDetail.Price;
-                    //        }
-                    //    }
-                    //}
+                    foreach (var userBarbershop in data.UserBarbershops)
+                    {
+                        foreach (var userService in userBarbershop.User.UserServices)
+                        {
+                            if (userService.ServiceDetail.Price < price)
+                            {
+                                price = userService.ServiceDetail.Price;
+                            }
+                        }
+                    }
 
-                    barbershopGetDTO.Price = Math.Round(price);
+                    barbershopGetDTO.Price = price < double.MaxValue ? Math.Round(price) : 0;
 
                     barbershopGetDTO.Image.Name = "no-image.png";
                     foreach (var barbershopImage in data.BarbershopImages)
@@ -186,7 +174,6 @@ namespace TrimAz.Controllers
                         }
                     }
                     barbershopGetDTO.Image.Alt = barbershopGetDTO.Image.Name;
-                    barbershopGetDTO.Location = "testtest";
 
                     barbershops.Add(barbershopGetDTO);
                 }
@@ -203,22 +190,27 @@ namespace TrimAz.Controllers
             }
         }
 
-        [HttpPost, Authorize(Roles = "Admin,Owner")]
-        public async Task<IActionResult> CreateAsync(BarbershopPostDTO barbershopPostDTO)
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromForm] BarbershopPostDTO barbershopPostDTO)
         {
-            string token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+            //string token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
 
-            if (_jwtUtils.ValidateToken(token) == null)
-            {
-                return StatusCode(StatusCodes.Status403Forbidden, new Response(StatusCodes.Status403Forbidden, "Not valid token"));
-            }
+            //if (_jwtUtils.ValidateToken(token) == null)
+            //{
+            //    return StatusCode(StatusCodes.Status403Forbidden, new Response(StatusCodes.Status403Forbidden, "Not valid token"));
+            //}
 
             Barbershop barbershop = new()
             {
-                Name = barbershopPostDTO.Name
+                Name = barbershopPostDTO.Name,
+                Latitude = barbershopPostDTO.Latitude.ToString(),
+                Longtitude = barbershopPostDTO.Longtitude.ToString(),
+                CreatedDate = DateTime.UtcNow.AddHours(4)
             };
-
             await _barbershopService.CreateAsync(barbershop);
+
+            await _barbershopService.UploadAsync(barbershop, barbershopPostDTO.Images);
+
             return Ok(new { statusCode = 200, message = "Barbershop added successfully" });
         }
     }

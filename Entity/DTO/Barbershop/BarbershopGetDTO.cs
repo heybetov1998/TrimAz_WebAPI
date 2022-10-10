@@ -13,6 +13,5 @@ public class BarbershopGetDTO
     public string Name { get; set; } = null!;
     public double Price { get; set; }
     public string AfterPrice { get; set; } = null!;
-    public string Location { get; set; } = null!;
     public ImageGetDTO Image { get; set; }
 }

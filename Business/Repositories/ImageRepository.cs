@@ -48,8 +48,9 @@ public class ImageRepository : IImageService
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        Image image = await GetAsync(id);
+        await _imageDAL.DeleteAsync(image);
     }
 }

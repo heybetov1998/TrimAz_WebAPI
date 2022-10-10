@@ -8,6 +8,7 @@ namespace Entity.Entities
         public string Message { get; set; }
         public double GivenRating { get; set; }
         public string? BarberId { get; set; }
+        public int? ProductId { get; set; }
         public string UserId { get; set; }
         public AppUser User { get; set; }
 

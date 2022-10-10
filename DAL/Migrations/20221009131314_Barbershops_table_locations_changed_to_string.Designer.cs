@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221004122746_Token_column_added_to_Users_Table_and_default_empty")]
-    partial class Token_column_added_to_Users_Table_and_default_empty
+    [Migration("20221009131314_Barbershops_table_locations_changed_to_string")]
+    partial class Barbershops_table_locations_changed_to_string
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,14 @@ namespace DAL.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Latitude")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Longtitude")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -135,34 +143,6 @@ namespace DAL.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Location", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longtitude")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Locations");
-                });
-
             modelBuilder.Entity("Entity.Entities.Pivots.BarbershopImage", b =>
                 {
                     b.Property<int>("Id")
@@ -187,29 +167,6 @@ namespace DAL.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("BarbershopImages");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Pivots.BarbershopLocation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("BarbershopId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarbershopId");
-
-                    b.HasIndex("LocationId");
-
-                    b.ToTable("BarbershopLocation");
                 });
 
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
@@ -392,9 +349,6 @@ namespace DAL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("LocationId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -411,11 +365,50 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LocationId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BarberId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("GivenRating")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Entity.Entities.Service", b =>
@@ -563,8 +556,15 @@ namespace DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("StarRating")
+                        .HasColumnType("float");
 
                     b.Property<string>("Token")
                         .IsRequired()
@@ -770,25 +770,6 @@ namespace DAL.Migrations
                     b.Navigation("Image");
                 });
 
-            modelBuilder.Entity("Entity.Entities.Pivots.BarbershopLocation", b =>
-                {
-                    b.HasOne("Entity.Entities.Barbershop", "Barbershop")
-                        .WithMany("BarbershopLocations")
-                        .HasForeignKey("BarbershopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Entities.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Barbershop");
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("Entity.Entities.Pivots.BlogImage", b =>
                 {
                     b.HasOne("Entity.Entities.Blog", "Blog")
@@ -913,12 +894,19 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("Entity.Entities.Product", b =>
                 {
-                    b.HasOne("Entity.Entities.Location", null)
-                        .WithMany("Products")
-                        .HasForeignKey("LocationId");
-
                     b.HasOne("Entity.Identity.AppUser", "User")
                         .WithMany("Products")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entity.Entities.Review", b =>
+                {
+                    b.HasOne("Entity.Identity.AppUser", "User")
+                        .WithMany("Reviews")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -992,19 +980,12 @@ namespace DAL.Migrations
                 {
                     b.Navigation("BarbershopImages");
 
-                    b.Navigation("BarbershopLocations");
-
                     b.Navigation("UserBarbershops");
                 });
 
             modelBuilder.Entity("Entity.Entities.Blog", b =>
                 {
                     b.Navigation("BlogImages");
-                });
-
-            modelBuilder.Entity("Entity.Entities.Location", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Entity.Entities.Product", b =>
@@ -1034,6 +1015,8 @@ namespace DAL.Migrations
                     b.Navigation("Feedbacks");
 
                     b.Navigation("Products");
+
+                    b.Navigation("Reviews");
 
                     b.Navigation("UserBarbershops");
 

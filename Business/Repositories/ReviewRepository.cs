@@ -23,7 +23,7 @@ public class ReviewRepository : IReviewService
     {
         var datas = await _reviewDAL.GetAllAsync(
             expression: n => !n.IsDeleted,
-            includes: new string[] { "User" });
+            includes: new string[] { "User.UserImages.Image" });
 
         if (datas is null)
         {

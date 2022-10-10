@@ -187,6 +187,9 @@ public class BarbersController : ControllerBase
                 }
                 barber.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
 
+                data.StarRating = barber.StarRating;
+                await _userManager.UpdateAsync(data);
+
                 barbers.Add(barber);
             }
 
@@ -225,7 +228,7 @@ public class BarbersController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateAsync(string id, BarberUpdateDTO barberUpdateDTO)
+    public async Task<IActionResult> UpdateAsync(string id, [FromForm] BarberUpdateDTO barberUpdateDTO)
     {
         AppUser barber = await _userManager.FindByIdAsync(barberUpdateDTO.Id);
 
@@ -236,6 +239,12 @@ public class BarbersController : ControllerBase
 
         barber.FirstName = barberUpdateDTO.FirstName;
         barber.LastName = barberUpdateDTO.LastName;
+
+        if (barberUpdateDTO.AvatarImage is not null)
+            await _barberService.UploadAsync(barber, barberUpdateDTO.AvatarImage, true);
+
+        if (barberUpdateDTO.PortfolioImages.Count > 0)
+            await _barberService.UploadAsync(barber, barberUpdateDTO.PortfolioImages);
 
         await _userManager.UpdateAsync(barber);
 

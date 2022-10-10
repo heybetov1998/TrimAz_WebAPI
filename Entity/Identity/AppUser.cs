@@ -35,6 +35,7 @@ public class AppUser : IdentityUser, IEntity
         Videos = new HashSet<Video>();
         Feedbacks = new HashSet<Feedback>();
         UserImages = new HashSet<UserImage>();
+        UserServices = new HashSet<UserService>();
         UserTimes = new HashSet<UserTime>();
         Products = new HashSet<Product>();
         UserBarbershops = new HashSet<UserBarbershop>();
