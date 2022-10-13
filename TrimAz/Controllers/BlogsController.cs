@@ -151,16 +151,33 @@ namespace TrimAz.Controllers
 
             await _blogService.CreateAsync(blog);
 
-            await _blogService.UploadAsync(blog, blogCreateDTO.Images);
+            await _blogService.UploadAsync(blog, blogCreateDTO.Images, isUpdate: false);
 
             return Ok(blog);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromForm] BlogUpdateDTO blogUpdateDTO)
         {
             Blog blog = await _blogService.GetAsync(id);
-            return Ok();
+
+            blog.Title = blogUpdateDTO.Title;
+            blog.Content = blogUpdateDTO.Content;
+            blog.UpdatedDate = DateTime.UtcNow.AddHours(4);
+
+            await _blogService.UploadAsync(blog, blogUpdateDTO.Images, isUpdate: true);
+
+            await _blogService.UpdateAsync(blog.Id, blog);
+
+            return Ok(blog);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            await _blogService.DeleteAsync(id);
+
+            return Ok(new { statusCode = 200, message = "Blog deleted successfully" });
         }
     }
 }

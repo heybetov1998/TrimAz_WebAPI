@@ -60,9 +60,9 @@ namespace Business.Repositories
             await _barbershopDAL.CreateAsync(entity);
         }
 
-        public Task UpdateAsync(int id, Barbershop entity)
+        public async Task UpdateAsync(int id, Barbershop entity)
         {
-            throw new NotImplementedException();
+            await _barbershopDAL.UpdateAsync(entity);
         }
 
         public Task DeleteAsync(int id)
@@ -92,10 +92,15 @@ namespace Business.Repositories
             return "Image added successfully";
         }
 
-        public async Task<string> UploadAsync(Barbershop barbershop, ICollection<IFormFile> files)
+        public async Task<string> UploadAsync(Barbershop barbershop, ICollection<IFormFile> files,bool isUpdate)
         {
             string resultMessage = "";
-            bool attachMain = true;
+            bool attachMain;
+            if (isUpdate)
+                attachMain = false;
+            else
+                attachMain = true;
+
             if (files.Count > 0)
             {
                 foreach (var file in files)
@@ -106,7 +111,7 @@ namespace Business.Repositories
                         isMain = true;
                         attachMain = false;
                     }
-                    await UploadAsync(barbershop, file, isMain);
+                    await UploadAsync(barbershop, file, isMain: isMain);
                     resultMessage += "Image added successfully\n";
                 }
             }

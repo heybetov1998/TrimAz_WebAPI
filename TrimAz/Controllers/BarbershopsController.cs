@@ -209,9 +209,22 @@ namespace TrimAz.Controllers
             };
             await _barbershopService.CreateAsync(barbershop);
 
-            await _barbershopService.UploadAsync(barbershop, barbershopPostDTO.Images);
+            await _barbershopService.UploadAsync(barbershop, barbershopPostDTO.Images, isUpdate: false);
 
             return Ok(new { statusCode = 200, message = "Barbershop added successfully" });
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromForm] BarbershopUpdateDTO barbershopUpdateDTO)
+        {
+            Barbershop barbershop = await _barbershopService.GetAsync(barbershopUpdateDTO.Id);
+
+            barbershop.Name = barbershopUpdateDTO.Name;
+
+            await _barbershopService.UploadAsync(barbershop, barbershopUpdateDTO.Images, isUpdate: true);
+            await _barbershopService.UpdateAsync(barbershop.Id, barbershop);
+
+            return Ok(new { statusCode = 200, message = "Barbershop updated successfully" });
         }
     }
 }

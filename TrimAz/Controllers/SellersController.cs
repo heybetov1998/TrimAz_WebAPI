@@ -36,7 +36,8 @@ public class SellersController : ControllerBase
         {
             Id = user.Id,
             FirstName = user.FirstName,
-            LastName = user.LastName
+            LastName = user.LastName,
+            PhoneNumber = user.PhoneNumber
         };
 
         return Ok(sellerUpdateDTO);
@@ -87,7 +88,7 @@ public class SellersController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateAsync(string id, SellerUpdateDTO sellerUpdateDTO)
+    public async Task<IActionResult> UpdateAsync(string id, [FromForm] SellerUpdateDTO sellerUpdateDTO)
     {
         AppUser seller = await _userManager.FindByIdAsync(sellerUpdateDTO.Id);
 
@@ -98,6 +99,10 @@ public class SellersController : ControllerBase
 
         seller.FirstName = sellerUpdateDTO.FirstName;
         seller.LastName = sellerUpdateDTO.LastName;
+        seller.PhoneNumber = sellerUpdateDTO.PhoneNumber;
+
+        if (sellerUpdateDTO.AvatarImage is not null)
+            await _sellerService.UploadAsync(seller, sellerUpdateDTO.AvatarImage, true);
 
         await _userManager.UpdateAsync(seller);
 

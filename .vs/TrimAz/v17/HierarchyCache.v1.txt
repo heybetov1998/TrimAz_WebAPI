@@ -3,15 +3,15 @@ i:{00000000-0000-0000-0000-000000000000}:TrimAz.sln
 ++TrimAz
 i:{00000000-0000-0000-0000-000000000000}:TrimAz
 ++Connected Services 
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1197
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2033
 ++Dependencies
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1196
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>970
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>969
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>968
-i:{772becc4-b767-46f0-9af4-2364821f0491}:>966
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>967
-i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:>971
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2032
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1033
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1031
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1034
+i:{772becc4-b767-46f0-9af4-2364821f0491}:>1035
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>1032
+i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:>1036
 ++Properties
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\properties\
 ++Commons
@@ -122,6 +122,136 @@ i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trim
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\09102022_19093410f05009-75d8-4534-b584-edd928f22c1a.webp
 ++09102022_190934994ae675-f432-4025-89e9-fd81849a6a8b.webp
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\09102022_190934994ae675-f432-4025-89e9-fd81849a6a8b.webp
+++10102022_033203cd1c2ec9-c935-4685-b411-4ef5d48ceeb2.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033203cd1c2ec9-c935-4685-b411-4ef5d48ceeb2.png
+++10102022_033255bd07f688-7d6b-45d8-8cd1-0c50835d20ab.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033255bd07f688-7d6b-45d8-8cd1-0c50835d20ab.jpg
+++10102022_033255fc8be5f0-1028-46eb-a8a1-07008ff8962c.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033255fc8be5f0-1028-46eb-a8a1-07008ff8962c.jpg
+++10102022_040355a8d9978b-f722-498f-be22-67425d6ed221.webp
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355a8d9978b-f722-498f-be22-67425d6ed221.webp
+++10102022_040355c6fb7207-3e9f-4886-b9e8-5d415f2bb04a.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355c6fb7207-3e9f-4886-b9e8-5d415f2bb04a.jpg
+++10102022_040355f4d29782-aadc-4924-ac47-0540e2ae77f0.webp
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355f4d29782-aadc-4924-ac47-0540e2ae77f0.webp
+++10102022_0405119feeb6ff-1ef2-4c9a-97ed-23c2b5cc4132.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0405119feeb6ff-1ef2-4c9a-97ed-23c2b5cc4132.png
+++10102022_040511e250ee27-8521-41fe-ad26-c58f6d953305.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040511e250ee27-8521-41fe-ad26-c58f6d953305.jpg
+++10102022_053943ec970d73-cdb0-4df6-a944-0aca580c88f8.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_053943ec970d73-cdb0-4df6-a944-0aca580c88f8.jpg
+++10102022_05395919f5eee1-440d-4c48-b756-49b59904d223.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_05395919f5eee1-440d-4c48-b756-49b59904d223.png
+++10102022_0539593dd24ec5-b38a-4175-90d9-7cfe43668cae.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0539593dd24ec5-b38a-4175-90d9-7cfe43668cae.jpg
+++10102022_053959ed28f04b-1ad2-4f7c-aad4-4ba8b800ecd9.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_053959ed28f04b-1ad2-4f7c-aad4-4ba8b800ecd9.jpg
+++10102022_054012e21a1398-bc86-4f19-bda1-2bf0d1abfc34.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054012e21a1398-bc86-4f19-bda1-2bf0d1abfc34.png
+++10102022_054048a5aa0ba3-b1ed-45a7-a562-443b4a23baf1.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054048a5aa0ba3-b1ed-45a7-a562-443b4a23baf1.png
+++10102022_054139a57d56f8-dfca-43ae-9438-41a45bd5a5f2.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054139a57d56f8-dfca-43ae-9438-41a45bd5a5f2.png
+++10102022_0544575fe30bb5-c297-41b8-a39a-7a2403fae5de.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0544575fe30bb5-c297-41b8-a39a-7a2403fae5de.png
+++10102022_05504991d4ebc8-a95d-4b33-b035-e4c3e06cb921.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_05504991d4ebc8-a95d-4b33-b035-e4c3e06cb921.jpg
+++10102022_055151e9748e8e-6464-4c01-adc8-761d6e633cf6.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_055151e9748e8e-6464-4c01-adc8-761d6e633cf6.png
+++10102022_062129215546d5-d5c0-4aeb-a7fc-e181e05e5c70.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_062129215546d5-d5c0-4aeb-a7fc-e181e05e5c70.jpg
+++10102022_0621298c0b156a-133d-4ebe-95b5-ca02e9c55346.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0621298c0b156a-133d-4ebe-95b5-ca02e9c55346.png
+++10102022_191152aa1812e0-7ac1-4eb2-923c-b6153342228f.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_191152aa1812e0-7ac1-4eb2-923c-b6153342228f.png
+++10102022_191152c0856c7a-5db9-48c3-b357-56430c7a08b3.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_191152c0856c7a-5db9-48c3-b357-56430c7a08b3.jpg
+++10102022_1932071f8e5b87-7bb4-4ca2-b823-7f65ff20481f.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1932071f8e5b87-7bb4-4ca2-b823-7f65ff20481f.png
+++10102022_1932081c418b2a-fefa-4952-a990-0281c339c663.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1932081c418b2a-fefa-4952-a990-0281c339c663.jpg
+++10102022_19340085dbd623-9aa0-4bf2-b1d1-1040ce6620f5.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_19340085dbd623-9aa0-4bf2-b1d1-1040ce6620f5.png
+++10102022_1934161c2c7b1d-6516-4f69-9a3c-657451ca1a5f.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1934161c2c7b1d-6516-4f69-9a3c-657451ca1a5f.jpg
+++10102022_1936285ad8a44f-4d63-4717-bb55-7664259a2ed5.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1936285ad8a44f-4d63-4717-bb55-7664259a2ed5.png
+++10102022_1939186f17e748-41ef-4248-925d-6def9ec0af40.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1939186f17e748-41ef-4248-925d-6def9ec0af40.jpg
+++10102022_19412987d0665b-2a3b-4911-bac1-9ef1285da8a7.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_19412987d0665b-2a3b-4911-bac1-9ef1285da8a7.jpg
+++10102022_194129e224e34d-7bdc-4a5b-a3b7-9802a6c38c7f.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_194129e224e34d-7bdc-4a5b-a3b7-9802a6c38c7f.png
+++10102022_1943160b736d9d-fb27-429b-b756-99efbd85d2bf.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1943160b736d9d-fb27-429b-b756-99efbd85d2bf.jpg
+++10102022_1943161451cdcd-cfb7-444c-b51f-c0b0ebe10c8e.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_1943161451cdcd-cfb7-444c-b51f-c0b0ebe10c8e.png
+++10102022_194316ad278488-55a8-45fa-9b67-d198c6167c47.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_194316ad278488-55a8-45fa-9b67-d198c6167c47.jpg
+++10102022_194418cd2fcf49-26c4-4b81-b072-75ec2af5688e.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_194418cd2fcf49-26c4-4b81-b072-75ec2af5688e.jpg
+++10102022_194619684faa46-3a96-44d3-acd8-6421adc9259e.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_194619684faa46-3a96-44d3-acd8-6421adc9259e.png
+++10102022_19462077333387-8997-4413-a584-d376056f735e.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_19462077333387-8997-4413-a584-d376056f735e.png
+++11102022_1443343875806b-f68f-497d-8343-c6ce6bc9977d.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1443343875806b-f68f-497d-8343-c6ce6bc9977d.png
+++11102022_144334f91a7494-e271-43d7-8726-be33d7eb3e7e.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144334f91a7494-e271-43d7-8726-be33d7eb3e7e.jpg
+++11102022_14454782425cf6-5e95-408d-8395-c78a76f906b9.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_14454782425cf6-5e95-408d-8395-c78a76f906b9.jpg
+++11102022_144548c1645a40-4592-4661-9558-857bd5f8182c.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144548c1645a40-4592-4661-9558-857bd5f8182c.jpg
+++11102022_144818cd43d445-d245-40b9-8fc8-622c1bc7a5e3.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144818cd43d445-d245-40b9-8fc8-622c1bc7a5e3.jpg
+++11102022_144818df71e21f-c520-402d-801c-3498d8df1014.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144818df71e21f-c520-402d-801c-3498d8df1014.jpg
+++11102022_144939b3120760-b6fb-44a9-b020-214eb2cc0aa1.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144939b3120760-b6fb-44a9-b020-214eb2cc0aa1.jpg
+++11102022_144943c6d4fddd-9884-4a72-8547-aa8b828e6c9f.webp
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_144943c6d4fddd-9884-4a72-8547-aa8b828e6c9f.webp
+++11102022_15015406682639-0b97-4688-a352-295aade8e4d9.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_15015406682639-0b97-4688-a352-295aade8e4d9.jpg
+++11102022_150155e2866130-d2e4-4861-8fdd-f0ed5b4639a7.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_150155e2866130-d2e4-4861-8fdd-f0ed5b4639a7.jpg
+++11102022_150422bfa6a311-7e4e-4bed-ab15-5b0fb54faec6.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_150422bfa6a311-7e4e-4bed-ab15-5b0fb54faec6.png
+++11102022_1506027cc491c6-be3b-4945-a503-c5825aa4cced.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1506027cc491c6-be3b-4945-a503-c5825aa4cced.png
+++11102022_150801891e02e7-c581-4f0a-aec5-e20344ac6845.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_150801891e02e7-c581-4f0a-aec5-e20344ac6845.jpg
+++11102022_151043bc3bc9c4-9612-4782-9354-79f6546dd53e.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_151043bc3bc9c4-9612-4782-9354-79f6546dd53e.png
+++11102022_1511479224b322-5893-4cc4-820e-1250db201ac5.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1511479224b322-5893-4cc4-820e-1250db201ac5.jpg
+++11102022_15212184c3fbed-82a3-407e-911d-acde2a33bf32.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_15212184c3fbed-82a3-407e-911d-acde2a33bf32.png
+++11102022_1521456827fe93-df49-4999-889b-9989ef7d54c0.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1521456827fe93-df49-4999-889b-9989ef7d54c0.jpg
+++11102022_1522419afd6802-6534-4352-8173-95d12f6bd5b9.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1522419afd6802-6534-4352-8173-95d12f6bd5b9.jpg
+++11102022_1524135f8699f7-baa3-4170-904f-4530131180d6.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1524135f8699f7-baa3-4170-904f-4530131180d6.jpg
+++11102022_152637f1891571-3eb7-4225-b53f-61439539231c.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_152637f1891571-3eb7-4225-b53f-61439539231c.jpg
+++11102022_153217776d85af-5e4d-411c-a2be-30d799e6788c.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_153217776d85af-5e4d-411c-a2be-30d799e6788c.jpg
+++11102022_153245552f49bb-ed6e-42a1-be98-3ea454f3844c.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_153245552f49bb-ed6e-42a1-be98-3ea454f3844c.jpg
+++11102022_153400e1757f6b-fe0f-4b24-aead-b33769f6b946.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_153400e1757f6b-fe0f-4b24-aead-b33769f6b946.jpg
+++11102022_1534027b050e81-14f5-4646-8f5b-c4e7abc87a14.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_1534027b050e81-14f5-4646-8f5b-c4e7abc87a14.jpg
+++11102022_16254416856efc-6b61-4490-ae0e-957bb506267f.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_16254416856efc-6b61-4490-ae0e-957bb506267f.jpg
+++11102022_16254693daaa62-4dd8-43b3-8710-997c742d1726.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_16254693daaa62-4dd8-43b3-8710-997c742d1726.jpg
+++11102022_162549ac096912-f333-4bcd-b5df-6a4c1df0fc0b.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\11102022_162549ac096912-f333-4bcd-b5df-6a4c1df0fc0b.jpg
+++12102022_1421135b5b65e4-15e6-4045-ac9a-24ce200ccaef.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_1421135b5b65e4-15e6-4045-ac9a-24ce200ccaef.png
+++12102022_142113f89e0576-b3aa-448f-aa79-0de0f020e578.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_142113f89e0576-b3aa-448f-aa79-0de0f020e578.png
 ++235-500x500.jpg
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\235-500x500.jpg
 ++423-500x500.jpg
@@ -139,34 +269,33 @@ i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trim
 ++Program.cs
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\program.cs
 ++No service dependencies discovered
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1198
 ++Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:analyzers
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:analyzers
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:analyzers
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:analyzers
 i:{772becc4-b767-46f0-9af4-2364821f0491}:analyzers
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:analyzers
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:analyzers
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:analyzers
 ++Frameworks
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:frameworks
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:frameworks
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:frameworks
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:frameworks
 i:{772becc4-b767-46f0-9af4-2364821f0491}:frameworks
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:frameworks
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:frameworks
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:frameworks
 ++Packages
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:packages
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:packages
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:packages
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:packages
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:packages
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:packages
 ++Projects
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:projects
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:projects
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:projects
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:projects
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:projects
 ++launchSettings.json
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\properties\launchsettings.json
 ++Helpers
@@ -184,102 +313,120 @@ i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft
 ++Microsoft.AspNetCore.Components.Analyzers
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
 ++Microsoft.AspNetCore.Mvc.Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.aspnetcore.mvc.analyzers\2.2.0\analyzers\dotnet\cs\microsoft.aspnetcore.mvc.analyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
 ++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
 ++Microsoft.CodeAnalysis.Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
 ++Microsoft.CodeAnalysis.CSharp.Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
 ++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
 ++Microsoft.CodeAnalysis.NetAnalyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
 ++Microsoft.EntityFrameworkCore.Analyzers
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.9\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
 ++Microsoft.Extensions.Logging.Generators
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
 ++Microsoft.NET.Sdk.Razor.SourceGenerators
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
 ++System.Text.Json.SourceGeneration
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
 ++Microsoft.AspNetCore.App
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\microsoft.aspnetcore.app
 ++Microsoft.NETCore.App
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\microsoft.netcore.app
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\microsoft.netcore.app
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\microsoft.netcore.app
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\microsoft.netcore.app
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exceptions\microsoft.netcore.app
 i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\microsoft.netcore.app
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\users\heybe\source\repos\trimaz\extensions\microsoft.netcore.app
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\microsoft.netcore.app
 ++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1214
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2050
 ++Microsoft.EntityFrameworkCore (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1209
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1285
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1263
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>1223
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1374
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1387
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:>1403
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2045
 ++Microsoft.EntityFrameworkCore.Design (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1211
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1265
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1389
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2047
 ++Microsoft.EntityFrameworkCore.SqlServer (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1210
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1286
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1264
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1375
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1388
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2046
 ++Microsoft.EntityFrameworkCore.Tools (6.0.9)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1216
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1266
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:>1390
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2052
 ++Microsoft.IdentityModel.Tokens (6.23.1)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1215
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2051
 ++Swashbuckle.AspNetCore (6.4.0)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1213
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2049
 ++System.IdentityModel.Tokens.Jwt (6.23.1)
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>1212
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2048
 ++Business
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\business\business.csproj
 i:{00000000-0000-0000-0000-000000000000}:Business
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\business\business.csproj
 ++DAL
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\dal\dal.csproj
 i:{00000000-0000-0000-0000-000000000000}:DAL
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\dal\dal.csproj
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\dal\bin\debug\net6.0\dal.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\dal\dal.csproj
 ++Entity
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
 i:{00000000-0000-0000-0000-000000000000}:Entity
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\entity\bin\debug\net6.0\entity.dll
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\entity\bin\debug\net6.0\entity.dll
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\entity\bin\debug\net6.0\entity.dll
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\entity\entity.csproj
 ++Enums.cs
 i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\commons\helpers\enums.cs
+++Core
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\core\bin\debug\net6.0\core.dll
+i:{00000000-0000-0000-0000-000000000000}:Core
+++EFRepository
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\
+++EFBase
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\
+++EFEntityRepositoryBase.cs
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\efentityrepositorybase.cs
+++IEntityRepositoryBase.cs
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\ientityrepositorybase.cs
+++Exceptions
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\exceptions\bin\debug\net6.0\exceptions.dll
+i:{00000000-0000-0000-0000-000000000000}:Exceptions
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\exceptions\bin\debug\net6.0\exceptions.dll
+++Extensions
+i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\extensions\bin\debug\net6.0\extensions.dll
+i:{00000000-0000-0000-0000-000000000000}:Extensions
 ++Base
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\base\
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\base\
@@ -347,12 +494,12 @@ i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\enti
 ++Mapper.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\profiles\mapper.cs
 ++AutoMapper.Extensions.Microsoft.DependencyInjection (11.0.0)
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1287
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1248
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1376
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1420
 ++Microsoft.AspNetCore.Http.Features (5.0.17)
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1284
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1373
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (6.0.9)
-i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1288
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:>1377
 ++BarberDetailGetDTO.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\barber\barberdetailgetdto.cs
 ++BarberGetDTO.cs
@@ -373,6 +520,8 @@ i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\enti
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\blog\blogdetailgetdto.cs
 ++BlogGetDTO.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\blog\bloggetdto.cs
+++BlogUpdateDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\blog\blogupdatedto.cs
 ++LoginUserDTO.cs
 i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\identity\loginuserdto.cs
 ++RegisterBarberDTO.cs
@@ -435,20 +584,6 @@ i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\context\
 ++Implementations
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\
-++BarbershopRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\barbershoprepositorydal.cs
-++BlogRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\blogrepositorydal.cs
-++ImageRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\imagerepositorydal.cs
-++ProductRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\productrepositorydal.cs
-++ReviewRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\reviewrepositorydal.cs
-++ServiceRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\servicerepositorydal.cs
-++UserRepositoryDAL.cs
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\userrepositorydal.cs
 ++Migrations
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\
 ++IBarbershopDAL.cs
@@ -467,6 +602,20 @@ i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\abstracts\iuserdal.cs
 ++AppDbContext.cs
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\context\appdbcontext.cs
+++BarbershopRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\barbershoprepositorydal.cs
+++BlogRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\blogrepositorydal.cs
+++ImageRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\imagerepositorydal.cs
+++ProductRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\productrepositorydal.cs
+++ReviewRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\reviewrepositorydal.cs
+++ServiceRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\servicerepositorydal.cs
+++UserRepositoryDAL.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\implementations\userrepositorydal.cs
 ++20221006183921_removed_ProductId_from_Reviews_table.cs
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221006183921_removed_productid_from_reviews_table.cs
 ++20221009131133_Locations_table_deleted.cs
@@ -475,9 +624,6 @@ i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221009131314_barbershops_table_locations_changed_to_string.cs
 ++AppDbContextModelSnapshot.cs
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\appdbcontextmodelsnapshot.cs
-++Core
-i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\core\core.csproj
-i:{00000000-0000-0000-0000-000000000000}:Core
 ++20221006183921_removed_ProductId_from_Reviews_table.Designer.cs
 i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221006183921_removed_productid_from_reviews_table.designer.cs
 ++20221009131133_Locations_table_deleted.Designer.cs
@@ -490,22 +636,6 @@ i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\busi
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\jwt\
 ++Repositories
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\
-++BarberRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\barberrepository.cs
-++BarbershopRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\barbershoprepository.cs
-++BlogRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\blogrepository.cs
-++ImageRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\imagerepository.cs
-++ProductRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\productrepository.cs
-++ReviewRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\reviewrepository.cs
-++SellerRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\sellerrepository.cs
-++ServiceRepository.cs
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\servicerepository.cs
 ++Services
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\services\
 ++AllowAnonymousAttribute.cs
@@ -528,6 +658,22 @@ i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\busi
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\jwt\jwtmiddleware.cs
 ++JwtUtils.cs
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\jwt\jwtutils.cs
+++BarberRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\barberrepository.cs
+++BarbershopRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\barbershoprepository.cs
+++BlogRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\blogrepository.cs
+++ImageRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\imagerepository.cs
+++ProductRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\productrepository.cs
+++ReviewRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\reviewrepository.cs
+++SellerRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\sellerrepository.cs
+++ServiceRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\servicerepository.cs
 ++IBarberService.cs
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\services\ibarberservice.cs
 ++IBarbershopService.cs
@@ -545,17 +691,13 @@ i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\busi
 ++IServiceService.cs
 i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\services\iserviceservice.cs
 ++MailKit (3.4.1)
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1252
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1428
 ++Microsoft.AspNetCore.Http (2.2.2)
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1250
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1424
 ++Microsoft.AspNetCore.Mvc (2.2.0)
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1249
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1421
 ++MimeKit (3.4.1)
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1251
-++Exceptions
-i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\exceptions\exceptions.csproj
-i:{00000000-0000-0000-0000-000000000000}:Exceptions
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\exceptions\exceptions.csproj
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:>1426
 ++AuthExceptions
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exceptions\authexceptions\
 ++DataExceptions
@@ -576,56 +718,66 @@ i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exce
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exceptions\entityexceptions\entitycouldnotfoundexception.cs
 ++FileUploadFailedException.cs
 i:{772becc4-b767-46f0-9af4-2364821f0491}:c:\users\heybe\source\repos\trimaz\exceptions\fileexceptions\fileuploadfailedexception.cs
-++EFRepository
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\
-++EFBase
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\
-++Extensions
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\extensions\extensions.csproj
-i:{00000000-0000-0000-0000-000000000000}:Extensions
-++EFEntityRepositoryBase.cs
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\efentityrepositorybase.cs
-++IEntityRepositoryBase.cs
-i:{dc886780-36c9-4f43-a655-ca7061332e7b}:c:\users\heybe\source\repos\trimaz\core\efrepository\efbase\ientityrepositorybase.cs
 ++LinqExtensions.cs
 i:{f86ffb30-f9eb-4cfa-89fa-e3f983ae1a77}:c:\users\heybe\source\repos\trimaz\extensions\linqextensions.cs
-++10102022_033203cd1c2ec9-c935-4685-b411-4ef5d48ceeb2.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033203cd1c2ec9-c935-4685-b411-4ef5d48ceeb2.png
-++10102022_033255bd07f688-7d6b-45d8-8cd1-0c50835d20ab.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033255bd07f688-7d6b-45d8-8cd1-0c50835d20ab.jpg
-++10102022_033255fc8be5f0-1028-46eb-a8a1-07008ff8962c.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_033255fc8be5f0-1028-46eb-a8a1-07008ff8962c.jpg
-++10102022_040355a8d9978b-f722-498f-be22-67425d6ed221.webp
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355a8d9978b-f722-498f-be22-67425d6ed221.webp
-++10102022_040355c6fb7207-3e9f-4886-b9e8-5d415f2bb04a.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355c6fb7207-3e9f-4886-b9e8-5d415f2bb04a.jpg
-++10102022_040355f4d29782-aadc-4924-ac47-0540e2ae77f0.webp
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040355f4d29782-aadc-4924-ac47-0540e2ae77f0.webp
-++10102022_0405119feeb6ff-1ef2-4c9a-97ed-23c2b5cc4132.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0405119feeb6ff-1ef2-4c9a-97ed-23c2b5cc4132.png
-++10102022_040511e250ee27-8521-41fe-ad26-c58f6d953305.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_040511e250ee27-8521-41fe-ad26-c58f6d953305.jpg
-++10102022_053943ec970d73-cdb0-4df6-a944-0aca580c88f8.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_053943ec970d73-cdb0-4df6-a944-0aca580c88f8.jpg
-++10102022_05395919f5eee1-440d-4c48-b756-49b59904d223.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_05395919f5eee1-440d-4c48-b756-49b59904d223.png
-++10102022_0539593dd24ec5-b38a-4175-90d9-7cfe43668cae.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0539593dd24ec5-b38a-4175-90d9-7cfe43668cae.jpg
-++10102022_053959ed28f04b-1ad2-4f7c-aad4-4ba8b800ecd9.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_053959ed28f04b-1ad2-4f7c-aad4-4ba8b800ecd9.jpg
-++10102022_054012e21a1398-bc86-4f19-bda1-2bf0d1abfc34.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054012e21a1398-bc86-4f19-bda1-2bf0d1abfc34.png
-++10102022_054048a5aa0ba3-b1ed-45a7-a562-443b4a23baf1.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054048a5aa0ba3-b1ed-45a7-a562-443b4a23baf1.png
-++10102022_054139a57d56f8-dfca-43ae-9438-41a45bd5a5f2.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_054139a57d56f8-dfca-43ae-9438-41a45bd5a5f2.png
-++10102022_0544575fe30bb5-c297-41b8-a39a-7a2403fae5de.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0544575fe30bb5-c297-41b8-a39a-7a2403fae5de.png
-++10102022_05504991d4ebc8-a95d-4b33-b035-e4c3e06cb921.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_05504991d4ebc8-a95d-4b33-b035-e4c3e06cb921.jpg
-++10102022_055151e9748e8e-6464-4c01-adc8-761d6e633cf6.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_055151e9748e8e-6464-4c01-adc8-761d6e633cf6.png
-++10102022_062129215546d5-d5c0-4aeb-a7fc-e181e05e5c70.jpg
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_062129215546d5-d5c0-4aeb-a7fc-e181e05e5c70.jpg
-++10102022_0621298c0b156a-133d-4ebe-95b5-ca02e9c55346.png
-i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\10102022_0621298c0b156a-133d-4ebe-95b5-ca02e9c55346.png
+++12102022_14293018fbddbd-da6a-4889-a7d4-931cd3fa8fdf.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_14293018fbddbd-da6a-4889-a7d4-931cd3fa8fdf.png
+++12102022_14293075aa8afb-0a5e-4427-9248-5e7ff9a69718.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_14293075aa8afb-0a5e-4427-9248-5e7ff9a69718.jpg
+++12102022_142930acd8b3e4-7f40-459f-90c9-a27ff7eff750.webp
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_142930acd8b3e4-7f40-459f-90c9-a27ff7eff750.webp
+++TrimAz (unloaded)
+++Solution 'TrimAz' ‎(6 of 7 projects)
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Components.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Mvc.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.201\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.NetAnalyzers.dll
+++20221012134032_added_IsStartTime_and_IsEndTime_columns_to_UserTimes_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221012134032_added_isstarttime_and_isendtime_columns_to_usertimes_table.cs
+++20221012134032_added_IsStartTime_and_IsEndTime_columns_to_UserTimes_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221012134032_added_isstarttime_and_isendtime_columns_to_usertimes_table.designer.cs
+++20221012134243_added_IsReserved_column_to_UserTimes_table.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221012134243_added_isreserved_column_to_usertimes_table.cs
+++20221012134243_added_IsReserved_column_to_UserTimes_table.Designer.cs
+i:{b3ff9f8f-e7a8-4e59-89a1-d607287ab0fb}:c:\users\heybe\source\repos\trimaz\dal\migrations\20221012134243_added_isreserved_column_to_usertimes_table.designer.cs
+++TimesController.cs
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\controllers\timescontroller.cs
+++ITimeService.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\services\itimeservice.cs
+++ITimeRepository.cs
+++TimeRepository.cs
+i:{3c6997a1-d82f-41a6-97e3-64f389a9af30}:c:\users\heybe\source\repos\trimaz\business\repositories\timerepository.cs
+++NewFolder
+++Time
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\time\
+++TimeGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\time\timegetdto.cs
+++Microsoft identity platform
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2093
+++For applications that authenticate users with the Microsoft identity platform (Azure AD, Azure AD B2C and personal Microsoft accounts).
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2094
+++SQL Server Database (ConnectionStrings:Default)
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2091
+++SQL Server Database dependency with connectionId 'ConnectionStrings:Default' is detected
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:>2092
+++12102022_222157b4807af2-269e-4a83-ae20-89d81840c093.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_222157b4807af2-269e-4a83-ae20-89d81840c093.png
+++12102022_2223025623310f-2d21-4ac1-ab84-778b134de738.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_2223025623310f-2d21-4ac1-ab84-778b134de738.png
+++12102022_22281638085b83-d6a6-41a0-81cd-ed756f4572fc.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_22281638085b83-d6a6-41a0-81cd-ed756f4572fc.png
+++12102022_223244466f48f4-7234-41b1-85b0-3166ec1871eb.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_223244466f48f4-7234-41b1-85b0-3166ec1871eb.png
+++12102022_23042765aad339-12c3-4206-92dc-7cd892078de0.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_23042765aad339-12c3-4206-92dc-7cd892078de0.jpg
+++12102022_233901163d0c2b-42db-4837-b91a-bcfaf4b702f2.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\12102022_233901163d0c2b-42db-4837-b91a-bcfaf4b702f2.jpg
+++13102022_00190275c6cb9e-0e57-41f3-9cfc-0d7fbdfa567c.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\13102022_00190275c6cb9e-0e57-41f3-9cfc-0d7fbdfa567c.png
+++13102022_001902c9d4c6f6-b21a-4b43-bf4d-132f359a9322.png
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\13102022_001902c9d4c6f6-b21a-4b43-bf4d-132f359a9322.png
+++13102022_001902af565b6c-233a-49c9-9062-52902ce5d226.jpg
+i:{770b2710-a1bb-411b-a13e-735d1196ec65}:c:\users\heybe\source\repos\trimaz\trimaz\images\13102022_001902af565b6c-233a-49c9-9062-52902ce5d226.jpg
+++SellerGetDTO.cs
+i:{5d73a485-50f7-406b-b237-50ecf8a09299}:c:\users\heybe\source\repos\trimaz\entity\dto\seller\sellergetdto.cs

@@ -61,9 +61,16 @@ public class BlogRepository : IBlogService
         await _blogDAL.UpdateAsync(entity);
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        Blog blog = await GetAsync(id);
+
+        if (blog is null)
+        {
+            return;
+        }
+
+        await _blogDAL.DeleteAsync(blog);
     }
 
     public async Task<string> UploadAsync(Blog blog, IFormFile file, bool isMain)
@@ -88,10 +95,15 @@ public class BlogRepository : IBlogService
         return "Image added successfully";
     }
 
-    public async Task<string> UploadAsync(Blog blog, ICollection<IFormFile> files)
+    public async Task<string> UploadAsync(Blog blog, ICollection<IFormFile> files, bool isUpdate)
     {
         string resultMessage = "";
-        bool attachMain = true;
+        bool attachMain;
+        if (isUpdate)
+            attachMain = false;
+        else
+            attachMain = true;
+
         if (files.Count > 0)
         {
             foreach (var file in files)
@@ -102,7 +114,7 @@ public class BlogRepository : IBlogService
                     isMain = true;
                     attachMain = false;
                 }
-                await UploadAsync(blog, file, isMain);
+                await UploadAsync(blog, file, isMain: isMain);
                 resultMessage += "Image added successfully\n";
             }
         }

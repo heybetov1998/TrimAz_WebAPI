@@ -91,6 +91,8 @@ builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 
 builder.Services.AddScoped<ISellerService, SellerRepository>();
 
+builder.Services.AddScoped<ITimeService, TimeRepository>();
+
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));

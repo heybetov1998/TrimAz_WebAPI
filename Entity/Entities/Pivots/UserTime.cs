@@ -12,10 +12,11 @@ public class UserTime : IEntity
     }
 
     public int Id { get; set; }
-    public bool IsWorkHour { get; set; }
+    public bool IsStartTime { get; set; }
+    public bool IsEndTime { get; set; }
     public bool IsReserved { get; set; }
     public string UserId { get; set; } = default!;
-    public int TimeId { get; set; }
     public AppUser User { get; set; }
+    public int TimeId { get; set; }
     public Time Time { get; set; }
 }

@@ -19,8 +19,8 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepositoryBase<T
     public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? expression = null, int skip = 0, params string[] includes)
     {
         var query = expression is null ?
-            _context.Set<TEntity>().AsNoTracking() :
-            _context.Set<TEntity>().Where(expression).AsNoTracking();
+            _context.Set<TEntity>() :
+            _context.Set<TEntity>().Where(expression);
 
         query = query.Skip(skip);
 

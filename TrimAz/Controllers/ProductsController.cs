@@ -43,6 +43,7 @@ public class ProductsController : ControllerBase
             product.Seller.Id = data.User.Id;
             product.Seller.FirstName = data.User.FirstName;
             product.Seller.LastName = data.User.LastName;
+            product.Seller.PhoneNumber = data.User.PhoneNumber;
 
             // Seller Avatar
             product.Seller.Image.Name = "profile-picture.png";
@@ -192,19 +193,21 @@ public class ProductsController : ControllerBase
         };
         await _productService.CreateAsync(product);
 
-        await _productService.UploadAsync(product, productCreateDTO.Images);
+        await _productService.UploadAsync(product, productCreateDTO.Images, isUpdate: false);
 
         return Ok(new { statusCode = 200, message = "Product created successfully" });
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateAsync(int id, ProductUpdateDTO productUpdateDTO)
+    public async Task<IActionResult> UpdateAsync(int id, [FromForm] ProductUpdateDTO productUpdateDTO)
     {
         Product product = await _productService.GetAsync(productUpdateDTO.Id);
 
         product.Title = productUpdateDTO.Title;
         product.Content = productUpdateDTO.Content;
         product.Price = productUpdateDTO.Price;
+
+        await _productService.UploadAsync(product, productUpdateDTO.Images, isUpdate: true);
 
         await _productService.UpdateAsync(product.Id, product);
 

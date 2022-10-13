@@ -89,10 +89,15 @@ public class ProductRepository : IProductService
         return "Image added successfully";
     }
 
-    public async Task<string> UploadAsync(Product product, ICollection<IFormFile> files)
+    public async Task<string> UploadAsync(Product product, ICollection<IFormFile> files, bool isUpdate)
     {
         string resultMessage = "";
-        bool attachMain = true;
+        bool attachMain;
+        if (isUpdate)
+            attachMain = false;
+        else
+            attachMain = true;
+
         if (files.Count > 0)
         {
             foreach (var file in files)
@@ -103,7 +108,7 @@ public class ProductRepository : IProductService
                     isMain = true;
                     attachMain = false;
                 }
-                await UploadAsync(product, file, isMain);
+                await UploadAsync(product, file, isMain: isMain);
                 resultMessage += "Image added successfully\n";
             }
         }

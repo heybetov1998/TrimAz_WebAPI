@@ -44,48 +44,50 @@ public class AuthController : ControllerBase
 
     #region Barber Registration
     [HttpPost("RegisterBarber")]
-    public async Task<IActionResult> RegisterAsync(RegisterBarberDTO registerBarberDTO)
+    public async Task<IActionResult> RegisterAsync(RegisterUserDTO registerUserDTO)
     {
-        if (!ModelState.IsValid)
-        {
-            DataAnnotationNotListenedException ex = new();
-            return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4014, ex.Message));
-        }
+        return await registerAsync(registerUserDTO, Roles.Barber.ToString());
 
-        AppUser appUser = new();
+        //if (!ModelState.IsValid)
+        //{
+        //    DataAnnotationNotListenedException ex = new();
+        //    return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4014, ex.Message));
+        //}
 
-        appUser.FirstName = Capitalize(registerBarberDTO.FirstName.Trim());
-        appUser.LastName = Capitalize(registerBarberDTO.LastName.Trim());
-        appUser.Email = registerBarberDTO.Email;
-        appUser.UserName = registerBarberDTO.UserName;
-        appUser.WorkStartTime = registerBarberDTO.WorkStartTime;
-        appUser.WorkEndTime = registerBarberDTO.WorkEndTime;
-        appUser.Token = "";
-        appUser.RoleName = "Barber";
+        //AppUser appUser = new();
 
-        var result = await _userManager.CreateAsync(appUser, registerBarberDTO.Password);
+        //appUser.FirstName = Capitalize(registerBarberDTO.FirstName.Trim());
+        //appUser.LastName = Capitalize(registerBarberDTO.LastName.Trim());
+        //appUser.Email = registerBarberDTO.Email;
+        //appUser.UserName = registerBarberDTO.UserName;
+        //appUser.WorkStartTime = registerBarberDTO.WorkStartTime;
+        //appUser.WorkEndTime = registerBarberDTO.WorkEndTime;
+        //appUser.Token = "";
+        //appUser.RoleName = "Barber";
 
-        if (!result.Succeeded)
-        {
-            UserCouldNotBeCreatedException ex = new();
-            return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4005, ex.Message));
-        }
+        //var result = await _userManager.CreateAsync(appUser, registerBarberDTO.Password);
 
-        //await _emailSender.SendEmailAsync(
-        //    email: registerUserDTO.Email,
-        //    subject: string.Format("Confirm your email address, {0} {1}", registerUserDTO.FirstName, registerUserDTO.LastName),
-        //    htmlMessage: "<a href='#'>Confirm email</a>"
-        //    );
+        //if (!result.Succeeded)
+        //{
+        //    UserCouldNotBeCreatedException ex = new();
+        //    return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4005, ex.Message));
+        //}
 
-        var roleResult = await _userManager.AddToRoleAsync(appUser, Roles.Barber.ToString());
+        ////await _emailSender.SendEmailAsync(
+        ////    email: registerUserDTO.Email,
+        ////    subject: string.Format("Confirm your email address, {0} {1}", registerUserDTO.FirstName, registerUserDTO.LastName),
+        ////    htmlMessage: "<a href='#'>Confirm email</a>"
+        ////    );
 
-        if (!roleResult.Succeeded)
-        {
-            RoleCouldNotBeAttachedException ex = new();
-            return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4005, ex.Message));
-        }
+        //var roleResult = await _userManager.AddToRoleAsync(appUser, Roles.Barber.ToString());
 
-        return Ok(registerBarberDTO);
+        //if (!roleResult.Succeeded)
+        //{
+        //    RoleCouldNotBeAttachedException ex = new();
+        //    return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4005, ex.Message));
+        //}
+
+        //return Ok(registerBarberDTO);
     }
     #endregion
 

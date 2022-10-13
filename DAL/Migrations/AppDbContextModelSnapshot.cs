@@ -307,10 +307,13 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool>("IsEndTime")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsReserved")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsWorkHour")
+                    b.Property<bool>("IsStartTime")
                         .HasColumnType("bit");
 
                     b.Property<int>("TimeId")
@@ -484,10 +487,6 @@ namespace DAL.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BarberId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
