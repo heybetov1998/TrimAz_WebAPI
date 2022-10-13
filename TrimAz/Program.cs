@@ -1,13 +1,19 @@
+using Business.Auth;
 using Business.Repositories;
 using Business.Services;
 using DAL.Abstracts;
 using DAL.Context;
 using DAL.Implementations;
 using Entity.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Business.Jwt;
+using Business;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,13 +38,28 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
-    options.SignIn.RequireConfirmedAccount = false
-).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-builder.Services.AddIdentityCore<Barber>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-builder.Services.AddIdentityCore<Seller>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+// JWT Authentication
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["JWT:Issuer"],
+            ValidAudience = builder.Configuration["JWT:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
 
-//builder.Services.AddAutoMapper(n => n.AddProfile(new Mapper()));
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedEmail = false;
+    options.User.RequireUniqueEmail = true;
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -49,7 +70,7 @@ builder.Services.AddScoped<IProductService, ProductRepository>();
 builder.Services.AddScoped<IProductDAL, ProductRepositoryDAL>();
 
 builder.Services.AddScoped<IBarberService, BarberRepository>();
-builder.Services.AddScoped<IBarberDAL, BarberRepositoryDAL>();
+builder.Services.AddScoped<IUserDAL, UserRepositoryDAL>();
 
 builder.Services.AddScoped<IBarbershopService, BarbershopRepository>();
 builder.Services.AddScoped<IBarbershopDAL, BarbershopRepositoryDAL>();
@@ -59,6 +80,23 @@ builder.Services.AddScoped<IServiceDAL, ServiceRepositoryDAL>();
 
 builder.Services.AddScoped<IBlogService, BlogRepository>();
 builder.Services.AddScoped<IBlogDAL, BlogRepositoryDAL>();
+
+builder.Services.AddScoped<IImageService, ImageRepository>();
+builder.Services.AddScoped<IImageDAL, ImageRepositoryDAL>();
+
+builder.Services.AddScoped<IReviewService, ReviewRepository>();
+builder.Services.AddScoped<IReviewDAL, ReviewRepositoryDAL>();
+
+builder.Services.AddScoped<IJwtUtils, JwtUtils>();
+
+builder.Services.AddScoped<ISellerService, SellerRepository>();
+
+builder.Services.AddScoped<ITimeService, TimeRepository>();
+
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("JWT"));
 
 var app = builder.Build();
 

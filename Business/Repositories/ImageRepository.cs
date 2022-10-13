@@ -38,9 +38,9 @@ public class ImageRepository : IImageService
         return data;
     }
 
-    public Task CreateAsync(Image entity)
+    public async Task CreateAsync(Image entity)
     {
-        throw new NotImplementedException();
+        await _imageDAL.CreateAsync(entity);
     }
 
     public Task UpdateAsync(int id, Image entity)
@@ -48,8 +48,9 @@ public class ImageRepository : IImageService
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        Image image = await GetAsync(id);
+        await _imageDAL.DeleteAsync(image);
     }
 }

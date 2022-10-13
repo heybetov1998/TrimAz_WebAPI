@@ -8,16 +8,17 @@ public class Barbershop : BaseEntity, IEntity
 {
     public Barbershop()
     {
-        Barbers = new HashSet<Barber>();
         BarbershopImages = new HashSet<BarbershopImage>();
-        BarbershopLocations = new HashSet<BarbershopLocation>();
+        UserBarbershops = new HashSet<UserBarbershop>();
     }
 
     public string Name { get; set; } = default!;
+    public string Latitude { get; set; }
+    public string Longtitude { get; set; }
 
-    public ICollection<Barber> Barbers { get; set; }
 
     //Pivot
     public ICollection<BarbershopImage> BarbershopImages { get; set; }
-    public ICollection<BarbershopLocation> BarbershopLocations { get; set; }
+    public ICollection<UserBarbershop> UserBarbershops { get; set; }
+
 }

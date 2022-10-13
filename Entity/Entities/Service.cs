@@ -7,10 +7,10 @@ public class Service : BaseEntity, IEntity
 {
     public Service()
     {
-        BarberServices = new HashSet<BarberService>();
+        UserServices = new HashSet<UserService>();
     }
 
     public string Name { get; set; } = default!;
 
-    public ICollection<BarberService> BarberServices { get; set; }
+    public ICollection<UserService> UserServices { get; set; }
 }

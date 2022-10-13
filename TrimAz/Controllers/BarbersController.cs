@@ -4,9 +4,11 @@ using Entity.DTO.Image;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
 using Entity.DTO.Video;
-using Entity.Entities.Pivots;
+using Entity.Entities;
 using Entity.Identity;
+using Exceptions.DataExceptions;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TrimAz.Commons;
 
@@ -17,10 +19,17 @@ namespace TrimAz.Controllers;
 public class BarbersController : ControllerBase
 {
     private readonly IBarberService _barberService;
+    private readonly IReviewService _reviewService;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IBarbershopService _barbershopService;
 
-    public BarbersController(IBarberService barberService)
+    public BarbersController(IBarberService barberService, UserManager<AppUser> userManager,
+        IBarbershopService barbershopService, IReviewService reviewService)
     {
         _barberService = barberService;
+        _userManager = userManager;
+        _barbershopService = barbershopService;
+        _reviewService = reviewService;
     }
 
     [HttpGet("{id}")]
@@ -30,38 +39,68 @@ public class BarbersController : ControllerBase
         {
             var data = await _barberService.GetAsync(id);
 
-            List<double> ratings = new();
-            BarberDetailGetDTO barber = new();
-
-            barber.FirstName = data.FirstName;
-            barber.LastName = data.LastName;
+            BarberDetailGetDTO barber = new()
+            {
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+            };
 
             //Avatar
-            barber.Avatar = "no-image.png";
-            foreach (var barberImage in data.BarberImages)
+            barber.Avatar = "profile-picture.png";
+            foreach (var userImage in data.UserImages)
             {
-                if (barberImage.IsAvatar)
+                if (userImage.IsAvatar)
                 {
-                    barber.Avatar = barberImage.Image.Name;
+                    barber.Avatar = userImage.Image.Name;
                     break;
                 }
             }
 
-            //Rating
-            foreach (var userBarber in data.UserBarbers)
+            //StarRating
+            List<double> ratings = new();
+            List<Review> reviews = await _reviewService.GetAllAsync();
+            List<ReviewGetDTO> reviewDTOs = new();
+            foreach (Review review in reviews)
             {
-                ratings.Add(userBarber.StarRating);
+                if (review.BarberId == data.Id)
+                {
+                    ReviewGetDTO reviewDTO = new()
+                    {
+                        Id = review.Id,
+                        Comment = review.Message,
+                        CreatedDate = review.CreatedDate,
+                        GivenRating = review.GivenRating,
+                        UserId = review.User.Id,
+                        UserFirstName = review.User.FirstName,
+                        UserLastName = review.User.LastName
+                    };
+
+                    //Review User Avatar
+                    reviewDTO.UserAvatar = "profile-picture.png";
+                    foreach (var userImage in review.User.UserImages)
+                    {
+                        if (userImage.IsAvatar)
+                        {
+                            reviewDTO.UserAvatar = userImage.Image.Name;
+                            break;
+                        }
+                    }
+
+                    ratings.Add(review.GivenRating);
+                    reviewDTOs.Add(reviewDTO);
+                }
             }
             barber.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+            barber.Reviews = reviewDTOs;
 
             //Images
-            foreach (var barberImage in data.BarberImages)
+            foreach (var userImage in data.UserImages)
             {
-                if (!barberImage.IsAvatar)
+                if (!userImage.IsAvatar)
                 {
                     ImageGetDTO imageGetDTO = new();
 
-                    imageGetDTO.Name = barberImage.Image.Name;
+                    imageGetDTO.Name = userImage.Image.Name;
                     imageGetDTO.Alt = imageGetDTO.Name;
 
                     barber.Images.Add(imageGetDTO);
@@ -69,14 +108,14 @@ public class BarbersController : ControllerBase
             }
 
             //Services
-            foreach (var barberService in data.BarberServices)
+            foreach (var userService in data.UserServices)
             {
                 ServiceTimeGetDTO serviceTimeGetDTO = new();
 
-                serviceTimeGetDTO.Id = barberService.Service.Id;
-                serviceTimeGetDTO.Name = barberService.Service.Name;
-                serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
-                serviceTimeGetDTO.Price = barberService.ServiceDetail.Price;
+                serviceTimeGetDTO.Id = userService.Service.Id;
+                serviceTimeGetDTO.Name = userService.Service.Name;
+                //serviceTimeGetDTO.Time = barberService.ServiceDetail.Time;
+                serviceTimeGetDTO.Price = userService.ServiceDetail.Price;
 
                 barber.Services.Add(serviceTimeGetDTO);
             }
@@ -90,33 +129,6 @@ public class BarbersController : ControllerBase
                 videoGetDTO.YoutubeId = video.YoutubeLink.Remove(0, 32);
 
                 barber.Videos.Add(videoGetDTO);
-            }
-
-            //Reviews
-            foreach (var userBarber in data.UserBarbers)
-            {
-                ReviewGetDTO review = new();
-
-                review.Id = userBarber.Id;
-                review.UserId = userBarber.User.Id;
-                review.UserFirstName = userBarber.User.FirstName;
-                review.UserLastName = userBarber.User.LastName;
-                review.CreatedDate = userBarber.CreatedDate;
-                review.GivenRating = userBarber.StarRating;
-                review.Comment = userBarber.Message;
-
-                //Review User Avatar
-                review.UserAvatar = "profile-picture.png";
-                foreach (var userImage in userBarber.User.UserImages)
-                {
-                    if (userImage.IsAvatar)
-                    {
-                        review.UserAvatar = userImage.Image.Name;
-                        break;
-                    }
-                }
-
-                barber.Reviews.Add(review);
             }
 
             return Ok(barber);
@@ -134,43 +146,51 @@ public class BarbersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync(int? take)
     {
-        List<BarberGetDTO> barbers = new List<BarberGetDTO>();
 
         take ??= int.MaxValue;
 
         try
         {
-            var datas = await _barberService.GetAllAsync(take: (int)take);
+            List<BarberGetDTO> barbers = new List<BarberGetDTO>();
 
-            foreach (Barber data in datas)
+            List<AppUser> datas = await _barberService.GetAllAsync((int)take);
+
+            foreach (AppUser data in datas)
             {
-                List<double> ratings = new List<double>();
-                BarberGetDTO barberGetDTO = new BarberGetDTO()
+                BarberGetDTO barber = new()
                 {
                     Id = data.Id,
                     FirstName = data.FirstName,
-                    LastName = data.LastName
+                    LastName = data.LastName,
                 };
 
-                foreach (var userBarber in data.UserBarbers)
+                //ImageName
+                barber.ImageName = "profile-picture.png";
+                foreach (var userImage in data.UserImages)
                 {
-                    ratings.Add(userBarber.StarRating);
-                }
-
-                barberGetDTO.ImageName = "profile-picture.png";
-
-                foreach (var barberImage in data.BarberImages)
-                {
-                    if (barberImage.IsAvatar)
+                    if (userImage.IsAvatar)
                     {
-                        barberGetDTO.ImageName = barberImage.Image.Name;
+                        barber.ImageName = userImage.Image.Name;
                         break;
                     }
                 }
 
-                barberGetDTO.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+                //StarRating
+                List<double> ratings = new();
+                List<Review> reviews = await _reviewService.GetAllAsync();
+                foreach (Review review in reviews)
+                {
+                    if (review.BarberId == data.Id)
+                    {
+                        ratings.Add(review.GivenRating);
+                    }
+                }
+                barber.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
 
-                barbers.Add(barberGetDTO);
+                data.StarRating = barber.StarRating;
+                await _userManager.UpdateAsync(data);
+
+                barbers.Add(barber);
             }
 
             return Ok(barbers);
@@ -186,15 +206,49 @@ public class BarbersController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create()
+    public IActionResult CreateAsync(BarberPostDTO barberPostDTO)
     {
+        if (!ModelState.IsValid)
+        {
+            DataAnnotationNotListenedException ex = new();
+            return StatusCode(StatusCodes.Status405MethodNotAllowed, new Response(4014, ex.Message));
+        }
+
+        //Barber barber = new();
+
+        //barber.FirstName = barberPostDTO.FirstName;
+        //barber.LastName = barberPostDTO.LastName;
+        //barber.Email = barberPostDTO.Email;
+        //barber.UserName = barberPostDTO.UserName;
+        //barber.BarbershopId = barberPostDTO.BarbershopId;
+
+        //await _userManager.CreateAsync(barber, barberPostDTO.Password);
+
         return Ok();
     }
 
     [HttpPut]
-    public IActionResult Update()
+    public async Task<IActionResult> UpdateAsync(string id, [FromForm] BarberUpdateDTO barberUpdateDTO)
     {
-        return Ok();
+        AppUser barber = await _userManager.FindByIdAsync(barberUpdateDTO.Id);
+
+        if (barber == null)
+        {
+            return BadRequest(new { statusCode = 404, message = "User not found" });
+        }
+
+        barber.FirstName = barberUpdateDTO.FirstName;
+        barber.LastName = barberUpdateDTO.LastName;
+
+        if (barberUpdateDTO.AvatarImage is not null)
+            await _barberService.UploadAsync(barber, barberUpdateDTO.AvatarImage, true);
+
+        if (barberUpdateDTO.PortfolioImages.Count > 0)
+            await _barberService.UploadAsync(barber, barberUpdateDTO.PortfolioImages);
+
+        await _userManager.UpdateAsync(barber);
+
+        return Ok(new { statusCode = 200, message = "Barber updated successfully" });
     }
 
     [HttpDelete]

@@ -1,5 +1,5 @@
 ﻿using Entity.DTO.Review;
-using Entity.DTO.User;
+using Entity.DTO.Seller;
 
 namespace Entity.DTO.Productı
 {
@@ -16,7 +16,7 @@ namespace Entity.DTO.Productı
         public double Price { get; set; }
         public string Content { get; set; } = default!;
         public string MainImage { get; set; } = default!;
-        public UserGetDTO Seller { get; set; }
+        public SellerGetDTO Seller { get; set; }
         public ICollection<string> Images { get; set; }
         public ICollection<ReviewGetDTO> Reviews { get; set; }
     }
