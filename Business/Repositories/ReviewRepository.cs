@@ -33,9 +33,9 @@ public class ReviewRepository : IReviewService
         return datas;
     }
 
-    public Task CreateAsync(Review entity)
+    public async Task CreateAsync(Review entity)
     {
-        throw new NotImplementedException();
+        await _reviewDAL.CreateAsync(entity);
     }
 
     public Task UpdateAsync(int id, Review entity)

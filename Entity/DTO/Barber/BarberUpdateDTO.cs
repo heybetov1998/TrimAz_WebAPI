@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Entity.DTO.Barbershop;
+using Microsoft.AspNetCore.Http;
 
 namespace Entity.DTO.Barber
 {

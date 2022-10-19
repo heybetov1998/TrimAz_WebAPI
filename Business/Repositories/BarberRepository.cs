@@ -31,6 +31,7 @@ public class BarberRepository : IBarberService
             .Include(n => n.Videos)
             .Include(n => n.UserServices).ThenInclude(n => n.Service)
             .Include(n => n.UserServices).ThenInclude(n => n.ServiceDetail)
+            .Include(n => n.UserTimes).ThenInclude(n => n.Time)
             .FirstOrDefaultAsync();
 
         if (data is null)
