@@ -19,9 +19,16 @@ namespace Business.Repositories
         {
             _context = context;
         }
-        public Task<Time> GetAsync(int id)
+        public async Task<Time> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var data = await _context.Times!.Where(n => n.Id == id).FirstOrDefaultAsync();
+
+            if (data is null)
+            {
+                throw new EntityCouldNotFoundException();
+            }
+
+            return data;
         }
 
         public async Task<List<Time>> GetAllAsync(int take = int.MaxValue)

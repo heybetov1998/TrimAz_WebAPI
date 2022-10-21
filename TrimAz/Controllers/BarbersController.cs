@@ -1,10 +1,13 @@
 ﻿using Business.Services;
+using DAL.Context;
 using Entity.DTO.Barber;
 using Entity.DTO.Image;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
+using Entity.DTO.Time;
 using Entity.DTO.Video;
 using Entity.Entities;
+using Entity.Entities.Pivots;
 using Entity.Identity;
 using Exceptions.DataExceptions;
 using Exceptions.EntityExceptions;
@@ -22,14 +25,16 @@ public class BarbersController : ControllerBase
     private readonly IReviewService _reviewService;
     private readonly UserManager<AppUser> _userManager;
     private readonly IBarbershopService _barbershopService;
+    private readonly ITimeService _timeService;
 
     public BarbersController(IBarberService barberService, UserManager<AppUser> userManager,
-        IBarbershopService barbershopService, IReviewService reviewService)
+        IBarbershopService barbershopService, IReviewService reviewService, ITimeService timeService)
     {
         _barberService = barberService;
         _userManager = userManager;
         _barbershopService = barbershopService;
         _reviewService = reviewService;
+        _timeService = timeService;
     }
 
     [HttpGet("{id}")]
@@ -131,6 +136,60 @@ public class BarbersController : ControllerBase
                 barber.Videos.Add(videoGetDTO);
             }
 
+            //Times
+            List<Time> times = await _timeService.GetAllAsync();
+
+            //Remove reserved
+            List<Time> uTime = new();
+
+            foreach (var time in times)
+            {
+                if (data.UserTimes.Count > 0)
+                {
+                    foreach (var userTime in data.UserTimes)
+                    {
+                        if (time.Id != userTime.Time.Id)
+                        {
+                            if (!uTime.Contains(time))
+                            {
+                                uTime.Add(time);
+                            }
+                        }
+                        else
+                        {
+                            if (uTime.Contains(time))
+                            {
+                                uTime.Remove(time);
+                            }
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    uTime = times;
+                    break;
+                }
+            }
+
+            foreach (var ut in uTime)
+            {
+                TimeGetDTO timeGetDTO = new()
+                {
+                    Id = ut.Id,
+                    Range = ut.Range
+                };
+
+                barber.Times.Add(timeGetDTO);
+            }
+
+            //BarbershopId
+            foreach (var userBarbershop in data.UserBarbershops)
+            {
+                barber.BarbershopId = userBarbershop.Barbershop.Id;
+                break;
+            }
+
             return Ok(barber);
         }
         catch (EntityCouldNotFoundException ex)
@@ -230,7 +289,7 @@ public class BarbersController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(string id, [FromForm] BarberUpdateDTO barberUpdateDTO)
     {
-        AppUser barber = await _userManager.FindByIdAsync(barberUpdateDTO.Id);
+        AppUser barber = await _barberService.GetAsync(barberUpdateDTO.Id);
 
         if (barber == null)
         {
@@ -239,6 +298,23 @@ public class BarbersController : ControllerBase
 
         barber.FirstName = barberUpdateDTO.FirstName;
         barber.LastName = barberUpdateDTO.LastName;
+
+        foreach (var userBarbershop in barber.UserBarbershops)
+        {
+            barber.UserBarbershops.Remove(userBarbershop);
+        }
+
+        if (barberUpdateDTO.BarbershopId != 0)
+        {
+            UserBarbershop userBarbershop = new()
+            {
+                User = barber,
+                UserId = barber.Id,
+                BarbershopId = barberUpdateDTO.BarbershopId,
+                Barbershop = await _barbershopService.GetAsync(barberUpdateDTO.BarbershopId)
+            };
+            barber.UserBarbershops.Add(userBarbershop);
+        }
 
         if (barberUpdateDTO.AvatarImage is not null)
             await _barberService.UploadAsync(barber, barberUpdateDTO.AvatarImage, true);
@@ -255,5 +331,29 @@ public class BarbersController : ControllerBase
     public IActionResult Delete()
     {
         return Ok();
+    }
+
+    [HttpPost("{userId}")]
+    public async Task<IActionResult> ReserveAsync(string userId, int timeId)
+    {
+        AppUser user = await _userManager.FindByIdAsync(userId);
+        Time time = await _timeService.GetAsync(timeId);
+
+        UserTime userTime = new()
+        {
+            Time = time,
+            TimeId = timeId,
+            User = user,
+            UserId = userId,
+            IsReserved = true,
+            IsEndTime = false,
+            IsStartTime = false
+        };
+        user.UserTimes.Add(userTime);
+
+        await _userManager.UpdateAsync(user);
+
+        //return Ok(new { userId = userId, timeId = timeId });
+        return Ok(new { statusCode = 200, message = "Reserved successfully" });
     }
 }

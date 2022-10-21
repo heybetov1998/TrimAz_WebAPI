@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Entity.DTO.Barbershop;
+using Microsoft.AspNetCore.Http;
 
 namespace Entity.DTO.Barber
 {
@@ -7,6 +8,7 @@ namespace Entity.DTO.Barber
         public string Id { get; set; } = default!;
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
+        public int BarbershopId { get; set; }
         public IFormFile? AvatarImage { get; set; }
         public ICollection<IFormFile> PortfolioImages { get; set; }
 

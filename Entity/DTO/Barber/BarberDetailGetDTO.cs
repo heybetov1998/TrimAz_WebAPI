@@ -1,6 +1,7 @@
 ﻿using Entity.DTO.Image;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
+using Entity.DTO.Time;
 using Entity.DTO.Video;
 using Entity.Entities.Pivots;
 
@@ -14,12 +15,15 @@ public class BarberDetailGetDTO
         Services = new HashSet<ServiceTimeGetDTO>();
         Videos = new HashSet<VideoGetDTO>();
         Reviews = new HashSet<ReviewGetDTO>();
+        Times = new HashSet<TimeGetDTO>();
     }
 
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
     public string Avatar { get; set; } = default!;
     public double StarRating { get; set; }
+    public int BarbershopId { get; set; }
+    public ICollection<TimeGetDTO> Times { get; set; }
     public ICollection<ImageGetDTO> Images { get; set; }
     public ICollection<ServiceTimeGetDTO> Services { get; set; }
     public ICollection<VideoGetDTO> Videos { get; set; }
