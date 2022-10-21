@@ -1,4 +1,5 @@
 ﻿using Business.Services;
+using DAL.Context;
 using Entity.DTO.Barber;
 using Entity.DTO.Image;
 using Entity.DTO.Review;
@@ -182,6 +183,13 @@ public class BarbersController : ControllerBase
                 barber.Times.Add(timeGetDTO);
             }
 
+            //BarbershopId
+            foreach (var userBarbershop in data.UserBarbershops)
+            {
+                barber.BarbershopId = userBarbershop.Barbershop.Id;
+                break;
+            }
+
             return Ok(barber);
         }
         catch (EntityCouldNotFoundException ex)
@@ -281,7 +289,7 @@ public class BarbersController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(string id, [FromForm] BarberUpdateDTO barberUpdateDTO)
     {
-        AppUser barber = await _userManager.FindByIdAsync(barberUpdateDTO.Id);
+        AppUser barber = await _barberService.GetAsync(barberUpdateDTO.Id);
 
         if (barber == null)
         {
@@ -290,6 +298,23 @@ public class BarbersController : ControllerBase
 
         barber.FirstName = barberUpdateDTO.FirstName;
         barber.LastName = barberUpdateDTO.LastName;
+
+        foreach (var userBarbershop in barber.UserBarbershops)
+        {
+            barber.UserBarbershops.Remove(userBarbershop);
+        }
+
+        if (barberUpdateDTO.BarbershopId != 0)
+        {
+            UserBarbershop userBarbershop = new()
+            {
+                User = barber,
+                UserId = barber.Id,
+                BarbershopId = barberUpdateDTO.BarbershopId,
+                Barbershop = await _barbershopService.GetAsync(barberUpdateDTO.BarbershopId)
+            };
+            barber.UserBarbershops.Add(userBarbershop);
+        }
 
         if (barberUpdateDTO.AvatarImage is not null)
             await _barberService.UploadAsync(barber, barberUpdateDTO.AvatarImage, true);

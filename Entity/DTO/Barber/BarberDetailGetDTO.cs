@@ -22,6 +22,7 @@ public class BarberDetailGetDTO
     public string LastName { get; set; } = default!;
     public string Avatar { get; set; } = default!;
     public double StarRating { get; set; }
+    public int BarbershopId { get; set; }
     public ICollection<TimeGetDTO> Times { get; set; }
     public ICollection<ImageGetDTO> Images { get; set; }
     public ICollection<ServiceTimeGetDTO> Services { get; set; }
