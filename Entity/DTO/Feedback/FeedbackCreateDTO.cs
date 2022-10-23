@@ -1,18 +1,15 @@
-﻿using Entity.Base;
+﻿namespace Entity.DTO.Feedback;
 
-namespace Entity.Entities;
-
-public class Feedback : BaseEntity, IEntity
+public class FeedbackCreateDTO
 {
     public string FullName { get; set; }
     public string Email { get; set; }
     public string Message { get; set; }
 
-    public Feedback()
+    public FeedbackCreateDTO()
     {
-        Message = default!;
         FullName = default!;
         Email = default!;
+        Message = default!;
     }
-
 }
