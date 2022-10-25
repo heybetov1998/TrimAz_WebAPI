@@ -356,4 +356,91 @@ public class BarbersController : ControllerBase
         //return Ok(new { userId = userId, timeId = timeId });
         return Ok(new { statusCode = 200, message = "Reserved successfully" });
     }
+
+    [HttpGet("Filtered")]
+    public async Task<IActionResult> GetFiltered(int serviceId, int timeId)
+    {
+        try
+        {
+            List<BarberGetDTO> barbers = new List<BarberGetDTO>();
+
+            List<AppUser> datas = await _barberService.GetAllAsync();
+
+            foreach (AppUser data in datas)
+            {
+                bool hasService = false;
+                bool hasTime = false;
+
+                foreach (var userService in data.UserServices)
+                {
+                    if (userService.Service.Id == serviceId)
+                    {
+                        hasService = true;
+                        break;
+                    }
+                }
+
+                foreach (var userTime in data.UserTimes)
+                {
+                    if (userTime.Time.Id != timeId)
+                    {
+                        hasTime = true;
+                    }
+                    else
+                    {
+                        hasTime = false;
+                        break;
+                    }
+                }
+
+                if (hasTime && hasService)
+                {
+                    BarberGetDTO barber = new()
+                    {
+                        Id = data.Id,
+                        FirstName = data.FirstName,
+                        LastName = data.LastName,
+                    };
+
+                    //ImageName
+                    barber.ImageName = "profile-picture.png";
+                    foreach (var userImage in data.UserImages)
+                    {
+                        if (userImage.IsAvatar)
+                        {
+                            barber.ImageName = userImage.Image.Name;
+                            break;
+                        }
+                    }
+
+                    //StarRating
+                    List<double> ratings = new();
+                    List<Review> reviews = await _reviewService.GetAllAsync();
+                    foreach (Review review in reviews)
+                    {
+                        if (review.BarberId == data.Id)
+                        {
+                            ratings.Add(review.GivenRating);
+                        }
+                    }
+                    barber.StarRating = ratings.Count > 0 ? Math.Round(ratings.Average(), 1) : 0;
+
+                    data.StarRating = barber.StarRating;
+                    await _userManager.UpdateAsync(data);
+
+                    barbers.Add(barber);
+                }
+            }
+
+            return Ok(barbers);
+        }
+        catch (EntityCouldNotFoundException ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
+        }
+    }
 }
