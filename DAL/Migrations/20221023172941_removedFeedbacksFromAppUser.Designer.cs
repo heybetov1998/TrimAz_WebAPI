@@ -4,6 +4,7 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221023172941_removedFeedbacksFromAppUser")]
+    partial class removedFeedbacksFromAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,6 +102,9 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -122,6 +127,8 @@ namespace DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Feedbacks");
                 });
@@ -739,6 +746,13 @@ namespace DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Entity.Entities.Feedback", b =>
+                {
+                    b.HasOne("Entity.Identity.AppUser", null)
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("AppUserId");
+                });
+
             modelBuilder.Entity("Entity.Entities.Pivots.BarbershopImage", b =>
                 {
                     b.HasOne("Entity.Entities.Barbershop", "Barbershop")
@@ -999,6 +1013,8 @@ namespace DAL.Migrations
             modelBuilder.Entity("Entity.Identity.AppUser", b =>
                 {
                     b.Navigation("Blogs");
+
+                    b.Navigation("Feedbacks");
 
                     b.Navigation("Products");
 
