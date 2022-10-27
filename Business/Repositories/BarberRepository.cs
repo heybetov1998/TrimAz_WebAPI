@@ -49,6 +49,7 @@ public class BarberRepository : IBarberService
             .OrderByDescending(n => n.StarRating)
             .Include(n => n.UserImages).ThenInclude(n => n.Image)
             .Include(n => n.UserServices).ThenInclude(n => n.Service)
+            .Include(n => n.UserServices).ThenInclude(n => n.ServiceDetail)
             .Include(n => n.UserTimes).ThenInclude(n => n.Time)
             .Take(take)
             .ToListAsync();
