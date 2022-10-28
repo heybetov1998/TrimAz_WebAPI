@@ -233,4 +233,77 @@ public class BarbershopsController : ControllerBase
         await _barbershopService.DeleteAsync(id);
         return Ok(new { statusCode = 200, message = "Barbershop deleted successfully" });
     }
+
+    [HttpGet("ByPrice")]
+    public async Task<IActionResult> GetByPrice(double minPrice = 0, double maxPrice = double.MaxValue)
+    {
+        try
+        {
+            var datas = await _barbershopService.GetAllAsync();
+
+            List<BarbershopGetDTO> barbershops = new List<BarbershopGetDTO>();
+
+            foreach (var data in datas)
+            {
+                bool isValid = false;
+                foreach (var ub in data.UserBarbershops)
+                {
+                    foreach (var userService in ub.User.UserServices)
+                    {
+                        if (userService.ServiceDetail.Price >= minPrice && userService.ServiceDetail.Price <= maxPrice)
+                        {
+                            isValid = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (isValid)
+                {
+                    BarbershopGetDTO barbershopGetDTO = new BarbershopGetDTO();
+
+                    barbershopGetDTO.Id = data.Id;
+                    barbershopGetDTO.Name = data.Name;
+                    barbershopGetDTO.AfterPrice = "-dən başlayaraq";
+
+                    double price = double.MaxValue;
+                    foreach (var userBarbershop in data.UserBarbershops)
+                    {
+                        foreach (var userService in userBarbershop.User.UserServices)
+                        {
+                            if (userService.ServiceDetail.Price < price)
+                            {
+                                price = userService.ServiceDetail.Price;
+                            }
+                        }
+                    }
+
+                    barbershopGetDTO.Price = price < double.MaxValue ? Math.Round(price) : 0;
+
+                    barbershopGetDTO.Image.Name = "no-image.png";
+                    foreach (var barbershopImage in data.BarbershopImages)
+                    {
+                        if (barbershopImage.IsMain)
+                        {
+                            barbershopGetDTO.Image.Name = barbershopImage.Image.Name;
+                            break;
+                        }
+                    }
+                    barbershopGetDTO.Image.Alt = barbershopGetDTO.Image.Name;
+
+                    barbershops.Add(barbershopGetDTO);
+                }
+            }
+
+            return Ok(barbershops);
+        }
+        catch (EntityCouldNotFoundException ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
+        }
+    }
 }
