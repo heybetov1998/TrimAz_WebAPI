@@ -288,4 +288,77 @@ public class ProductsController : ControllerBase
             return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
         }
     }
+
+    [HttpGet("Search")]
+    public async Task<IActionResult> GetBySearch(string search)
+    {
+        try
+        {
+            var datas = await _productService.GetAllAsync();
+            string[] splits = search.Split(" ");
+
+            List<ProductGetDTO> products = new List<ProductGetDTO>();
+
+            foreach (var data in datas)
+            {
+                bool isValid = false;
+
+                foreach (var split in splits)
+                {
+                    if (data.Title.ToLower().Contains(split.ToLower()))
+                    {
+                        isValid = true;
+                        break;
+                    }
+                }
+
+                if (isValid)
+                {
+                    ProductGetDTO productGetDTO = new ProductGetDTO();
+
+                    productGetDTO.Id = data.Id;
+                    productGetDTO.Title = data.Title;
+                    productGetDTO.Price = data.Price;
+
+                    productGetDTO.Image.Name = "no-image.png";
+                    foreach (var productImage in data.ProductImages)
+                    {
+                        if (productImage.IsMain)
+                        {
+                            productGetDTO.Image.Name = productImage.Image.Name;
+                            break;
+                        }
+                    }
+                    productGetDTO.Image.Alt = productGetDTO.Image.Name;
+
+                    productGetDTO.Seller.Id = data.User.Id;
+                    productGetDTO.Seller.FirstName = data.User.FirstName;
+                    productGetDTO.Seller.LastName = data.User.LastName;
+
+                    productGetDTO.Seller.Image.Name = "profile-picture.png";
+                    foreach (var sellerImage in data.User.UserImages)
+                    {
+                        if (sellerImage.IsAvatar)
+                        {
+                            productGetDTO.Seller.Image.Name = sellerImage.Image.Name;
+                            break;
+                        }
+                    }
+                    productGetDTO.Seller.Image.Alt = productGetDTO.Seller.Image.Name;
+
+                    products.Add(productGetDTO);
+                }
+            }
+
+            return Ok(products);
+        }
+        catch (EntityCouldNotFoundException ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+        }
+    }
 }
