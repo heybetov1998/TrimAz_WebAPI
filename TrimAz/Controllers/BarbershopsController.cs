@@ -5,8 +5,10 @@ using Entity.DTO.Barbershop;
 using Entity.DTO.Review;
 using Entity.DTO.Service;
 using Entity.Entities;
+using Entity.Entities.Pivots;
 using Entity.Identity;
 using Exceptions.EntityExceptions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TrimAz.Commons;
 
@@ -17,14 +19,17 @@ namespace TrimAz.Controllers;
 public class BarbershopsController : ControllerBase
 {
     private readonly IBarbershopService _barbershopService;
+    private readonly UserManager<AppUser> _userManager;
     private readonly IReviewService _reviewService;
     private readonly IJwtUtils _jwtUtils;
 
-    public BarbershopsController(IBarbershopService barbershopService, IJwtUtils jwtUtils, IReviewService reviewService)
+    public BarbershopsController(IBarbershopService barbershopService, IJwtUtils jwtUtils,
+        IReviewService reviewService, UserManager<AppUser> userManager)
     {
         _barbershopService = barbershopService;
         _jwtUtils = jwtUtils;
         _reviewService = reviewService;
+        _userManager = userManager;
     }
 
     [HttpGet("{id}")]
@@ -207,7 +212,18 @@ public class BarbershopsController : ControllerBase
             Longtitude = barbershopPostDTO.Longtitude.ToString(),
             CreatedDate = DateTime.UtcNow.AddHours(4)
         };
+
         await _barbershopService.CreateAsync(barbershop);
+
+        UserBarbershop userBarbershop = new()
+        {
+            User = await _userManager.FindByIdAsync(barbershopPostDTO.OwnerId),
+            UserId = barbershopPostDTO.OwnerId,
+            Barbershop = barbershop,
+            BarbershopId = barbershop.Id
+        };
+
+        barbershop.UserBarbershops.Add(userBarbershop);
 
         await _barbershopService.UploadAsync(barbershop, barbershopPostDTO.Images, isUpdate: false);
 
@@ -376,6 +392,69 @@ public class BarbershopsController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
+        }
+    }
+
+    [HttpGet("Owner")]
+    public async Task<IActionResult> GetByOwnerAsync(string ownerId)
+    {
+        try
+        {
+            var datas = await _barbershopService.GetAllAsync();
+
+            List<BarbershopGetDTO> barbershops = new List<BarbershopGetDTO>();
+
+            foreach (var data in datas)
+            {
+                foreach (var ub in data.UserBarbershops)
+                {
+                    if (ub.User.Id == ownerId)
+                    {
+                        BarbershopGetDTO barbershopGetDTO = new BarbershopGetDTO();
+
+                        barbershopGetDTO.Id = data.Id;
+                        barbershopGetDTO.Name = data.Name;
+                        barbershopGetDTO.AfterPrice = "-dən başlayaraq";
+
+                        double price = double.MaxValue;
+                        foreach (var userBarbershop in data.UserBarbershops)
+                        {
+                            foreach (var userService in userBarbershop.User.UserServices)
+                            {
+                                if (userService.ServiceDetail.Price < price)
+                                {
+                                    price = userService.ServiceDetail.Price;
+                                }
+                            }
+                        }
+
+                        barbershopGetDTO.Price = price < double.MaxValue ? Math.Round(price) : 0;
+
+                        barbershopGetDTO.Image.Name = "no-image.png";
+                        foreach (var barbershopImage in data.BarbershopImages)
+                        {
+                            if (barbershopImage.IsMain)
+                            {
+                                barbershopGetDTO.Image.Name = barbershopImage.Image.Name;
+                                break;
+                            }
+                        }
+                        barbershopGetDTO.Image.Alt = barbershopGetDTO.Image.Name;
+
+                        barbershops.Add(barbershopGetDTO);
+                    }
+                }
+            }
+
+            return Ok(barbershops);
+        }
+        catch (EntityCouldNotFoundException ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status404NotFound, ex.Message);
         }
     }
 }

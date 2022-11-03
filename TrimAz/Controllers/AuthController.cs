@@ -143,6 +143,7 @@ public class AuthController : ControllerBase
                 LastName = user.LastName,
                 Email = user.Email,
                 UserName = user.UserName,
+                PhoneNumber = user.PhoneNumber,
                 RoleNames = await _userManager.GetRolesAsync(user),
                 Token = user.Token,
                 Avatar = avatar
@@ -196,7 +197,7 @@ public class AuthController : ControllerBase
         appUser.LastName = Capitalize(registerUserDTO.LastName.Trim());
         appUser.Email = registerUserDTO.Email;
         appUser.UserName = registerUserDTO.UserName;
-        appUser.RoleName=roleName;
+        appUser.RoleName = roleName;
         appUser.Token = "";
 
         var result = await _userManager.CreateAsync(appUser, registerUserDTO.Password);

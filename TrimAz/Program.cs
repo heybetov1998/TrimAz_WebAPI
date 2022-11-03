@@ -89,6 +89,8 @@ builder.Services.AddScoped<IReviewDAL, ReviewRepositoryDAL>();
 
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 
+builder.Services.AddScoped<IUserService, UserRepository>();
+
 builder.Services.AddScoped<ISellerService, SellerRepository>();
 
 builder.Services.AddScoped<ITimeService, TimeRepository>();
