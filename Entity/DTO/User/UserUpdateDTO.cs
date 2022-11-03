@@ -4,14 +4,17 @@ namespace Entity.DTO.User;
 
 public class UserUpdateDTO
 {
-    public string Email { get; set; }
-    public string UserName { get; set; }
-    //public IFormFile UploadedAvatar { get; set; }
+    public string Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string PhoneNumber { get; set; }
+    public IFormFile? AvatarImage { get; set; }
 
     public UserUpdateDTO()
     {
-        Email = default!;
-        UserName = default!;
-        //UploadedAvatar = null!;
+        Id = default!;
+        FirstName = default!;
+        LastName = default!;
+        PhoneNumber = default!;
     }
 }

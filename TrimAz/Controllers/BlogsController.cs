@@ -179,5 +179,145 @@ namespace TrimAz.Controllers
 
             return Ok(new { statusCode = 200, message = "Blog deleted successfully" });
         }
+
+        [HttpGet("Search")]
+        public async Task<IActionResult> GetBySearch(string search)
+        {
+            try
+            {
+                var datas = await _blogService.GetAllAsync();
+                string[] splits = search.Split(" ");
+
+                List<BlogGetDTO> blogs = new List<BlogGetDTO>();
+
+                foreach (var data in datas)
+                {
+                    bool isValid = false;
+
+                    foreach (var split in splits)
+                    {
+                        if (data.Title.ToLower().Contains(split.ToLower()))
+                        {
+                            isValid = true;
+                            break;
+                        }
+                    }
+
+                    if (isValid)
+                    {
+                        BlogGetDTO blogGetDTO = new();
+
+                        blogGetDTO.Id = data.Id;
+                        blogGetDTO.Title = data.Title;
+                        blogGetDTO.Content = data.Content;
+                        blogGetDTO.CreatedDate = data.CreatedDate;
+
+                        blogGetDTO.Author.Id = data.User.Id;
+                        blogGetDTO.Author.FirstName = data.User.FirstName;
+                        blogGetDTO.Author.LastName = data.User.LastName;
+
+                        //blogGetDTO.Author.Image
+                        blogGetDTO.Author.Image.Name = "profile-picture.png";
+                        foreach (var userImage in data.User.UserImages)
+                        {
+                            if (userImage.IsAvatar)
+                            {
+                                blogGetDTO.Author.Image.Name = userImage.Image.Name;
+                                break;
+                            }
+                        }
+                        blogGetDTO.Author.Image.Alt = blogGetDTO.Author.Image.Name;
+
+                        //blogGetDTO.Image
+                        blogGetDTO.Image.Name = "no-image.png";
+                        foreach (var blogImage in data.BlogImages)
+                        {
+                            if (blogImage.IsMain)
+                            {
+                                blogGetDTO.Image.Name = blogImage.Image.Name;
+                                break;
+                            }
+                        }
+                        blogGetDTO.Image.Alt = blogGetDTO.Image.Name;
+
+                        blogs.Add(blogGetDTO);
+                    }
+                }
+
+                return Ok(blogs);
+            }
+            catch (EntityCouldNotFoundException ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+        }
+
+        [HttpGet("User")]
+        public async Task<IActionResult> GetUserBlogsAsync(string userId)
+        {
+            try
+            {
+                var datas = await _blogService.GetAllAsync();
+
+                List<BlogGetDTO> blogs = new List<BlogGetDTO>();
+
+                foreach (var data in datas)
+                {
+                    if (data.User.Id == userId)
+                    {
+                        BlogGetDTO blogGetDTO = new();
+
+                        blogGetDTO.Id = data.Id;
+                        blogGetDTO.Title = data.Title;
+                        blogGetDTO.Content = data.Content;
+                        blogGetDTO.CreatedDate = data.CreatedDate;
+
+                        blogGetDTO.Author.Id = data.User.Id;
+                        blogGetDTO.Author.FirstName = data.User.FirstName;
+                        blogGetDTO.Author.LastName = data.User.LastName;
+
+                        //blogGetDTO.Author.Image
+                        blogGetDTO.Author.Image.Name = "profile-picture.png";
+                        foreach (var userImage in data.User.UserImages)
+                        {
+                            if (userImage.IsAvatar)
+                            {
+                                blogGetDTO.Author.Image.Name = userImage.Image.Name;
+                                break;
+                            }
+                        }
+                        blogGetDTO.Author.Image.Alt = blogGetDTO.Author.Image.Name;
+
+                        //blogGetDTO.Image
+                        blogGetDTO.Image.Name = "no-image.png";
+                        foreach (var blogImage in data.BlogImages)
+                        {
+                            if (blogImage.IsMain)
+                            {
+                                blogGetDTO.Image.Name = blogImage.Image.Name;
+                                break;
+                            }
+                        }
+                        blogGetDTO.Image.Alt = blogGetDTO.Image.Name;
+
+                        blogs.Add(blogGetDTO);
+                    }
+                }
+
+                return Ok(blogs);
+            }
+            catch (EntityCouldNotFoundException ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
+            }
+        }
     }
 }

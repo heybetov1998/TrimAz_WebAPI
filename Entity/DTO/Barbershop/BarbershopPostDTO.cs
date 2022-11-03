@@ -5,6 +5,7 @@ namespace Entity.DTO.Barbershop;
 
 public class BarbershopPostDTO
 {
+    public string OwnerId { get; set; }
     [Required]
     public string Name { get; set; }
 
@@ -20,6 +21,7 @@ public class BarbershopPostDTO
     public BarbershopPostDTO()
     {
         Name = default!;
+        OwnerId = default!;
         Images = new HashSet<IFormFile>();
     }
 }

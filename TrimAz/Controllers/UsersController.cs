@@ -1,9 +1,9 @@
-﻿using Entity.DTO.User;
+﻿using Business.Services;
+using Entity.DTO.User;
 using Entity.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace TrimAz.Controllers
 {
@@ -12,16 +12,18 @@ namespace TrimAz.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IUserService _userService;
 
-        public UsersController(UserManager<AppUser> userManager)
+        public UsersController(UserManager<AppUser> userManager, IUserService userService)
         {
             _userManager = userManager;
+            _userService = userService;
         }
 
         [HttpGet("{id}"), Authorize]
         public async Task<IActionResult> GetCurrentUser(string id)
         {
-            AppUser currentUser = await _userManager.FindByIdAsync(id);
+            AppUser currentUser = await _userService.GetAsync(id);
 
             if (currentUser is not null)
             {
@@ -31,6 +33,7 @@ namespace TrimAz.Controllers
                     FirstName = currentUser.FirstName,
                     LastName = currentUser.LastName,
                     UserName = currentUser.UserName,
+                    PhoneNumber = currentUser.PhoneNumber,
                     Email = currentUser.Email
                 };
 
@@ -51,20 +54,27 @@ namespace TrimAz.Controllers
             return NotFound(new { statusCode = 404, message = "User not found" });
         }
 
-        [HttpPost]
-        //[Consumes("multipart/form-data")]
-        public async Task<IActionResult> UpdateUserAsync([FromBody] UserUpdateDTO userUpdateDTO)
+        [HttpPut]
+        public async Task<IActionResult> UpdateUserAsync([FromForm] UserUpdateDTO userUpdateDTO)
         {
-            AppUser user = await _userManager.FindByEmailAsync(userUpdateDTO.Email);
+            AppUser user = await _userManager.FindByIdAsync(userUpdateDTO.Id);
 
             if (user == null) return BadRequest(new { statusCode = 403 });
 
-            user.UserName = userUpdateDTO.UserName;
-            user.Email = userUpdateDTO.Email;
+            user.FirstName = userUpdateDTO.FirstName;
+            user.LastName = userUpdateDTO.LastName;
+
+            if (userUpdateDTO.PhoneNumber != "null")
+            {
+                user.PhoneNumber = userUpdateDTO.PhoneNumber;
+            }
+
+            if (userUpdateDTO.AvatarImage is not null)
+                await _userService.UploadAsync(user, userUpdateDTO.AvatarImage, true);
 
             await _userManager.UpdateAsync(user);
 
-            return Ok(new { statusCode = 200, message = "User updated successfully" });
+            return await GetCurrentUser(user.Id);
         }
     }
 }

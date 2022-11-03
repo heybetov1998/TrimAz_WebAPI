@@ -8,6 +8,7 @@ public class UserRoleGetDTO
         FirstName = default!;
         LastName = default!;
         UserName = default!;
+        PhoneNumber = default!;
         Email = default!;
         Token = default!;
         Avatar = default!;
@@ -17,6 +18,7 @@ public class UserRoleGetDTO
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string UserName { get; set; }
+    public string PhoneNumber { get; set; }
     public string Email { get; set; }
     public ICollection<string> RoleNames { get; set; }
     public string Token { get; set; }
