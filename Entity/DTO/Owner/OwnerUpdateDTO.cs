@@ -1,12 +1,15 @@
-﻿namespace Entity.DTO.Owner;
+﻿using Microsoft.AspNetCore.Http;
 
-public class OwnerGetDTO
+namespace Entity.DTO.Owner;
+
+public class OwnerUpdateDTO
 {
     public string Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public IFormFile? AvatarImage { get; set; }
 
-    public OwnerGetDTO()
+    public OwnerUpdateDTO()
     {
         Id = default!;
         FirstName = default!;

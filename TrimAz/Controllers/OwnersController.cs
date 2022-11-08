@@ -1,4 +1,5 @@
-﻿using DAL.Context;
+﻿using Business.Services;
+using DAL.Context;
 using Entity.DTO.Owner;
 using Entity.DTO.User;
 using Entity.Identity;
@@ -16,11 +17,13 @@ public class OwnersController : ControllerBase
 {
     private readonly AppDbContext _context;
     private readonly UserManager<AppUser> _userManager;
+    private readonly IOwnerService _ownerService;
 
-    public OwnersController(AppDbContext context, UserManager<AppUser> userManager)
+    public OwnersController(AppDbContext context, UserManager<AppUser> userManager, IOwnerService ownerService)
     {
         _context = context;
         _userManager = userManager;
+        _ownerService = ownerService;
     }
 
     [HttpGet("{id}")]
@@ -35,7 +38,9 @@ public class OwnersController : ControllerBase
 
         OwnerGetDTO ownerDto = new()
         {
-
+            Id = owner.Id,
+            FirstName = owner.FirstName,
+            LastName = owner.LastName,
         };
 
         return Ok(ownerDto);
@@ -46,7 +51,7 @@ public class OwnersController : ControllerBase
     {
         try
         {
-            var datas = await _context.Users.Where(n => n.RoleName == "Owner").ToListAsync();
+            var datas = await _ownerService.GetAllAsync();
 
             List<UserDashDTO> owners = new();
 
@@ -65,6 +70,7 @@ public class OwnersController : ControllerBase
                     if (userImage.IsAvatar)
                     {
                         ownerGetDTO.Avatar = userImage.Image.Name;
+                        break;
                     }
                 }
 
@@ -81,6 +87,34 @@ public class OwnersController : ControllerBase
         {
             return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
         }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateAsync([FromForm] OwnerUpdateDTO ownerUpdateDTO)
+    {
+        AppUser owner = await _userManager.FindByIdAsync(ownerUpdateDTO.Id);
+
+        if (owner == null) return BadRequest(new { statusCode = 404, message = "User not found" });
+
+        owner.FirstName = ownerUpdateDTO.FirstName;
+        owner.LastName = ownerUpdateDTO.LastName;
+
+        if (ownerUpdateDTO.AvatarImage is not null)
+            await _ownerService.UploadAsync(owner, ownerUpdateDTO.AvatarImage, true);
+
+        await _userManager.UpdateAsync(owner);
+
+        string avatarImage = "";
+        foreach (var ui in owner.UserImages)
+        {
+            if (ui.IsAvatar)
+            {
+                avatarImage = ui.Image.Name;
+                break;
+            }
+        }
+
+        return Ok(new { statusCode = 200, avatarImage, message = "Owner updated successfully" });
     }
 
     [HttpDelete]
