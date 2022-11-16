@@ -23,6 +23,7 @@ public class ServiceRepository : IServiceService
     {
         var data = _serviceDAL.GetAllAsync(
             expression: n => !n.IsDeleted,
+            includes: new string[] { "UserServices.ServiceDetail" },
             take: take);
 
         if (data is null)

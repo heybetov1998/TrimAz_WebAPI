@@ -104,17 +104,7 @@ public class OwnersController : ControllerBase
 
         await _userManager.UpdateAsync(owner);
 
-        string avatarImage = "";
-        foreach (var ui in owner.UserImages)
-        {
-            if (ui.IsAvatar)
-            {
-                avatarImage = ui.Image.Name;
-                break;
-            }
-        }
-
-        return Ok(new { statusCode = 200, avatarImage, message = "Owner updated successfully" });
+        return Ok(new { statusCode = 200, message = "Owner updated successfully" });
     }
 
     [HttpDelete]

@@ -11,10 +11,12 @@ namespace TrimAz.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly IServiceService _serviceService;
+        private readonly IBarberService _barberService;
 
-        public ServicesController(IServiceService serviceService)
+        public ServicesController(IServiceService serviceService, IBarberService barberService)
         {
             _serviceService = serviceService;
+            _barberService = barberService;
         }
 
         [HttpGet]
@@ -48,6 +50,15 @@ namespace TrimAz.Controllers
             {
                 return StatusCode(StatusCodes.Status404NotFound, new Response(4001, ex.Message));
             }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync([FromForm] ServiceUpdateDTO serviceUpdateDTO)
+        {
+            var barber =await _barberService.GetAsync(serviceUpdateDTO.BarberId);
+
+
+            return Ok(serviceUpdateDTO);
         }
     }
 }

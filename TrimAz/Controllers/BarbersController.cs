@@ -25,15 +25,18 @@ public class BarbersController : ControllerBase
     private readonly UserManager<AppUser> _userManager;
     private readonly IBarbershopService _barbershopService;
     private readonly ITimeService _timeService;
+    private readonly IServiceService _serviceService;
 
     public BarbersController(IBarberService barberService, UserManager<AppUser> userManager,
-        IBarbershopService barbershopService, IReviewService reviewService, ITimeService timeService)
+        IBarbershopService barbershopService, IReviewService reviewService,
+        ITimeService timeService, IServiceService serviceService)
     {
         _barberService = barberService;
         _userManager = userManager;
         _barbershopService = barbershopService;
         _reviewService = reviewService;
         _timeService = timeService;
+        _serviceService = serviceService;
     }
 
     [HttpGet("{id}")]
@@ -589,5 +592,36 @@ public class BarbersController : ControllerBase
         {
             return StatusCode(StatusCodes.Status404NotFound, new Response(code: 4001, ex.Message));
         }
+    }
+
+    [HttpGet("Services")]
+    public async Task<IActionResult> GetServices(string barberId)
+    {
+        var barber = await _barberService.GetAsync(barberId);
+        var services = await _serviceService.GetAllAsync();
+
+        List<ServiceDTO> serviceDTOs = new List<ServiceDTO>();
+
+        foreach (var service in services)
+        {
+            ServiceDTO serviceDTO = new()
+            {
+                Name = service.Name,
+                Price = 0
+            };
+
+           foreach (var userService in service.UserServices)
+            {
+                if (userService.UserId == barberId)
+                {
+                    serviceDTO.Price = userService.ServiceDetail.Price;
+                    break;
+                }
+            }
+
+            serviceDTOs.Add(serviceDTO);
+        }
+
+        return Ok(serviceDTOs);
     }
 }
