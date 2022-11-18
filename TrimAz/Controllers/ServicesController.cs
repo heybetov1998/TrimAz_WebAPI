@@ -89,6 +89,8 @@ namespace TrimAz.Controllers
 
             List<ServiceJSONObj> servicesJSON = JsonConvert.DeserializeObject<List<ServiceJSONObj>>(serviceUpdateDTO.Services);
 
+            List<UserService> userServices = new();
+
             foreach (var serviceJSON in servicesJSON)
             {
                 ServiceDetail detail = await CreateServiceDetailAsync(serviceJSON.Price);
@@ -104,9 +106,12 @@ namespace TrimAz.Controllers
                     ServiceDetail = detail
                 };
 
-                await _context.UserServices.AddAsync(userService);
-                await _context.SaveChangesAsync();
+                userServices.Add(userService);
             }
+
+            barber.UserServices.Clear();
+            await _context.UserServices.AddRangeAsync(userServices);
+            await _context.SaveChangesAsync();
 
             return Ok(servicesJSON);
         }
