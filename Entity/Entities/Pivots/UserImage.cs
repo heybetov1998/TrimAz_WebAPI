@@ -13,7 +13,7 @@ public class UserImage : IEntity
 
     public int Id { get; set; }
     public bool IsAvatar { get; set; }
-    public string UserId { get; set; } = default!;
+    public string UserId { get; set; } =default!;
     public int ImageId { get; set; }
     public AppUser User { get; set; }
     public Image Image { get; set; }
