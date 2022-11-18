@@ -16,7 +16,17 @@ public class ServiceRepository : IServiceService
 
     public Task<Service> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        var data = _serviceDAL.GetAsync(
+            expression: n => !n.IsDeleted && n.Id == id,
+            includes: new string[] { "UserServices.ServiceDetail" }
+            );
+
+        if (data is null)
+        {
+            throw new EntityCouldNotFoundException();
+        }
+
+        return data;
     }
 
     public Task<List<Service>> GetAllAsync(int take = int.MaxValue)

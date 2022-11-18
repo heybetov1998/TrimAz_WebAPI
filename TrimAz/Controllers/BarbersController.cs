@@ -606,11 +606,12 @@ public class BarbersController : ControllerBase
         {
             ServiceDTO serviceDTO = new()
             {
+                ServiceId = service.Id,
                 Name = service.Name,
                 Price = 0
             };
 
-           foreach (var userService in service.UserServices)
+            foreach (var userService in service.UserServices)
             {
                 if (userService.UserId == barberId)
                 {
